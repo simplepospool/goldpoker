@@ -165,6 +165,9 @@ function compile_error() {
 if [ "$?" -gt "0" ];
  then
   echo -e "${RED}Failed to compile $COIN_NAME. Please investigate.${NC}"
+  clear
+  echo -e "{\"success\":\""FALSE"\", \"message\":\""Failed to compile $COIN_NAME. Please investigate."\"}"
+  clear
   exit 1
 fi
 }
@@ -173,16 +176,25 @@ fi
 function checks() {
 if [[ $(lsb_release -d) != *16.04* ]]; then
   echo -e "${RED}You are not running Ubuntu 16.04. Installation is cancelled.${NC}"
+  clear
+  echo -e "{\"success\":\""FALSE"\", \"message\":\""You are not running Ubuntu 16.04. Installation is cancelled."\"}"
+  clear
   exit 1
 fi
  
 if [[ $EUID -ne 0 ]]; then
    echo -e "${RED}$0 must be run as root.${NC}"
+   clear
+   echo -e "{\"success\":\""FALSE"\", \"message\":\""$0 must be run as root."\"}"
+   clear
    exit 1
 fi
  
 if [ -n "$(pidof $COIN_DAEMON)" ] || [ -e "$COIN_DAEMON" ] ; then
   echo -e "${RED}$COIN_NAME is already installed.${NC}"
+  clear
+  echo -e "{\"success\":\""FALSE"\", \"message\":\""$COIN_NAME is already installed."\"}"
+  clear
   exit 1
 fi
 }
