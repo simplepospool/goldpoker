@@ -231,7 +231,7 @@ echo -e "=======================================================================
  
  
 clear
- echo -e "{\"coin\":\""$COIN_NAME"\", \"port\":\""$COIN_PORT"\", \"id\":\""$NODEIP"\", \"mnip\":\""$NODEIP:$COIN_PORT"\", \"startmn\":\""$COIN_DAEMON -daemon"\", \"stopmn\":\""$COIN_CLI stop"\", \"getinfomn\":\""$COIN_CLI getinfo"\", \"statusmn\":\""$COIN_CLI masternode status"\", \"privatekey\":\""$COINKEY"\", \"startservice\":\""systemctl start $COIN_NAME.service"\", \"stopservice\":\""systemctl stop $COIN_NAME.service"\"}"
+ echo -e "{\"success\":\""TRUE"\", \"coin\":\""$COIN_NAME"\", \"port\":\""$COIN_PORT"\", \"id\":\""$NODEIP"\", \"mnip\":\""$NODEIP:$COIN_PORT"\", \"startmn\":\""$COIN_DAEMON -daemon"\", \"stopmn\":\""$COIN_CLI stop"\", \"getinfomn\":\""$COIN_CLI getinfo"\", \"statusmn\":\""$COIN_CLI masternode status"\", \"privatekey\":\""$COINKEY"\", \"startservice\":\""systemctl start $COIN_NAME.service"\", \"stopservice\":\""systemctl stop $COIN_NAME.service"\"}"
 clear
 }
 function setup_node() {
