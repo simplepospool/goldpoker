@@ -191,10 +191,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
  
 if [ -n "$(pidof $COIN_DAEMON)" ] || [ -e "$COIN_DAEMON" ] ; then
-  echo -e "${RED}$COIN_NAME is already installed.${NC}"
-  clear
   echo -e "{\"success\":\""FALSE"\", \"message\":\""$COIN_NAME is already installed."\"}"
-  clear
   exit 1
 fi
 }
