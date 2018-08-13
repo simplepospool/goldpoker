@@ -121,6 +121,12 @@ gen=1
 masternode=1
 masternodeaddr=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
+addnode=seed.trittiumnet.com
+addnode=seed2.trittiumnet.com
+addnode=seed3.trittiumnet.com
+addnode=seed4.trittiumnet.com
+addnode=seed5.trittiumnet.com
+addnode=explorer.trittium.cc
 EOF
 }
  
