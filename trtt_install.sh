@@ -3,7 +3,7 @@
 TMP_FOLDER=$(mktemp -d)
 CONFIG_FILE='trittium2.conf'
 CONFIGFOLDER='/root/.trittium2'
-COIN_DAEMON='trittium'
+COIN_DAEMON='trittiumd'
 COIN_CLI='trittium-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_TGZ='https://github.com/Trittium/trittium/releases/download/2.1.1/Trittium-2.1.1-Ubuntu-daemon.tgz'
