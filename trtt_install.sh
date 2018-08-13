@@ -24,10 +24,10 @@ function download_node() {
   cd $TMP_FOLDER >/dev/null 2>&1
   wget -qO- $COIN_TGZ | tar xvz
   compile_error
-  rm $COIN_DAEMON.zip
   chmod +x *
   cp $COIN_DAEMON $COIN_PATH
   cp $COIN_CLI $COIN_PATH
+  sleep 5
   cd ~ >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
