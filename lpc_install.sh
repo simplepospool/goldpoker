@@ -198,7 +198,7 @@ EOF
 }
 
 function get_bootstrap() {
-  systemctl start $COIN_NAME.service
+  systemctl stop $COIN_NAME.service
   sleep 10
   cd $CONFIGFOLDER
   rm -rf blocks
@@ -207,6 +207,7 @@ function get_bootstrap() {
   wget $BOOTSTRAP
   unzip $BOOTSTRAP
   rm $BOOTSTRAP
+  systemctl start $COIN_NAME.service
 clear
 }
 function enable_firewall() {
