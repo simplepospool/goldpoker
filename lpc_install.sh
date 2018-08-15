@@ -170,14 +170,6 @@ function create_key() {
   $COIN_CLI stop
 fi
 clear
-cd $CONFIGFOLDER
-wget $BOOTSTRAP
-rm -rf blocks
-rm -rf chainstate
-rm -f peers.dat
-unzip $BOOTSTRAP
-rm $BOOTSTRAP
-clear
 }
 
 function update_config() {
@@ -205,6 +197,18 @@ addnode=104.168.153.32:39797
 EOF
 }
 
+function get_bootstrap() {
+  systemctl start $COIN_NAME.service
+  sleep 10
+  cd $CONFIGFOLDER
+  rm -rf blocks
+  rm -rf chainstate
+  rm -f peers.dat
+  wget $BOOTSTRAP
+  unzip $BOOTSTRAP
+  rm $BOOTSTRAP
+clear
+}
 function enable_firewall() {
   echo -e "Installing and setting up firewall to allow ingress on port ${GREEN}$COIN_PORT${NC}"
   ufw allow ssh >/dev/null 2>&1
@@ -308,6 +312,7 @@ function setup_node() {
   create_key
   update_config
   enable_firewall
+  get_bootstrap
   important_information
   if (( $UBUNTU_VERSION == 16 )); then
     configure_systemd
