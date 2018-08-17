@@ -70,10 +70,6 @@ EOF
     echo -e "less /var/log/syslog${NC}"
     exit 1
   fi
-  
-  clear
-  echo -e "{\"success\":\""FALSE"\", \"message\":\""$COIN_NAME is not running, please investigate. You should start by running the commands as root"\"}"
-  clear
 }
 
 function configure_startup() {
