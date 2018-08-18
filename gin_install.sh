@@ -15,9 +15,9 @@ RPC_PORT=10211
 NODEIP=$(curl -s4 api.ipify.org)
 
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m'
+RED=''
+GREEN=''
+NC=''
 
 
 function compile_node() {
