@@ -17,5 +17,5 @@
  unzip bws_boot.zip
  rm bws_boot.zip
  cd
-systemctl stop BWS.service
+systemctl start BWS.service
 sleep 60
