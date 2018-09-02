@@ -2,7 +2,7 @@
  
 TMP_FOLDER=$(mktemp -d)
 CONFIG_FILE='cryptoflow.conf'
-CONFIGFOLDER='/root/.CryptoFlow'
+CONFIGFOLDER='/root/.cryptoflow'
 COIN_DAEMON='cryptoflowd'
 COIN_CLI='cryptoflow-cli'
 COIN_PATH='/usr/local/bin/'
@@ -22,10 +22,10 @@ NC=''
 function download_node() {
   echo -e "Downloading and installing latest ${GREEN}$COIN_NAME${NC} coin daemon."
   cd $TMP_FOLDER >/dev/null 2>&1
-  wget -q $COIN_TGZ --show-progress
+  wget $COIN_TGZ --show-progress
   sleep 3
   compile_error
-  unzip -j $COIN_TGZ >/dev/null 2>&1
+  unzip $COIN_TGZ >/dev/null 2>&1
   compile_error
   rm $COIN_TGZ
   chmod +x *
