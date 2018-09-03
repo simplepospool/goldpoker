@@ -7,7 +7,7 @@ COIN_CLI='/usr/local/bin/lightpaycoin-cli'
 COIN_REPO='https://github.com/lpcproject/LightPayCoin/releases/download/v1.0.0.0/lightpaycoin-1.0.0-x86_64-linux-gnu.tar.gz'
 COIN_NAME='LightPayCoin'
 COIN_PORT=39797
-BOOTSTRAP='https://www.dropbox.com/s/qj9eanp05g5p35b/lpc_bootstrap.zip'
+
 
 NODEIP=$(curl -s4 icanhazip.com)
 
@@ -197,19 +197,7 @@ addnode=104.168.153.32:39797
 EOF
 }
 
-function get_bootstrap() {
-  systemctl stop $COIN_NAME.service
-  sleep 10
-  cd $CONFIGFOLDER
-  rm -rf blocks
-  rm -rf chainstate
-  rm -f peers.dat
-  wget $BOOTSTRAP
-  unzip $BOOTSTRAP
-  rm $BOOTSTRAP
-  systemctl start $COIN_NAME.service
-clear
-}
+
 function enable_firewall() {
   echo -e "Installing and setting up firewall to allow ingress on port ${GREEN}$COIN_PORT${NC}"
   ufw allow ssh >/dev/null 2>&1
@@ -313,7 +301,6 @@ function setup_node() {
   create_key
   update_config
   enable_firewall
-  get_bootstrap
   important_information
   if (( $UBUNTU_VERSION == 16 )); then
     configure_systemd
