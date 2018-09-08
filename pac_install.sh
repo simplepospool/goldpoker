@@ -21,6 +21,7 @@ NC=''
 
 function install_sentinel() {
   sudo apt-get -y install python-virtualenv
+  apt install -y virtualenv
   git clone "https://github.com/PACCommunity/sentinel"
   cd sentinel
   virtualenv ./venv
