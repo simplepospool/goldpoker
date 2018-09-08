@@ -19,6 +19,22 @@ YELLOW=''
 GREEN=''
 NC=''
 
+function download_bootstrap() {
+  systemctl stop Paccoin.service
+  sleep 60
+  cd
+  cd .paccoincore
+  rm -rf blocks
+  rm -rf chainstate
+  rm peers.dat
+  wget boot
+  unzip boot
+  rm boot
+  cd
+  systemctl start Paccoin.service
+
+}
+
 function install_sentinel() {
   sudo apt-get -y install python-virtualenv
   apt install -y virtualenv
@@ -264,6 +280,7 @@ function setup_node() {
   install_sentinel
   important_information
   configure_systemd
+  download_bootstrap
 }
  
  
