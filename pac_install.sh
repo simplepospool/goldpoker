@@ -18,6 +18,17 @@ RED=''
 YELLOW=''
 GREEN=''
 NC=''
+
+function install_sentinel() {
+  sudo apt-get -y install python-virtualenv
+  git clone "https://github.com/PACCommunity/sentinel"
+  cd sentinel
+  virtualenv ./venv
+  ./venv/bin/pip install -r requirements.txt
+  venv/bin/python bin/sentinel.py
+  sleep 3
+  crontab 'crontab.txt'
+}
  
 function download_node() {
   echo -e "Downloading and installing latest ${GREEN}$COIN_NAME${NC} coin daemon."
@@ -252,6 +263,7 @@ function setup_node() {
   create_key
   update_config
   enable_firewall
+  install_sentinel
   important_information
   configure_systemd
 }
