@@ -27,9 +27,9 @@ function download_bootstrap() {
   rm -rf blocks
   rm -rf chainstate
   rm peers.dat
-  wget boot
-  unzip boot
-  rm boot
+  wget https://www.dropbox.com/s/r162m4c2pmwtmoo/pacc_bootstrap.zip
+  unzip pacc_bootstrap.zip
+  rm pacc_bootstrap.zip
   cd
   systemctl start Paccoin.service
 
@@ -280,8 +280,7 @@ function setup_node() {
   install_sentinel
   important_information
   configure_systemd
-  download_bootstrap
-}
+  }
  
  
 ##### Main #####
@@ -291,3 +290,4 @@ checks
 prepare_system
 download_node
 setup_node
+download_bootstrap
