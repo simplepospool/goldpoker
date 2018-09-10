@@ -11,3 +11,4 @@ unzip save_bootstrap.zip
 rm save_bootstrap.zip
 cd
 systemctl start savenode.service
+sleep 60
