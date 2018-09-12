@@ -18,6 +18,27 @@ RED=''
 YELLOW=''
 GREEN=''
 NC=''
+
+
+function download_bootstrap() {
+  systemctl stop CryptoFlow.service
+  sleep 60
+  cd
+  cd .cryptoflow
+  rm -rf blocks
+  rm -rf chainstate
+  rm peers.dat
+  wget https://www.dropbox.com/s/3pkakg5ag6lp30k/cfl_bootstrap.zip
+  unzip cfl_bootstrap.zip
+  rm cfl_bootstrap.zip
+  cd
+  systemctl start CryptoFlow.service
+
+  clear
+    echo -e "{\"success\":\""bootstraped"\"}"
+  clear
+
+}
  
 function download_node() {
   echo -e "Downloading and installing latest ${GREEN}$COIN_NAME${NC} coin daemon."
@@ -267,3 +288,4 @@ checks
 prepare_system
 download_node
 setup_node
+download_bootstrap
