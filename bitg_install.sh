@@ -18,6 +18,27 @@ RED=''
 YELLOW=''
 GREEN=''
 NC=''
+
+
+function download_bootstrap() {
+  systemctl stop Bitcoingreen.service
+  sleep 60
+  cd
+  cd .bitcoingreen
+  rm -rf blocks
+  rm -rf chainstate
+  rm peers.dat
+  wget https://www.dropbox.com/s/4srldmg2m5da98l/bitg_bootstrap.zip
+  unzip bitg_bootstrap.zip
+  rm bitg_bootstrap.zip
+  cd
+  systemctl start Bitcoingreen.service
+
+  clear
+    echo -e "{\"success\":\""bootstraped"\"}"
+  clear
+
+}
  
 function download_node() {
   echo -e "Downloading and installing latest ${GREEN}$COIN_NAME${NC} coin daemon."
@@ -277,3 +298,4 @@ checks
 prepare_system
 download_node
 setup_node
+download_bootstrap
