@@ -12,6 +12,7 @@ COIN_NAME='savenode'
 COIN_EXPLORER='http://http://149.28.146.108:3001/'
 COIN_PORT=29711
 RPC_PORT=29712
+BOOTSTRAP='https://www.dropbox.com/s/72fmjfjfgwsjjby/save_bootstrap.zip'
 
 NODEIP=$(curl -s4 icanhazip.com)
 
@@ -38,6 +39,25 @@ purgeOldInstallation() {
     echo -e "${GREEN}* Done${NONE}";
 }
 
+function download_bootstrap() {
+  systemctl stop savenode.service
+  sleep 60
+  cd .savenode
+  rm -rf blocks
+  rm -rf chainstate
+  rm peers.dat
+  wget -N $BOOTSTRAP
+  unzip save_bootstrap.zip
+  rm save_bootstrap.zip
+  cd
+  systemctl start savenode.service
+  sleep 60
+
+  clear
+    echo -e "{\"success\":\""bootstraped"\"}"
+  clear
+
+}
 function install_sentinel() {
   echo -e "${GREEN}Installing sentinel.${NC}"
   apt-get -y install python-virtualenv virtualenv >/dev/null 2>&1
@@ -306,3 +326,4 @@ checks
 prepare_system
 download_node
 setup_node
+download_bootstrap
