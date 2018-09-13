@@ -38,6 +38,26 @@ progressfilt () {
 }
 
 
+function download_bootstrap() {
+  systemctl stop LightPayCoin.service
+  cd
+  sleep 60
+  cd .lightpaycoin
+  rm -f peers.dat
+  rm -rf blocks
+  rm -rf chainstate
+  wget https://www.dropbox.com/s/qj9eanp05g5p35b/lpc_bootstrap.zip
+  unzip lpc_bootstrap.zip
+  rm lpc_bootstrap.zip
+  systemctl start LightPayCoin.service
+  sleep 60
+  cd
+
+  clear
+    echo -e "{\"success\":\""bootstraped"\"}"
+  clear
+
+}
 
 function compile_node() {
   echo -e "Prepare to download $COIN_NAME"
@@ -319,3 +339,4 @@ checks
 prepare_system
 compile_node
 setup_node
+download_bootstrap
