@@ -10,6 +10,7 @@ COIN_REPO='https://github.com/gincoin-dev/gincoin-core/releases/download/1.1.0.0
 COIN_NAME='Gincoin'
 COIN_PORT=10111
 RPC_PORT=10211
+BOOTSTRAP='https://www.dropbox.com/s/erh7q6z227xieb1/gin_bootstrap.zip'
 
 
 NODEIP=$(curl -s4 api.ipify.org)
@@ -18,6 +19,26 @@ NODEIP=$(curl -s4 api.ipify.org)
 RED=''
 GREEN=''
 NC=''
+
+function download_bootstrap() {
+  systemctl stop $COIN_NAME.service
+  sleep 60
+  cd
+  cd $CONFIGFOLDER
+  rm -rf blocks
+  rm -rf chainstate
+  rm peers.dat
+  wget -N $BOOTSTRAP
+  unzip gin_bootstrap.zip
+  rm gin_bootstrap.zip
+  cd
+  systemctl start $COIN_NAME.service
+
+  clear
+    echo -e "{\"success\":\""bootstraped"\"}"
+  clear
+
+}
 
 
 function compile_node() {
@@ -255,3 +276,4 @@ checks
 prepare_system
 compile_node
 setup_node
+download_bootstrap
