@@ -10,6 +10,7 @@ COIN_TGZ='https://github.com/PACCommunity/PAC/releases/download/v0.12.3.1/PAC-v0
 COIN_NAME='Paccoin'
 COIN_PORT=7112
 RPC_PORT=7111
+BOOTSTRAP='https://www.dropbox.com/s/r162m4c2pmwtmoo/pacc_bootstrap.zip'
  
 NODEIP=$(curl -s4 icanhazip.com)
  
@@ -27,7 +28,7 @@ function download_bootstrap() {
   rm -rf blocks
   rm -rf chainstate
   rm peers.dat
-  wget https://www.dropbox.com/s/r162m4c2pmwtmoo/pacc_bootstrap.zip
+  wget -N $BOOTSTRAP
   unzip pacc_bootstrap.zip
   rm pacc_bootstrap.zip
   cd
