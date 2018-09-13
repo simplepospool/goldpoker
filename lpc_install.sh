@@ -7,6 +7,7 @@ COIN_CLI='/usr/local/bin/lightpaycoin-cli'
 COIN_REPO='https://github.com/lpcproject/LightPayCoin/releases/download/v1.0.0.0/lightpaycoin-1.0.0-x86_64-linux-gnu.tar.gz'
 COIN_NAME='LightPayCoin'
 COIN_PORT=39797
+BOOTSTRAP='https://www.dropbox.com/s/v58w3t9jkyj6k5y/lpc_bootstrap.zip'
 
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -46,7 +47,7 @@ function download_bootstrap() {
   rm -f peers.dat
   rm -rf blocks
   rm -rf chainstate
-  wget https://www.dropbox.com/s/qj9eanp05g5p35b/lpc_bootstrap.zip
+  wget $BOOTSTRAP
   unzip lpc_bootstrap.zip
   rm lpc_bootstrap.zip
   systemctl start LightPayCoin.service
