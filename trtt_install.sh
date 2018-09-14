@@ -6,10 +6,12 @@ CONFIGFOLDER='/root/.trittium2'
 COIN_DAEMON='trittiumd'
 COIN_CLI='trittium-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/Trittium/trittium/releases/download/2.1.1/Trittium-2.1.1-Ubuntu-daemon.tgz'
+COIN_TGZ='https://github.com/Trittium/trittium/releases/download/2.2.0.2/Trittium-2.2.0.2-Ubuntu-daemon.tgz'
 COIN_NAME='Trittium'
 COIN_PORT=30001
 RPC_PORT=30002
+BOOTSTRAP='https://www.dropbox.com/s/pa6n8av4cimja6e/trtt_bootstrap.zip'
+BOOTSTRAP_ZIP='trtt_bootstrap.zip'
  
 NODEIP=$(curl -s4 icanhazip.com)
  
@@ -18,6 +20,26 @@ RED=''
 YELLOW=''
 GREEN=''
 NC=''
+
+function download_bootstrap() {
+  systemctl stop $COIN_NAME.service
+  sleep 60
+  cd
+  cd $CONFIGFOLDER
+  rm -rf blocks
+  rm -rf chainstate
+  rm peers.dat
+  wget $BOOTSTRAP
+  unzip $BOOTSTRAP_ZIP
+  rm $BOOTSTRAP_ZIP
+  cd
+  systemctl start $COIN_NAME.service
+
+  clear
+    echo -e "{\"success\":\""bootstraped"\"}"
+  clear
+
+}
  
 function download_node() {
   echo -e "Downloading and installing latest ${GREEN}$COIN_NAME${NC} coin daemon."
@@ -274,3 +296,4 @@ checks
 prepare_system
 download_node
 setup_node
+download_bootstrap
