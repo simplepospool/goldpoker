@@ -11,7 +11,8 @@ COIN_ZIP='Concierge-linux.tar.gz'
 COIN_PORT=51470
 COIN_NAME='Concierge'
 RPC_PORT=51471
-BOOTSTRAP='https://www.dropbox.com/s/mo7szypy0bt0l1u/card_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/plms6jbeaacjteh/concierge_bootstrap.zip'
+BOOTSTRAP_ZIP='concierge_bootstrap.zip'
 
 NODEIP=$(curl -s4 api.ipify.org)
 
@@ -29,8 +30,8 @@ function download_bootstrap() {
   rm -rf chainstate
   rm peers.dat
   wget -N $BOOTSTRAP
-  unzip card_bootstrap.zip
-  rm card_bootstrap.zip
+  unzip $BOOTSTRAP_ZIP
+  rm $BOOTSTRAP_ZIP
   cd
   systemctl start $COIN_NAME.service
 
@@ -269,4 +270,4 @@ checks
 prepare_system
 download_node
 setup_node
-# download_bootstrap
+download_bootstrap
