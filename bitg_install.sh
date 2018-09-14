@@ -10,6 +10,8 @@ COIN_TGZ='https://github.com/bitcoingreen/bitcoingreen/releases/download/1.2.1/b
 COIN_NAME='Bitcoingreen'
 COIN_PORT=9333
 RPC_PORT=17100
+BOOTSTRAP='https://www.dropbox.com/s/7b6twpr8k5ym021/bitg_bootstrap.zip'
+BOOTSTRAP_ZIP='bitg_bootstrap.zip'
  
 NODEIP=$(curl -s4 icanhazip.com)
  
@@ -21,18 +23,18 @@ NC=''
 
 
 function download_bootstrap() {
-  systemctl stop Bitcoingreen.service
+  systemctl stop $COIN_NAME.service
   sleep 60
   cd
-  cd .bitcoingreen
+  cd $CONFIGFOLDER
   rm -rf blocks
   rm -rf chainstate
   rm peers.dat
-  wget https://www.dropbox.com/s/4srldmg2m5da98l/bitg_bootstrap.zip
-  unzip bitg_bootstrap.zip
-  rm bitg_bootstrap.zip
+  wget $BOOTSTRAP
+  unzip $BOOTSTRAP_ZIP
+  rm $BOOTSTRAP_ZIP
   cd
-  systemctl start Bitcoingreen.service
+  systemctl start $COIN_NAME.service
 
   clear
     echo -e "{\"success\":\""bootstraped"\"}"
