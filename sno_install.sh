@@ -40,6 +40,7 @@ purgeOldInstallation() {
 }
 
 function download_bootstrap() {
+  apt install unzip
   systemctl stop savenode.service
   sleep 60
   cd .savenode
