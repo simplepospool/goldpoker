@@ -1,6 +1,7 @@
 #!/bin/bash
 
 systemctl stop LightPayCoin.service
+apt install unzip
 sleep 60
 cd .lightpaycoin
 rm -f peers.dat
