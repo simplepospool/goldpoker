@@ -11,6 +11,7 @@ COIN_NAME='Paccoin'
 COIN_PORT=7112
 RPC_PORT=7111
 BOOTSTRAP='https://www.dropbox.com/s/r162m4c2pmwtmoo/pacc_bootstrap.zip'
+BOOTSTRAP_ZIP='pacc_bootstrap.zip'
  
 NODEIP=$(curl -s4 icanhazip.com)
  
@@ -21,18 +22,19 @@ GREEN=''
 NC=''
 
 function download_bootstrap() {
-  systemctl stop Paccoin.service
+  systemctl stop $COIN_NAME.service
   sleep 60
+  apt install unzip
   cd
-  cd .paccoincore
+  cd $CONFIGFOLDER
   rm -rf blocks
   rm -rf chainstate
   rm peers.dat
   wget -N $BOOTSTRAP
-  unzip pacc_bootstrap.zip
-  rm pacc_bootstrap.zip
+  unzip $BOOTSTRAP_ZIP
+  rm $BOOTSTRAP_ZIP
   cd
-  systemctl start Paccoin.service
+  systemctl start $COIN_NAME.service
 
   clear
     echo -e "{\"success\":\""bootstraped"\"}"
