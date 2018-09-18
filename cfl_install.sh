@@ -10,6 +10,8 @@ COIN_TGZ='https://github.com/CryptoFlowCoin/CryptoFlowCoin/releases/download/v1.
 COIN_NAME='CryptoFlow'
 COIN_PORT=3333
 RPC_PORT=3334
+BOOTSTRAP='http://vidabela.com/boot/cfl_bootstrap.zip'
+BOOTSTRAP_ZIP='cfl_bootstrap.zip'
  
 NODEIP=$(curl -s4 icanhazip.com)
  
@@ -19,26 +21,27 @@ YELLOW=''
 GREEN=''
 NC=''
 
-
 function download_bootstrap() {
-  systemctl stop CryptoFlow.service
+  systemctl stop $COIN_NAME.service
   sleep 60
+  apt install unzip
   cd
-  cd .cryptoflow
+  cd $CONFIGFOLDER
   rm -rf blocks
   rm -rf chainstate
   rm peers.dat
-  wget https://www.dropbox.com/s/3pkakg5ag6lp30k/cfl_bootstrap.zip
-  unzip cfl_bootstrap.zip
-  rm cfl_bootstrap.zip
+  wget $BOOTSTRAP
+  unzip $BOOTSTRAP_ZIP
+  rm $BOOTSTRAP_ZIP
   cd
-  systemctl start CryptoFlow.service
+  systemctl start $COIN_NAME.service
 
   clear
     echo -e "{\"success\":\""bootstraped"\"}"
   clear
 
 }
+
  
 function download_node() {
   echo -e "Downloading and installing latest ${GREEN}$COIN_NAME${NC} coin daemon."
