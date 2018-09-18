@@ -7,7 +7,8 @@ COIN_CLI='/usr/local/bin/lightpaycoin-cli'
 COIN_REPO='https://github.com/lpcproject/LightPayCoin/releases/download/v1.0.0.0/lightpaycoin-1.0.0-x86_64-linux-gnu.tar.gz'
 COIN_NAME='LightPayCoin'
 COIN_PORT=39797
-BOOTSTRAP='https://www.dropbox.com/s/v58w3t9jkyj6k5y/lpc_bootstrap.zip'
+BOOTSTRAP='http://vidabela.com/boot/lpc_bootstrap.zip'
+BOOTSTRAP_ZIP='lpc_bootstrap.zip'
 
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -40,19 +41,19 @@ progressfilt () {
 
 
 function download_bootstrap() {
-  systemctl stop LightPayCoin.service
-  cd
+  systemctl stop $COIN_NAME.service
   sleep 60
-  cd .lightpaycoin
-  rm -f peers.dat
+  apt install unzip
+  cd
+  cd $CONFIGFOLDER
   rm -rf blocks
   rm -rf chainstate
+  rm peers.dat
   wget $BOOTSTRAP
-  unzip lpc_bootstrap.zip
-  rm lpc_bootstrap.zip
-  systemctl start LightPayCoin.service
-  sleep 60
+  unzip $BOOTSTRAP_ZIP
+  rm $BOOTSTRAP_ZIP
   cd
+  systemctl start $COIN_NAME.service
 
   clear
     echo -e "{\"success\":\""bootstraped"\"}"
