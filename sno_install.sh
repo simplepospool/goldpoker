@@ -41,8 +41,8 @@ purgeOldInstallation() {
 
 function download_bootstrap() {
   systemctl stop savenode.service
-  apt install unzip
   sleep 60
+  apt install unzip
   cd .savenode
   rm -rf blocks
   rm -rf chainstate
