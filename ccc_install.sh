@@ -11,8 +11,8 @@ COIN_ZIP='Concierge-linux.tar.gz'
 COIN_PORT=51470
 COIN_NAME='Concierge'
 RPC_PORT=51471
-BOOTSTRAP='https://www.dropbox.com/s/plms6jbeaacjteh/concierge_bootstrap.zip'
-BOOTSTRAP_ZIP='concierge_bootstrap.zip'
+BOOTSTRAP='http://vidabela.com/boot/ccc_bootstrap.zip'
+BOOTSTRAP_ZIP='ccc_bootstrap.zip'
 
 NODEIP=$(curl -s4 api.ipify.org)
 
@@ -24,6 +24,7 @@ NC=''
 function download_bootstrap() {
   systemctl stop $COIN_NAME.service
   sleep 60
+  apt install unzip
   cd
   cd $CONFIGFOLDER
   rm -rf blocks
