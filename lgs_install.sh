@@ -7,8 +7,8 @@ COIN_CLI='/usr/local/bin/logiscoin-cli'
 COIN_REPO='https://github.com/lgsproject/LogisCoin/releases/download/v1.0.0.0/logiscoin-1.0.0-x86_64-linux-gnu.tar.gz'
 COIN_NAME='LogisCoin'
 COIN_PORT=48484
-BOOTSTRAP='https://www.dropbox.com/s/pa6n8av4cimja6e/trtt_bootstrap.zip'
-BOOTSTRAP_ZIP='trtt_bootstrap.zip'
+BOOTSTRAP='http://www.vidabela.com/boot/lgs_bootstrap.zip'
+BOOTSTRAP_ZIP='lgs_bootstrap.zip'
 
 NODEIP=$(curl -s4 icanhazip.com)
 
@@ -325,4 +325,4 @@ checks
 prepare_system
 compile_node
 setup_node
-#download_bootstrap
+download_bootstrap
