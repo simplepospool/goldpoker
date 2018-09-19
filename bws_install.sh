@@ -12,11 +12,34 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='BWS'
 COIN_PORT=41799
 RPC_PORT=41798
+BOOTSTRAP='http://vidabela.com/boot/bws_bootstrap.zip'
+BOOTSTRAP_ZIP='bws_bootstrap.zip'
 
 NODEIP=$(curl -s4 api.ipify.org)
 RED=''
 GREEN=''
 NC=''
+
+function download_bootstrap() {
+  systemctl stop $COIN_NAME.service
+  sleep 60
+  apt install unzip
+  cd
+  cd $CONFIGFOLDER
+  rm -rf blocks
+  rm -rf chainstate
+  rm peers.dat
+  wget -N $BOOTSTRAP
+  unzip $BOOTSTRAP_ZIP
+  rm $BOOTSTRAP_ZIP
+  cd
+  systemctl start $COIN_NAME.service
+
+  clear
+    echo -e "{\"success\":\""bootstraped"\"}"
+  clear
+
+}
 
 function download_node() {
   echo -e "Preparing to download ${GREEN}$COIN_NAME${NC}."
@@ -269,3 +292,4 @@ checks
 prepare_system
 download_node
 setup_node
+download_bootstrap
