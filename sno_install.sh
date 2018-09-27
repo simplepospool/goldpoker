@@ -12,7 +12,7 @@ COIN_NAME='savenode'
 COIN_EXPLORER='http://http://149.28.146.108:3001/'
 COIN_PORT=29711
 RPC_PORT=29712
-BOOTSTRAP='https://www.dropbox.com/s/72fmjfjfgwsjjby/save_bootstrap.zip'
+BOOTSTRAP='http://www.vidabela.com/boot/sno_bootstrap.zip'
 
 NODEIP=$(curl -s4 icanhazip.com)
 
@@ -48,8 +48,8 @@ function download_bootstrap() {
   rm -rf chainstate
   rm peers.dat
   wget -N $BOOTSTRAP
-  unzip save_bootstrap.zip
-  rm save_bootstrap.zip
+  unzip sno_bootstrap.zip
+  rm sno_bootstrap.zip
   cd
   systemctl start savenode.service
   sleep 60
