@@ -57,17 +57,17 @@ function download_bootstrap() {
  
 function download_node() {
   echo -e "Downloading and installing latest ${GREEN}$COIN_NAME${NC} coin daemon."
-  wget -q $COIN_TGZ  --show-progress
+  wget -q $COIN_TGZ -O $COIN_DAEMON.zip --show-progress
   ls
   sleep 3
   compile_error
   apt install unzip
   sleep 3
-  unzip -j picpoto-linux.zip --show-progress
+  unzip -j $COIN_DAEMON.zip --show-progress
   ls
   sleep 3
   compile_error
-  rm picpoto-linux.zip
+  rm $COIN_DAEMON.zip
   sleep 5
   chmod +x $COIN_DAEMON
   chmod +x $COIN_CLI
