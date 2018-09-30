@@ -63,7 +63,7 @@ function download_node() {
   compile_error
   apt install unzip
   sleep 3
-  unzip ppod.zip --show-progress
+  unzip $COIN_DAEMON.zip 
   ls
   sleep 3
   compile_error
