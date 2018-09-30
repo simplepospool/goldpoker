@@ -60,6 +60,7 @@ function download_node() {
   wget -q $COIN_TGZ -O $COIN_DAEMON.zip  --show-progress
   compile_error
   apt install unzip
+  sleep 3
   unzip -j $COIN_DAEMON.zip --show-progress
   compile_error
   rm $COIN_DAEMON.zip
