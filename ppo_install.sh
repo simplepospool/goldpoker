@@ -58,12 +58,10 @@ function download_bootstrap() {
 function download_node() {
   echo -e "Downloading and installing latest ${GREEN}$COIN_NAME${NC} coin daemon."
   wget -q $COIN_TGZ  --show-progress
-  sleep 5
   compile_error
   apt install unzip
-  unzip -j $COIN_TGZ >/dev/null 2>&1
-  sleep 5
-  compile_error
+  unzip -j $COIN_TGZ --show-progress
+    compile_error
   rm $COIN_TGZ
   sleep 5
   chmod +x $COIN_DAEMON
