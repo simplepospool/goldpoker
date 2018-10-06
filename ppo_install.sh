@@ -164,6 +164,9 @@ bind=$NODEIP
 masternode=1
 masternodeaddr=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
+addnode=45.76.26.248
+addnode=140.82.61.27
+addnode=45.32.31.2
 EOF
 }
  
