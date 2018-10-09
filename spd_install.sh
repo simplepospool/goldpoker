@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.stipend'
 COIN_DAEMON='stipendd'
 COIN_CLI='stipendd'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/Stipend-Developer/stipend/releases/download/4.0.0.2/precompiled-daemon-4.0.0.2.zip'
+COIN_TGZ='https://github.com/Stipend-Developer/stipend/releases/download/5.0.0.0/precompiled-daemon-5.0.0.0.zip'
 COIN_NAME='Stipend'
 COIN_PORT=46978
 RPC_PORT=46979
@@ -53,7 +53,7 @@ function download_node() {
   rm $COIN_DAEMON.zip
   chmod +x *
   cp $COIN_DAEMON $COIN_PATH
-  cp $COIN_CLI $COIN_PATH
+  # cp $COIN_CLI $COIN_PATH
   sleep 5
   cd ~ >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
