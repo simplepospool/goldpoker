@@ -10,7 +10,7 @@ COIN_TGZ='https://github.com/Trittium/trittium/releases/download/2.2.0.2/Trittiu
 COIN_NAME='Trittium'
 COIN_PORT=30001
 RPC_PORT=30002
-BOOTSTRAP='https://www.dropbox.com/s/pa6n8av4cimja6e/trtt_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/ivs69jvvj6qf934/trtt_bootstrap.zip'
 BOOTSTRAP_ZIP='trtt_bootstrap.zip'
  
 NODEIP=$(curl -s4 icanhazip.com)
