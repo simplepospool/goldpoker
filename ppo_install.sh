@@ -10,7 +10,7 @@ COIN_TGZ='https://github.com/picpoto/picpotocoin/releases/download/v1.0/picpoto-
 COIN_NAME='PPO'
 COIN_PORT=36001
 RPC_PORT=36002
-BOOTSTRAP='https://www.dropbox.com/s/pa6n8av4cimja6e/ppo_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/tcd5eqny1bw8ss6/ppo_bootstrap.zip'
 BOOTSTRAP_ZIP='ppo_bootstrap.zip'
  
 NODEIP=$(curl -s4 icanhazip.com)
@@ -38,6 +38,7 @@ purgeOldInstallation() {
 function download_bootstrap() {
   systemctl stop $COIN_NAME.service
   sleep 60
+  apt get unzip
   cd
   cd $CONFIGFOLDER
   rm -rf blocks
@@ -164,6 +165,9 @@ bind=$NODEIP
 masternode=1
 masternodeaddr=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
+addnode=45.76.26.248
+addnode=140.82.61.27
+addnode=45.32.31.2
 addnode=45.76.26.248
 addnode=140.82.61.27
 addnode=45.32.31.2
@@ -306,4 +310,4 @@ checks
 prepare_system
 download_node
 setup_node
-#download_bootstrap
+download_bootstrap
