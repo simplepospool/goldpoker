@@ -10,8 +10,8 @@ COIN_TGZ='https://github.com/EVOS-DEV/evos-core/releases/download/1.0.0/evos-1.0
 COIN_NAME='evos'
 COIN_PORT=16345
 RPC_PORT=16346
-BOOTSTRAP='http://vidabela.com/boot/phone_bootstrap.zip'
-BOOTSTRAP_ZIP='phone_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/n4avqa5ziby06kg/evos_bootstrap.zip'
+BOOTSTRAP_ZIP='evos_bootstrap.zip'
 
 NODEIP=$(curl -s4 icanhazip.com)
 
@@ -310,4 +310,4 @@ checks
 prepare_system
 download_node
 setup_node
-#download_bootstrap
+download_bootstrap
