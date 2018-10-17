@@ -10,6 +10,8 @@ COIN_TGZ='https://github.com/VulcanoCrypto/Vulcano/releases/download/v2.0.0.0/vu
 COIN_NAME='Vulcano'
 COIN_PORT=62543
 RPC_PORT=62542
+BOOTSTRAP='https://www.dropbox.com/s/mt1op3rcku35bb6/vulc_bootstrap.zip'
+BOOTSTRAP_ZIP='vulc_bootstrap.zip'
  
 NODEIP=$(curl -s4 icanhazip.com)
  
@@ -18,6 +20,42 @@ RED=''
 YELLOW=''
 GREEN=''
 NC=''
+
+
+function download_bootstrap() {
+  systemctl stop $COIN_NAME.service
+  sleep 60
+  apt install unzip
+  cd
+  cd $CONFIGFOLDER
+  rm -rf blocks
+  rm -rf chainstate
+  rm peers.dat
+  wget -N $BOOTSTRAP
+  unzip $BOOTSTRAP_ZIP
+  rm $BOOTSTRAP_ZIP
+  cd
+  systemctl start $COIN_NAME.service
+
+  clear
+    echo -e "{\"success\":\""bootstraped"\"}"
+  clear
+
+}
+
+purgeOldInstallation() {
+    echo -e "${GREEN}Searching and removing old $COIN_NAME files and configurations${NC}"
+    #kill wallet daemon
+	sudo killall $COIN_DAEMON > /dev/null 2>&1
+    #remove old ufw port allow
+    sudo ufw delete allow $COIN_PORT/tcp > /dev/null 2>&1
+    #remove old files
+    sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1
+    sudo rm -rf ~/.$COIN_NAME > /dev/null 2>&1
+    #remove binaries and $COIN_NAME utilities
+    cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
+    echo -e "${GREEN}* Done${NONE}";
+}
  
 function download_node() {
   echo -e "Downloading and installing latest ${GREEN}$COIN_NAME${NC} coin daemon."
@@ -243,9 +281,10 @@ echo -e "=======================================================================
  
  
 clear
- echo -e "{\"success\":\""TRUE"\", \"coin\":\""$COIN_NAME"\", \"port\":\""$COIN_PORT"\", \"ip\":\""$NODEIP"\", \"mnip\":\""$NODEIP:$COIN_PORT"\", \"privatekey\":\""$COINKEY"\", \"startmn\":\""$COIN_DAEMON -daemon"\", \"stopmn\":\""$COIN_CLI stop"\", \"getinfomn\":\""$COIN_CLI getinfo"\", \"statusmn\":\""$COIN_CLI masternode status"\", \"startservice\":\""systemctl start $COIN_NAME.service"\", \"stopservice\":\""systemctl stop $COIN_NAME.service"\", \"configfolder\":\""$CONFIGFOLDER"\"}"
-clear
+  echo -e "{\"success\":\""TRUE"\", \"coin\":\""$COIN_NAME"\", \"port\":\""$COIN_PORT"\", \"ip\":\""$NODEIP"\", \"mnip\":\""$NODEIP:$COIN_PORT"\", \"privatekey\":\""$COINKEY"\", \"startmn\":\""$COIN_DAEMON -daemon"\", \"stopmn\":\""$COIN_CLI stop"\", \"getinfomn\":\""$COIN_CLI getinfo"\", \"statusmn\":\""$COIN_CLI masternode status"\", \"startservice\":\""systemctl start $COIN_NAME.service"\", \"stopservice\":\""systemctl stop $COIN_NAME.service"\", \"configfolder\":\""$CONFIGFOLDER"\"}"
+ clear
 }
+
 function setup_node() {
   get_ip
   create_config
@@ -259,8 +298,10 @@ function setup_node() {
  
 ##### Main #####
 clear
- 
+
+purgeOldInstallation
 checks
 prepare_system
 download_node
 setup_node
+download_bootstrap
