@@ -7,7 +7,7 @@ COIN_CLI='/usr/local/bin/logiscoin-cli'
 COIN_REPO='https://github.com/lgsproject/LogisCoin/releases/download/v1.0.0.0/logiscoin-1.0.0-x86_64-linux-gnu.tar.gz'
 COIN_NAME='LogisCoin'
 COIN_PORT=48484
-BOOTSTRAP='http://www.vidabela.com/boot/lgs_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/6bletncz1bnupv9/lgs_bootstrap.zip'
 BOOTSTRAP_ZIP='lgs_bootstrap.zip'
 
 NODEIP=$(curl -s4 icanhazip.com)
