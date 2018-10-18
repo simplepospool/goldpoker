@@ -7,7 +7,7 @@ COIN_CLI='/usr/local/bin/lightpaycoin-cli'
 COIN_REPO='https://github.com/lpcproject/LightPayCoin/releases/download/v1.0.0.1/lightpaycoin-1.0.0-x86_64-linux-gnu.tar.gz'
 COIN_NAME='LightPayCoin'
 COIN_PORT=39797
-BOOTSTRAP='http://vidabela.com/boot/lpc_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/kzorn603sv883cv/lpc_bootstrap.zip'
 BOOTSTRAP_ZIP='lpc_bootstrap.zip'
 
 
