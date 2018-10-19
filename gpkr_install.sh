@@ -10,7 +10,7 @@ COIN_TGZ='https://github.com/GoldPoker/GoldPoker-coin/releases/download/v1.1.0/g
 COIN_NAME='GoldPoker'
 COIN_PORT=33303
 RPC_PORT=18822
-BOOTSTRAP='http://www.vidabela.com/boot/gpkr_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/yp61undbgehhqjo/gpkr_bootstrap.zip'
 BOOTSTRAP_ZIP='gpkr_bootstrap.zip'
  
 NODEIP=$(curl -s4 icanhazip.com)
