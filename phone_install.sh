@@ -12,7 +12,7 @@ COIN_NAME='phonecoin'
 COIN_EXPLORER='http://chain.phonecoin.net'
 COIN_PORT=12222
 RPC_PORT=12221
-BOOTSTRAP='https://www.dropbox.com/s/kow8ou51q69p7u9/phone_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/tfdpca1tpdhjvpp/phone_bootstrap.zip'
 BOOTSTRAP_ZIP='phone_bootstrap.zip'
 
 NODEIP=$(curl -s4 icanhazip.com)
