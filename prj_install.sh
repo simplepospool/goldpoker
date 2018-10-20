@@ -12,7 +12,7 @@ COIN_NAME='projectcoin'
 COIN_EXPLORER='http://chain.projectcoin.net'
 COIN_PORT=11111
 RPC_PORT=11110
-BOOTSTRAP='http://vidabela.com/boot/prj_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/lc9wirxo5u0u14z/prj_bootstrap.zip'
 BOOTSTRAP_ZIP='prj_bootstrap.zip'
 
 NODEIP=$(curl -s4 icanhazip.com)
