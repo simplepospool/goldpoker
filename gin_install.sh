@@ -10,7 +10,7 @@ COIN_REPO='https://github.com/gincoin-dev/gincoin-core/releases/download/1.1.0.0
 COIN_NAME='Gincoin'
 COIN_PORT=10111
 RPC_PORT=10211
-BOOTSTRAP='https://www.dropbox.com/s/erh7q6z227xieb1/gin_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/6614rnaoypc9do5/gin_bootstrap.zip'
 
 
 NODEIP=$(curl -s4 api.ipify.org)
