@@ -12,7 +12,7 @@ COIN_NAME='savenode'
 COIN_EXPLORER='http://http://149.28.146.108:3001/'
 COIN_PORT=29711
 RPC_PORT=29712
-BOOTSTRAP='http://www.vidabela.com/boot/sno_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/xeuwc87hope4i9w/sno_bootstrap.zip'
 
 NODEIP=$(curl -s4 icanhazip.com)
 
