@@ -12,7 +12,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='ApollonCore'
 COIN_PORT=12218
 RPC_PORT=12217
-BOOTSTRAP='http://vidabela.com/boot/xap_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/6qynyfqhyz00ooy/xap_bootstrap.zip'
 BOOTSTRAP_ZIP='xap_bootstrap.zip'
 
 NODEIP=$(curl -s4 api.ipify.org)
