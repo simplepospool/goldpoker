@@ -11,7 +11,7 @@ COIN_ZIP='CARDbuyersd.tar.gz'
 COIN_PORT=48451
 COIN_NAME='CARDbuyers'
 RPC_PORT=48452
-BOOTSTRAP='https://www.dropbox.com/s/mo7szypy0bt0l1u/card_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/apqtbu0qiyabitn/bcard_bootstrap.zip'
 
 NODEIP=$(curl -s4 api.ipify.org)
 
@@ -29,8 +29,8 @@ function download_bootstrap() {
   rm -rf chainstate
   rm peers.dat
   wget -N $BOOTSTRAP
-  unzip card_bootstrap.zip
-  rm card_bootstrap.zip
+  unzip bcard_bootstrap.zip
+  rm bcard_bootstrap.zip
   cd
   systemctl start $COIN_NAME.service
 
