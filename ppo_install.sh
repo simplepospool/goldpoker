@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.ppo'
 COIN_DAEMON='ppod'
 COIN_CLI='ppo-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/picpoto/picpotocoin/releases/download/v2.1/picpoto-linux2.1.zip'
+COIN_TGZ='https://github.com/picpoto/picpotocoin/releases/download/v3.0/picpoto-linux3.0.zip'
 COIN_NAME='PPO'
 COIN_PORT=36001
 RPC_PORT=36002
@@ -65,16 +65,15 @@ function download_node() {
   apt install unzip
   sleep 3
   unzip $COIN_DAEMON.zip 
-  ls
   sleep 3
   compile_error
   rm $COIN_DAEMON.zip
-  sleep 5
+  sleep 3
   chmod +x $COIN_DAEMON
   chmod +x $COIN_CLI
   cp $COIN_DAEMON $COIN_PATH
   cp $COIN_CLI $COIN_PATH
-  sleep 5
+  sleep 3
   cd ~ >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
@@ -165,12 +164,10 @@ bind=$NODEIP
 masternode=1
 masternodeaddr=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
-addnode=45.76.26.248
-addnode=140.82.61.27
-addnode=45.32.31.2
-addnode=45.76.26.248
-addnode=140.82.61.27
-addnode=45.32.31.2
+addnode=207.148.65.194
+addnode=45.32.109.242
+addnode=144.202.73.156
+addnode=207.148.13.208
 EOF
 }
  
