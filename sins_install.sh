@@ -11,8 +11,8 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='safeinsure'
 COIN_PORT=39105
 RPC_PORT=39106
-BOOTSTRAP='https://www.dropbox.com/s/xeuwc87hope4i9w/sno_bootstrap.zip'
-BOOTSTRAP_FILE=''
+BOOTSTRAP='https://www.dropbox.com/s/b2xlh9ls5ovvlb2/sins_bootstrap.zip'
+BOOTSTRAP_FILE='sins_bootstrap.zip'
 
 NODEIP=$(curl -s4 icanhazip.com)
 
