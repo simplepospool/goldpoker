@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.CARDbuyers'
 COIN_PATH='/usr/local/bin/'
 COIN_DAEMON='CARDbuyersd'
 COIN_CLI='CARDbuyers-cli'
-COIN_TGZ='https://github.com/CARDbuyers/BCARD/releases/download/Wallet/CARDbuyersd.tar.gz'
+COIN_TGZ='https://github.com/CARDbuyers/BCARD/releases/download/2.0.0/CARDbuyersd.tar.gz'
 COIN_ZIP='CARDbuyersd.tar.gz'
 COIN_PORT=48451
 COIN_NAME='CARDbuyers'
@@ -140,23 +140,6 @@ masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeaddr=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
-addnode=140.82.9.113
-addnode=54.38.184.8
-addnode=164.132.195.139
-addnode=51.38.50.213
-addnode=79.137.37.245
-addnode=199.247.13.227
-addnode=178.128.152.145
-addnode=45.76.10.78
-addnode=82.210.163.15
-addnode=95.179.136.171
-addnode=101.180.5.119
-addnode=144.202.49.175
-addnode=23.95.227.203
-addnode=39.117.187.103
-addnode=178.95.38.85
-addnode=2.3.46.0
-addnode=45.32.103.119
 EOF
 }
 
