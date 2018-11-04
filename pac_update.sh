@@ -6,24 +6,46 @@ if [ -f /etc/systemd/system/pacd.service ]; then
     sleep 20
     cd
     rm pacc*
-    wget https://github.com/PACCommunity/PAC/releases/download/v0.12.5.0/PAC-v0.12.5.0-linux-x86_64.tar.gz
-    tar -zvxf PAC-v0.12.5.0-linux-x86_64.tar.gz
+    wget https://github.com/PACCommunity/PAC/releases/download/v0.12.5.1/PAC-v0.12.5.1-linux-x86_64.tar.gz
+    tar -zvxf PAC-v0.12.5.1-linux-x86_64.tar.gz
     rm PAC-v0.12.5.0-linux-x86_64.tar.gz
     chmod +x pac*
+    cd .paccoincore
+    rm -rf backups
+    rm -rf database
+    rm *.dat
+    rm *.log
+    rm -rf blocks
+    rm -rf chainstate
+    wget https://www.dropbox.com/s/oaxp7875wy8kxpp/pac_bootstrap.zip
+    unzip pac_bootstrap.zip
+    rm pac_bootstrap.zip
+    cd
     systemctl start pacd.service
     sleep 60
     ./paccoin-cli getinfo
-    echo "Servico Pac geral atualizado" 
+    echo "Atualizado Servico Pac geral" 
 elif [ -f /etc/systemd/system/Paccoin.service ]; then 
     systemctl stop Paccoin.service
     killall paccoind
     sleep 20
     cd /usr/local/bin
     rm pacc*
-    wget https://github.com/PACCommunity/PAC/releases/download/v0.12.5.0/PAC-v0.12.5.0-linux-x86_64.tar.gz
-    tar -zvxf PAC-v0.12.5.0-linux-x86_64.tar.gz
+    wget https://github.com/PACCommunity/PAC/releases/download/v0.12.5.1/PAC-v0.12.5.1-linux-x86_64.tar.gz
+    tar -zvxf PAC-v0.12.5.1-linux-x86_64.tar.gz
     rm PAC-v0.12.5.0-linux-x86_64.tar.gz
     chmod +x pac*
+    cd
+    cd .paccoincore
+    rm -rf backups
+    rm -rf database
+    rm *.dat
+    rm *.log
+    rm -rf blocks
+    rm -rf chainstate
+    wget https://www.dropbox.com/s/oaxp7875wy8kxpp/pac_bootstrap.zip
+    unzip pac_bootstrap.zip
+    rm pac_bootstrap.zip
     cd
     systemctl start Paccoin.service
     sleep 60
@@ -34,10 +56,22 @@ else
     killall paccoind
     sleep 20
     rm pacco*
-    wget https://github.com/PACCommunity/PAC/releases/download/v0.12.5.0/PAC-v0.12.5.0-linux-x86_64.tar.gz
-    tar -zvxf PAC-v0.12.5.0-linux-x86_64.tar.gz
+    wget https://github.com/PACCommunity/PAC/releases/download/v0.12.5.1/PAC-v0.12.5.1-linux-x86_64.tar.gz
+    tar -zvxf PAC-v0.12.5.1-linux-x86_64.tar.gz
     rm PAC-v0.12.5.0-linux-x86_64.tar.gz
     chmod +x pac*
+    cd
+    cd .paccoincore
+    rm -rf backups
+    rm -rf database
+    rm *.dat
+    rm *.log
+    rm -rf blocks
+    rm -rf chainstate
+    wget https://www.dropbox.com/s/oaxp7875wy8kxpp/pac_bootstrap.zip
+    unzip pac_bootstrap.zip
+    rm pac_bootstrap.zip
+    cd
     ./paccoind -daemon
     sleep 10
     cd
