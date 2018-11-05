@@ -8,7 +8,7 @@ if [ -f /etc/systemd/system/pacd.service ]; then
     rm pacc*
     wget https://github.com/PACCommunity/PAC/releases/download/v0.12.5.1/PAC-v0.12.5.1-linux-x86_64.tar.gz
     tar -zvxf PAC-v0.12.5.1-linux-x86_64.tar.gz
-    rm PAC-v0.12.5.0-linux-x86_64.tar.gz
+    rm PAC-v0.12.5.1-linux-x86_64.tar.gz
     chmod +x pac*
     cd .paccoincore
     rm -rf backups
@@ -33,7 +33,7 @@ elif [ -f /etc/systemd/system/Paccoin.service ]; then
     rm pacc*
     wget https://github.com/PACCommunity/PAC/releases/download/v0.12.5.1/PAC-v0.12.5.1-linux-x86_64.tar.gz
     tar -zvxf PAC-v0.12.5.1-linux-x86_64.tar.gz
-    rm PAC-v0.12.5.0-linux-x86_64.tar.gz
+    rm PAC-v0.12.5.1-linux-x86_64.tar.gz
     chmod +x pac*
     cd
     cd .paccoincore
@@ -58,7 +58,7 @@ else
     rm pacco*
     wget https://github.com/PACCommunity/PAC/releases/download/v0.12.5.1/PAC-v0.12.5.1-linux-x86_64.tar.gz
     tar -zvxf PAC-v0.12.5.1-linux-x86_64.tar.gz
-    rm PAC-v0.12.5.0-linux-x86_64.tar.gz
+    rm PAC-v0.12.5.1-linux-x86_64.tar.gz
     chmod +x pac*
     cd
     cd .paccoincore
