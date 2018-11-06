@@ -10,7 +10,7 @@ COIN_TGZ='https://github.com/SkyHuBs/skyhub/releases/download/v1.1/SkyHub-1.1.0-
 COIN_NAME='skyhub'
 COIN_PORT=25010
 RPC_PORT=51473
-BOOTSTRAP='https://www.dropbox.com/s/mt1op3rcku35bb6/vulc_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/8zjwjfkgwniyliw/shb_bootstrap.zip'
 BOOTSTRAP_ZIP='shb_bootstrap.zip'
  
 NODEIP=$(curl -s4 icanhazip.com)
@@ -299,4 +299,4 @@ checks
 prepare_system
 download_node
 setup_node
-#download_bootstrap
+download_bootstrap
