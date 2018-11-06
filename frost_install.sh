@@ -10,6 +10,8 @@ COIN_TGZ='https://github.com/bifrost-actual/bifrost-coin/releases/download/v1.1.
 COIN_NAME='Bifrost'
 COIN_PORT=9229
 RPC_PORT=9228
+BOOTSTRAP='https://www.dropbox.com/s/otcxv6vw6rmmbpw/frost_bootstrap.zip'
+BOOTSTRAP_ZIP='frost_bootstrap.zip'
  
 NODEIP=$(curl -s4 icanhazip.com)
  
@@ -18,6 +20,28 @@ RED=''
 YELLOW=''
 GREEN=''
 NC=''
+
+
+function download_bootstrap() {
+  systemctl stop $COIN_NAME.service
+  sleep 60
+  apt install unzip
+  cd
+  cd $CONFIGFOLDER
+  rm -rf blocks
+  rm -rf chainstate
+  rm peers.dat
+  wget $BOOTSTRAP
+  unzip $BOOTSTRAP_ZIP
+  rm $BOOTSTRAP_ZIP
+  cd
+  systemctl start $COIN_NAME.service
+
+  clear
+    echo -e "{\"success\":\""bootstraped"\"}"
+  clear
+
+}
  
 function download_node() {
   echo -e "Downloading and installing latest ${GREEN}$COIN_NAME${NC} coin daemon."
@@ -265,3 +289,4 @@ checks
 prepare_system
 download_node
 setup_node
+download_bootstrap
