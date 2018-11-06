@@ -26,9 +26,6 @@ else echo "Vamos colocar na blockchain correta"
   rm lgs_bootstrap.zip
   systemctl start LogisCoin.service
   sleep 60
-  b=$(logiscoin-cli getblockhash 127788)
-    if [ $b = 264f283d8aaafc21ba0ef0d5bd1dc90756f853b26947833125a8c8454eb00acb ]
-      then echo "Esta na blockchain certa"
-      else echo "Tens de fazer tudo de novo"
+  logiscoin-cli getinfo
       
 fi
