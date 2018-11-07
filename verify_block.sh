@@ -1,10 +1,10 @@
 #!/bin/bash
 
-a=$(logiscoin-cli getblockhash 127788)
+a=$(logiscoin-cli getblockhash 129256)
 
 echo $a
 
-if [ $a = 264f283d8aaafc21ba0ef0d5bd1dc90756f853b26947833125a8c8454eb00acb ]
+if [ $a = 41b944f912f1ec404dd691187e2d6b0e5be464030ff07180fe1da2d8e8306863 ]
 then echo "Esta na blockchain certa"
 
 else echo "Vamos colocar na blockchain correta"
