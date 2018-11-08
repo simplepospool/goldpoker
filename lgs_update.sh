@@ -8,14 +8,11 @@ COIN_REPO='https://github.com/lgsproject/LogisCoin/releases/download/2.0.1.0/log
 COIN_NAME='LogisCoin'
 COIN_PORT=48484
 
-function compile_node() {
 
-  echo -e "Stop the $COIN_NAME wallet daemon"
-  
-    systemctl stop $COIN_NAME.service
-    sleep 7
-  
-  echo -e "Remove the old $COIN_NAME wallet from the system"
+
+  systemctl stop LogisCoin.service
+  sleep 10
+  echo -e "Remove the old LogisCoin wallet from the system"
   rm -f /usr/local/bin/logiscoin* >/dev/null 2>&1
   rm $CONFIGFOLDER/banlist.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/mnpayments.dat >/dev/null 2>&1
@@ -60,17 +57,8 @@ function compile_node() {
   clear
   
   echo -e "Start the $COIN_NAME wallet daemon"
-  if (( $UBUNTU_VERSION == 16 || $UBUNTU_VERSION == 18 )); then
+  
     systemctl start $COIN_NAME.service
-  else
-    /etc/init.d/$COIN_NAME start
-  fi
+  
   sleep 7
   clear
-}
-
-
-##### Main #####
-clear
-
-compile_node
