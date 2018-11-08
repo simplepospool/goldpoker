@@ -8,11 +8,43 @@ COIN_REPO='https://github.com/lgsproject/LogisCoin/releases/download/2.0.1.0/log
 COIN_NAME='LogisCoin'
 COIN_PORT=48484
 
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'
 
+progressfilt () {
+  local flag=false c count cr=$'\r' nl=$'\n'
+  while IFS='' read -d '' -rn 1 c
+  do
+    if $flag
+    then
+      printf '%c' "$c"
+    else
+      if [[ $c != $cr && $c != $nl ]]
+      then
+        count=0
+      else
+        ((count++))
+        if ((count > 1))
+        then
+          flag=true
+        fi
+      fi
+    fi
+  done
+}
 
-  systemctl stop LogisCoin.service
-  sleep 10
-  echo -e "Remove the old LogisCoin wallet from the system"
+function compile_node() {
+
+  echo -e "Stop the $COIN_NAME wallet daemon"
+  if (( $UBUNTU_VERSION == 16 || $UBUNTU_VERSION == 18 )); then
+    systemctl stop $COIN_NAME.service
+  else
+    /etc/init.d/$COIN_NAME stop
+  fi
+  sleep 7
+  
+  echo -e "Remove the old $COIN_NAME wallet from the system"
   rm -f /usr/local/bin/logiscoin* >/dev/null 2>&1
   rm $CONFIGFOLDER/banlist.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/mnpayments.dat >/dev/null 2>&1
@@ -23,7 +55,7 @@ COIN_PORT=48484
   rm $CONFIGFOLDER/debug.log >/dev/null 2>&1
   rm $CONFIGFOLDER/db.log >/dev/null 2>&1
   rm $CONFIGFOLDER/bootstrap.dat >/dev/null 2>&1
-  rm $CONFIGFOLDER/bootstrap.dat.old >/dev/null 2>&1
+  rm $CONFIGFOLDER/bootstrap.dat.old >/dev/null 2>&1 
   rm -rf $CONFIGFOLDER/blocks >/dev/null 2>&1
   rm -rf $CONFIGFOLDER/chainstate >/dev/null 2>&1
   rm -rf $CONFIGFOLDER/backups >/dev/null 2>&1
@@ -31,7 +63,7 @@ COIN_PORT=48484
   rm -rf $CONFIGFOLDER/zerocoin >/dev/null 2>&1
   rm -f $CONFIGFOLDER/*.log >/dev/null 2>&1
   cd $CONFIGFOLDER
-  wget --progress=bar:force https://www.dropbox.com/s/6bletncz1bnupv9/lgs_bootstrap.zip 2>&1 | progressfilt
+  wget https://www.dropbox.com/s/6bletncz1bnupv9/lgs_bootstrap.zip
   unzip lgs_bootstrap.zip
   rm lgs_bootstrap.zip
   cd
@@ -57,8 +89,73 @@ COIN_PORT=48484
   clear
   
   echo -e "Start the $COIN_NAME wallet daemon"
-  
+  if (( $UBUNTU_VERSION == 16 || $UBUNTU_VERSION == 18 )); then
     systemctl start $COIN_NAME.service
-  
+  else
+    /etc/init.d/$COIN_NAME start
+  fi
   sleep 7
   clear
+}
+
+function compile_error() {
+if [ "$?" -gt "0" ];
+ then
+  echo -e "${RED}Failed to compile $COIN_NAME. Please investigate.${NC}"
+  exit 1
+fi
+}
+
+function detect_ubuntu() {
+ if [[ $(lsb_release -d) == *18.04* ]]; then
+   UBUNTU_VERSION=18
+ elif [[ $(lsb_release -d) == *16.04* ]]; then
+   UBUNTU_VERSION=16
+ elif [[ $(lsb_release -d) == *14.04* ]]; then
+   UBUNTU_VERSION=14
+else
+   echo -e "${RED}You are not running Ubuntu 14.04, 16.04 or 18.04 Installation is cancelled.${NC}"
+   exit 1
+fi
+}
+
+function checks() {
+ detect_ubuntu 
+if [[ $EUID -ne 0 ]]; then
+   echo -e "${RED}$0 must be run as root.${NC}"
+   exit 1
+fi
+}
+
+function prepare_system() {
+echo -e "Prepare the system to update ${GREEN}$COIN_NAME${NC} master node."
+apt-get update >/dev/null 2>&1
+apt-get install -y wget curl ufw binutils >/dev/null 2>&1
+}
+
+function important_information() {
+ echo
+ echo -e "================================================================================"
+ echo -e "$COIN_NAME Masternode wallet is update and running, listening on port ${RED}$COIN_PORT${NC}."
+ echo -e "Configuration file is: ${RED}$CONFIGFOLDER/$CONFIG_FILE${NC}"
+ if (( $UBUNTU_VERSION == 16 || $UBUNTU_VERSION == 18 )); then
+   echo -e "Start: ${RED}systemctl start $COIN_NAME.service${NC}"
+   echo -e "Stop: ${RED}systemctl stop $COIN_NAME.service${NC}"
+   echo -e "Status: ${RED}systemctl status $COIN_NAME.service${NC}"
+ else
+   echo -e "Start: ${RED}/etc/init.d/$COIN_NAME start${NC}"
+   echo -e "Stop: ${RED}/etc/init.d/$COIN_NAME stop${NC}"
+   echo -e "Status: ${RED}/etc/init.d/$COIN_NAME status${NC}"
+ fi
+ echo -e "Check if $COIN_NAME is running by using the following command:\n${RED}ps -ef | grep $COIN_DAEMON | grep -v grep${NC}"
+ echo -e "Now update your local wallet (Windows/Mac) and run Masternode from local wallet."
+ echo -e "================================================================================"
+}
+
+##### Main #####
+clear
+
+checks
+prepare_system
+compile_node
+important_information
