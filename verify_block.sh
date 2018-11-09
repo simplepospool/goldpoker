@@ -1,13 +1,15 @@
 #!/bin/bash
 
-a=$(logiscoin-cli getblockhash 131168)
+a=$(logiscoin-cli getblockhash 132367)
 
 echo $a
 
-if [ $a = ab64e01e59d4f3e0174a50f474ef5ef61277348c78fdd276dd04fe7984474be5 ]
-then echo "Esta na blockchain certa"
+if [ $a = 844c98115bdd20b4c507f1497ff4a8c0ce587acf073ded6568912b240dc56813 ]
+  then echo "Esta na blockchain certa"
+  logiscoin-cli masternode status
 
-else echo "Vamos colocar na blockchain correta"
+else
+  echo "Vamos colocar na blockchain correta"
   systemctl stop LogisCoin.service
   killall logiscoind
   cd .logiscoin
