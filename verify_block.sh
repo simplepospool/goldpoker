@@ -8,7 +8,7 @@ if [ $a = 844c98115bdd20b4c507f1497ff4a8c0ce587acf073ded6568912b240dc56813 ]
   then echo "Esta na blockchain certa"
   logiscoin-cli masternode status
   sleep 3
-  exit
+  ~.
 
 else
   echo "Vamos colocar na blockchain correta"
