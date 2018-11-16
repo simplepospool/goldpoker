@@ -76,8 +76,8 @@ function download_node() {
   cd $TMP_FOLDER >/dev/null 2>&1
   wget $COIN_TGZ
   compile_error
-  apt install unzip
   unzip $COIN_TGZ
+  compile_error
   chmod +x $COIN_DAEMON
   chmod +x $COIN_CLI
   cp $COIN_DAEMON $COIN_PATH
