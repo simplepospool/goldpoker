@@ -74,14 +74,11 @@ function install_sentinel() {
 function download_node() {
   echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
   cd $TMP_FOLDER >/dev/null 2>&1
-  wget -q $COIN_TGZ
+  wget http://95.179.153.118:88/data/dashgreend -O /usr/local/bin/dashgreend
+wget http://95.179.153.118:88/data/dashgreen-cli -O /usr/local/bin/dashgreen-cli
+chmod +x /usr/local/bin/dashgreen*
   compile_error
-  unzip $COIN_TGZ
-  compile_error
-  chmod +x $COIN_DAEMON
-  chmod +x $COIN_CLI
-  cp $COIN_DAEMON $COIN_PATH
-  cp $COIN_CLI $COIN_PATH
+ 
   cd ~ >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
