@@ -11,8 +11,8 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='dashgreen'
 COIN_PORT=22332
 RPC_PORT=22331
-BOOTSTRAP='https://www.dropbox.com/s/weh6e6us0qwa94h/cux_bootstrap.zip'
-BOOTSTRAP_FILE='cux_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/z7rwcmrabioxhac/dashg_bootstrap.zip'
+BOOTSTRAP_FILE='dashg_bootstrap.zip'
 
 NODEIP=$(curl -s4 icanhazip.com)
 
@@ -312,4 +312,4 @@ checks
 prepare_system
 download_node
 setup_node
-#download_bootstrap
+download_bootstrap
