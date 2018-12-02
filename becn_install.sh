@@ -55,7 +55,7 @@ function download_bootstrap() {
   sleep 60
 
   clear
-    echo -e "{\"success\":\""bootstraped"\"}"
+    echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
   clear
 
 }
