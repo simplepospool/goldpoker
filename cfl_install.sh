@@ -37,7 +37,7 @@ function download_bootstrap() {
   systemctl start $COIN_NAME.service
 
   clear
-    echo -e "{\"success\":\""bootstraped"\"}"
+    echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
   clear
 
 }
