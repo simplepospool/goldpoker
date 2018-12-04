@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.vitae'
 COIN_DAEMON='vitaed'
 COIN_CLI='vitae-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/VitaeTeam/Vitae/releases/download/Vitae-4.2.1/vitae-4.2.1-linux-64.tar.gz'
+COIN_TGZ='https://github.com/VitaeTeam/Vitae/releases/download/4.3.0/vitae-4.3.0-linux-64.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='vitae'
 COIN_PORT=8765
@@ -55,7 +55,7 @@ function download_bootstrap() {
   sleep 60
 
   clear
-    echo -e "{\"success\":\""bootstraped"\"}"
+    echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
   clear
 
 }
