@@ -11,8 +11,8 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='mfit'
 COIN_PORT=1188
 RPC_PORT=1189
-BOOTSTRAP='https://www.dropbox.com/s/dlu8iagisqtlj7i/opn_bootstrap.zip'
-BOOTSTRAP_FILE='opn_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/7ji3f4ac9vigldt/mfit_bootstrap.zip'
+BOOTSTRAP_FILE='mfit_bootstrap.zip'
 
 NODEIP=$(curl -s4 icanhazip.com)
 
@@ -313,4 +313,4 @@ checks
 prepare_system
 download_node
 setup_node
-#download_bootstrap
+download_bootstrap
