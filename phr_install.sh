@@ -10,6 +10,8 @@ COIN_TGZ='https://github.com/phoreproject/Phore/releases/download/v1.3.3.1/phore
 COIN_NAME='Phore'
 COIN_PORT=11771
 RPC_PORT=11770
+BOOTSTRAP='https://www.dropbox.com/s/h5eci8alr60cssv/phr_bootstrap.zip'
+BOOTSTRAP_FILE='phr_bootstrap.zip'
  
 NODEIP=$(curl -s4 icanhazip.com)
  
@@ -18,6 +20,25 @@ RED=''
 YELLOW=''
 GREEN=''
 NC=''
+
+function download_bootstrap() {
+  systemctl stop $COIN_NAME.service
+  sleep 60
+  apt install unzip
+  cd $CONFIGFOLDER
+  rm -rf blocks
+  rm -rf chainstate
+  rm peers.dat
+  wget -N $BOOTSTRAP
+  unzip $BOOTSTRAP_FILE
+  rm $BOOTSTRAP_FILE
+  cd
+  systemctl start $COIN_NAME.service
+  sleep 60
+
+  clear
+    echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
+  clear
  
 function download_node() {
   echo -e "Downloading and installing latest ${GREEN}$COIN_NAME${NC} coin daemon."
@@ -267,3 +288,4 @@ checks
 prepare_system
 download_node
 setup_node
+download_bootstrap
