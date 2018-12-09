@@ -39,6 +39,8 @@ function download_bootstrap() {
   clear
     echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
   clear
+  
+  }
  
 function download_node() {
   echo -e "Downloading and installing latest ${GREEN}$COIN_NAME${NC} coin daemon."
