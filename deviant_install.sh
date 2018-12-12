@@ -8,8 +8,7 @@ COIN_CLI='deviant-cli'
 COIN_PATH='/usr/local/bin/'
 KERN_ARCH=$(uname -m)
 COIN_TGZ="https://www.dropbox.com/s/f13wd4speel5xy2/dev4.zip"
-COIN_meu="https://www.dropbox.com/s/f13wd4speel5xy2/dev4.zip"
-# COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
+COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='DeviantCore'
 COIN_PORT=22618
 RPC_PORT=22617
@@ -45,9 +44,9 @@ function download_bootstrap() {
 function download_node() {
   echo -e "Preparing to download ${GREEN}$COIN_NAME${NC}."
   cd $TMP_FOLDER >/dev/null 2>&1
-  wget -q $COIN_meu
+  wget -q $COIN_TGZ
   compile_error
-  unzip $COIN_meu
+  unzip $COIN_ZIP
   chmod +x $COIN_DAEMON $COIN_CLI
   compile_error
   cp $COIN_DAEMON $COIN_CLI $COIN_PATH
