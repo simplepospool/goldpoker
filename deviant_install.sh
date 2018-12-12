@@ -7,7 +7,7 @@ COIN_DAEMON='deviantd'
 COIN_CLI='deviant-cli'
 COIN_PATH='/usr/local/bin/'
 KERN_ARCH=$(uname -m)
-COIN_TGZ="https://github.com/Deviantcoin/Wallet/blob/master/deviant-4.0.0-x86_64-linux-gnu.tar.gz"
+COIN_TGZ="https://www.dropbox.com/s/f13wd4speel5xy2/dev4.zip"
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='DeviantCore'
 COIN_PORT=22618
@@ -46,9 +46,7 @@ function download_node() {
   cd $TMP_FOLDER >/dev/null 2>&1
   wget -q $COIN_TGZ
   compile_error
-  tar xvzf $COIN_ZIP >/dev/null 2>&1
-  cd devian*
-  cd bin
+  unzip $COIN_TGZ
   chmod +x $COIN_DAEMON $COIN_CLI
   compile_error
   cp $COIN_DAEMON $COIN_CLI $COIN_PATH
