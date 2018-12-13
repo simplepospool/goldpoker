@@ -27,10 +27,10 @@ else
   rm -rf database
   rm -rf zerocoin
   rm -rf blocks
+  rm -rf sporks
   rm *.log
   rm *.pid
   rm masternode.conf
-  rm -rf sporks
   wget $BOOTSTRAP
   unzip $BOOTSTRAP_FILE
   rm $BOOTSTRAP_FILE
