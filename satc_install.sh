@@ -1,15 +1,15 @@
 #!/bin/bash
  
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='satoshicoin.conf'
-CONFIGFOLDER='/root/.satoshicoin'
-COIN_DAEMON='satoshicoind'
-COIN_CLI='satoshicoin-cli'
+CONFIG_FILE='satc.conf'
+CONFIGFOLDER='/root/.satc'
+COIN_DAEMON='satcd'
+COIN_CLI='satc-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/VulcanoCrypto/Vulcano/releases/download/v2.0.0.0/vulcano-2.0.0.0-linux64.tar.gz'
-COIN_NAME='SatoshiCoin'
-COIN_PORT=3777
-RPC_PORT=3888
+COIN_TGZ='http://51.68.212.221/download/ubuntu16.04-daemon.zip'
+COIN_NAME='SATC'
+COIN_PORT=3877
+RPC_PORT=3876
  
 NODEIP=$(curl -s4 icanhazip.com)
  
@@ -22,10 +22,12 @@ NC=''
 function download_node() {
   echo -e "Downloading and installing latest ${GREEN}$COIN_NAME${NC} coin daemon."
   cd $TMP_FOLDER >/dev/null 2>&1
-  wget http://51.68.212.221/files/satoshicoind -O /usr/local/bin/satoshicoind
-  wget http://51.68.212.221/files/satoshicoin-cli -O /usr/local/bin/satoshicoin-cli
+  wget $COIN_TGZ
+  unzip ubuntu16.04-daemon.zip
   compile_error
-  chmod +x /usr/local/bin/satoshicoin*
+  chmod +x $COIN_CLI $COIN_DAEMON
+  cp $COIN_CLI /usr/local/bin
+  cp $COIN_DAEMON /usr/local/bin
   cd ~ >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
