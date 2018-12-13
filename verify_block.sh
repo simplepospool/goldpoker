@@ -1,19 +1,26 @@
 #!/bin/bash
 
-a=$(gpkr-cli getblockhash 187452)
+COINSERVICE='cruxcoin'
+DAEMON='cruxcoind'
+CLI='cruxcoin-cli'
+FOLDER='.cruxcoin'
+BOOTSTRAP='https://www.dropbox.com/s/weh6e6us0qwa94h/cux_bootstrap.zip'
+BOOTSTRAP_FILE='cux_bootstrap.zip'
+GETBLOCKHASH='ec550c8b3a80e30550c4756bd031ec3c136b238243780a61f389e349174d159b'
+a=$($CLI getblockhash 65365)
 
 echo $a
 
-if [ $a = 3e60021b09174b682b213ca962405ef0c88ebb3fdf86393a3cedf19890504acd ]
+if [ $a = $GETBLOCKHASH ]
   then echo "You´re on the right chain"
-  gpkr-cli masternode status
+  $CLI masternode status
  
 
 else
   echo "You´re on the wrong chain"
-  systemctl stop GoldPoker.service
-  killall gpkrd
-  cd .gpkr
+  systemctl stop $COINSERVICE.service
+  killall $DAEMON
+  cd $FOLDER
   rm -rf backups
   rm -rf chainstate
   rm *.dat
@@ -24,10 +31,10 @@ else
   rm *.pid
   rm masternode.conf
   rm -rf sporks
-  wget https://www.dropbox.com/s/yp61undbgehhqjo/gpkr_bootstrap.zip
-  unzip gpkr_bootstrap.zip
-  rm gpkr_bootstrap.zip
-  systemctl start GoldPoker.service
+  wget $BOOTSTRAP
+  unzip $BOOTSTRAP_FILE
+  rm $BOOTSTRAP_FILE
+  systemctl start $COINSERVICE.service
   sleep 60
-  logiscoin-cli getinfo
+  $CLI getinfo
 fi
