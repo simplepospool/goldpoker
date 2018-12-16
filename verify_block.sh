@@ -11,7 +11,7 @@ a=$($CLI getblockhash 68485)
 
 echo $a
 
-if [ $a = $GETBLOCKHASH ]
+if [ $a = 764376dddccd779a50a1f2842e6f2864668775a640e179acfdf04e86e538db18 ]
   then echo "You´re on the right chain"
   $CLI masternode status
  
