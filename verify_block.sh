@@ -6,8 +6,8 @@ CLI='cruxcoin-cli'
 FOLDER='.cruxcoin'
 BOOTSTRAP='https://www.dropbox.com/s/weh6e6us0qwa94h/cux_bootstrap.zip'
 BOOTSTRAP_FILE='cux_bootstrap.zip'
-GETBLOCKHASH='ec550c8b3a80e30550c4756bd031ec3c136b238243780a61f389e349174d159b'
-a=$($CLI getblockhash 65365)
+GETBLOCKHASH='764376dddccd779a50a1f2842e6f2864668775a640e179acfdf04e86e538db18'
+a=$($CLI getblockhash 68485)
 
 echo $a
 
@@ -31,9 +31,9 @@ else
   rm *.log
   rm *.pid
   rm masternode.conf
-  wget $BOOTSTRAP
-  unzip $BOOTSTRAP_FILE
-  rm $BOOTSTRAP_FILE
+  # wget $BOOTSTRAP
+  # unzip $BOOTSTRAP_FILE
+  # rm $BOOTSTRAP_FILE
   systemctl start $COINSERVICE.service
   sleep 60
   $CLI getinfo
