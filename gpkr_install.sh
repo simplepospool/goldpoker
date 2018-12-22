@@ -146,8 +146,6 @@ gen=1
 masternode=1
 masternodeaddr=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
-addnode=206.81.13.185
-addnode=178.128.156.169
 EOF
 }
  
