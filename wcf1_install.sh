@@ -6,9 +6,8 @@ CONFIGFOLDER='/root/.worldcryptoforum'
 COIN_DAEMON='worldcryptoforumd'
 COIN_CLI='worldcryptoforum-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/worldcryptoforum/worldcryptoforum/releases/download/v1.1/worldcryptoforum.linux.1.1.zip'
-COIN_ZIP1=worldcryptoforum.linux.1.1.zip
-COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
+COIN_TGZ='https://www.dropbox.com/s/injm571zyf62dew/wcf.zip'
+COIN_ZIP=wcf.zip
 COIN_NAME='worldcryptoforum'
 COIN_PORT=11005
 RPC_PORT=11004
@@ -79,8 +78,10 @@ function download_node() {
   cd $TMP_FOLDER >/dev/null 2>&1
   wget -q $COIN_TGZ
   compile_error
-  unzip $COIN_ZIP1 >/dev/null 2>&1
+  unzip $COIN_ZIP >/dev/null 2>&1
   chmod +x $COIN_DAEMON $COIN_CLI
+  strip $COIN_DAEMON
+  strip $COIN_CLI
   mv $COIN_DAEMON $COIN_PATH
   mv $COIN_CLI $COIN_PATH
   cd - >/dev/null 2>&1
