@@ -1,0 +1,6 @@
+COIN_NAME="cruxcoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="cruxcoind"
+COIN_CLI="cruxcoin-cli"
+COIN_FOLDER="/root/.cruxcoin"
+COIN_CONFIG="cruxcoin.conf"
