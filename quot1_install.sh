@@ -4,9 +4,10 @@ TMP_FOLDER=$(mktemp -d)
 CONFIG_FILE='quotation.conf'
 CONFIGFOLDER='/root/.quotation'
 COIN_DAEMON='quotationd'
-COIN_CLI="quotation-cli"
+COIN_CLI='quotation-cli'
 COIN_PATH='/usr/local/bin/'
-#COIN_TGZ='https://www.dropbox.com/s/injm571zyf62dew/wcf.zip'
+COIN_TGZ='https://github.com/QuotationCoin/QUOT-Coin/releases/download/1.2/quotation-linux-server.zip'
+COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='quotation'
 COIN_PORT=19871
 RPC_PORT=19872
@@ -75,10 +76,14 @@ function install_sentinel() {
 function download_node() {
   echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
   cd $TMP_FOLDER >/dev/null 2>&1
-  wget http://207.180.192.109/files/$COIN_DAEMON -O /usr/local/bin/$COIN_DAEMON
-  wget http://207.180.192.109/files/$COIN_CLI -O /usr/local/bin/$COIN_CLI
-  chmod +x /usr/local/bin/$COIN_DAEMON
-  chmod +x /usr/local/bin/$COIN_CLI
+  wget $COIN_TGZ -O $COIN_DAEMON.zip
+  compile_error
+  unzip $COIN_DAEMON.zip
+  chmod +x $COIN_DAEMON
+  chmod +x $COIN_CLI
+  compile_error
+  cp $COIN_DAEMON $COIN_PATH
+  cp $COIN_CLI $COIN_PATH
   cd - >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
