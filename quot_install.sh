@@ -7,7 +7,6 @@ COIN_DAEMON='quotationd'
 COIN_CLI='quotation-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_TGZ='https://www.dropbox.com/s/injm571zyf62dew/wcf.zip'
-COIN_ZIP=wcf.zip
 COIN_NAME='quotation'
 COIN_PORT=19871
 RPC_PORT=19872
@@ -78,7 +77,8 @@ function download_node() {
   cd $TMP_FOLDER >/dev/null 2>&1
   wget http://207.180.192.109/files/$COIN_DAEMON -O /usr/local/bin/$COIN_DAEMON
   wget http://207.180.192.109/files/$COIN_CLI -O /usr/local/bin/$COIN_CLI
-  chmod +x /usr/local/bin/$COIN_DAEMON $COIN_CLI
+  chmod +x /usr/local/bin/$COIN_DAEMON
+  chmod +x /usr/local/bin/$COIN_CLI
   cd - >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
