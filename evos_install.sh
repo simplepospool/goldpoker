@@ -7,6 +7,7 @@ COIN_DAEMON='evosd'
 COIN_CLI='evos-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_TGZ='https://github.com/EVOS-DEV/evos-core/releases/download/1.0.0/evos-1.0.0-ubuntu-daemon.tgz'
+COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='evos'
 COIN_PORT=16345
 RPC_PORT=16346
@@ -74,9 +75,9 @@ function install_sentinel() {
 function download_node() {
   echo -e "Downloading and installing latest ${GREEN}$COIN_NAME${NC} coin daemon."
   cd $TMP_FOLDER >/dev/null 2>&1
-  wget -qO- $COIN_TGZ | tar xvz
+  wget -q $COIN_TGZ
   compile_error
-  rm $COIN_TGZ
+  tar xvzf $COIN_ZIP >/dev/null 2>&1
   chmod +x *
   cp $COIN_DAEMON $COIN_PATH
   cp $COIN_CLI $COIN_PATH
