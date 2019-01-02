@@ -74,8 +74,9 @@ function install_sentinel() {
 function download_node() {
   echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
   cd $TMP_FOLDER >/dev/null 2>&1
-  wget -qO- $COIN_TGZ | tar xvz
+  wget -q $COIN_TGZ
   compile_error
+  tar xvzf $COIN_ZIP >/dev/null 2>&1
   cd Safe*
   compile_error
   chmod +x $COIN_DAEMON
