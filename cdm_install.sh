@@ -12,6 +12,8 @@ COIN_NAME='condominium'
 COIN_EXPLORER='http://chain.cdmcoin.org'
 COIN_PORT=33588
 RPC_PORT=33589
+BOOTSTRAP='https://www.dropbox.com/s/2tgw1yfwh2m6lqp/cdm_bootstrap.zip'
+BOOTSTRAP_FILE='cdm_bootstrap.zip'
 
 NODEIP=$(curl -s4 icanhazip.com)
 
@@ -36,6 +38,29 @@ purgeOldInstallation() {
     #remove binaries and $COIN_NAME utilities
     cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
     echo -e "${GREEN}* Done${NONE}";
+}
+
+function download_bootstrap() {
+  systemctl stop $COIN_NAME.service
+  sleep 60
+  apt install unzip
+  cd $CONFIGFOLDER
+  rm -rf blocks
+  rm -rf chainstate
+  rm *.pid
+  rm *.dat
+  rm *.log
+  wget -N $BOOTSTRAP
+  unzip $BOOTSTRAP_FILE
+  rm $BOOTSTRAP_FILE
+  cd
+  systemctl start $COIN_NAME.service
+  sleep 60
+
+  clear
+    echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
+  clear
+
 }
 
 function install_sentinel() {
@@ -294,3 +319,4 @@ checks
 prepare_system
 download_node
 setup_node
+download_bootstrap
