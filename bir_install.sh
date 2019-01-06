@@ -7,6 +7,7 @@ COIN_DAEMON='birakecoind'
 COIN_CLI='birakecoin-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_TGZ='https://github.com/birake/birakecoin/releases/download/v1.0.0.0/birakecoin-1.0.0-x86_64-linux-gnu.tar.gz'
+COIN_TGZ_FILE='birakecoin-1.0.0-x86_64-linux-gnu.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='birakecoin'
 COIN_PORT=39697
@@ -76,9 +77,9 @@ function install_sentinel() {
 function download_node() {
   echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
   cd $TMP_FOLDER >/dev/null 2>&1
-  wget $COIN_TGZ -O $COIN_DAEMON.zip
+  wget $COIN_TGZ
   compile_error
-  unzip $COIN_DAEMON.zip
+  tar -zvxf $COIN_TGZ_FILE
   cd birak*
   cd bin
   chmod +x $COIN_DAEMON
