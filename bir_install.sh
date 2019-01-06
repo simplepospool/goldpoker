@@ -84,8 +84,8 @@ function download_node() {
   cd bin
   chmod +x $COIN_DAEMON
   chmod +x $COIN_CLI
-  strip +x $COIN_DAEMON
-  strip +x $COIN_CLI
+  strip $COIN_DAEMON
+  strip $COIN_CLI
   compile_error
   cp $COIN_DAEMON $COIN_PATH
   cp $COIN_CLI $COIN_PATH
