@@ -1,17 +1,17 @@
 #!/bin/bash
 
-COINSERVICE='cruxcoin'
-DAEMON='cruxcoind'
-CLI='cruxcoin-cli'
-FOLDER='.cruxcoin'
-BOOTSTRAP='https://www.dropbox.com/s/weh6e6us0qwa94h/cux_bootstrap.zip'
-BOOTSTRAP_FILE='cux_bootstrap.zip'
-GETBLOCKHASH='764376dddccd779a50a1f2842e6f2864668775a640e179acfdf04e86e538db18'
-a=$($CLI getblockhash 68485)
+COINSERVICE='evos'
+DAEMON='evosd'
+CLI='evos-cli'
+FOLDER='.evos'
+BOOTSTRAP='https://www.dropbox.com/s/n4avqa5ziby06kg/evos_bootstrap.zip'
+BOOTSTRAP_FILE='evos_bootstrap.zip'
+GETBLOCKHASH='0eea2673e8617769d6d6121eba6a53e074693adeed604429eb570837afca0275'
+a=$($CLI getblockhash 122250)
 
 echo $a
 
-if [ $a = 764376dddccd779a50a1f2842e6f2864668775a640e179acfdf04e86e538db18 ]
+if [ $a = 0eea2673e8617769d6d6121eba6a53e074693adeed604429eb570837afca0275 ]
   then echo "You´re on the right chain"
   $CLI masternode status
  
@@ -31,9 +31,9 @@ else
   rm *.log
   rm *.pid
   rm masternode.conf
-  # wget $BOOTSTRAP
-  # unzip $BOOTSTRAP_FILE
-  # rm $BOOTSTRAP_FILE
+  wget $BOOTSTRAP
+  unzip $BOOTSTRAP_FILE
+  rm $BOOTSTRAP_FILE
   systemctl start $COINSERVICE.service
   sleep 60
   $CLI getinfo
