@@ -120,6 +120,12 @@ logtimestamps=1
 masternode=1
 masternodeaddr=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
+addnode=92.222.179.83
+addnode=54.37.188.59
+addnode=54.38.19.89
+addnode=51.254.108.9
+addnode=54.38.11.110
+addnode=145.239.42.69
 EOF
 }
  
