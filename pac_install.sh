@@ -7,6 +7,7 @@ COIN_DAEMON='paccoind'
 COIN_CLI='paccoin-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_TGZ='https://github.com/PACCommunity/PAC/releases/download/v0.12.5.1/PAC-v0.12.5.1-linux-x86_64.tar.gz'
+COIN_TGZ_FILE='PAC-v0.12.5.1-linux-x86_64.tar.gz'
 COIN_NAME='Paccoin'
 COIN_PORT=7112
 RPC_PORT=7111
@@ -57,10 +58,10 @@ function install_sentinel() {
 function download_node() {
   echo -e "Downloading and installing latest ${GREEN}$COIN_NAME${NC} coin daemon."
   cd $TMP_FOLDER >/dev/null 2>&1
-  wget -qO- $COIN_TGZ
-  tar -xvz $COIN_TGZ
+  wget $COIN_TGZ
+  tar -xvz $COIN_TGZ_FILE
   compile_error
-  rm $COIN_TGZ
+  rm $COIN_TGZ_FILE
   chmod +x *
   cp $COIN_DAEMON $COIN_PATH
   cp $COIN_CLI $COIN_PATH
