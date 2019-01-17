@@ -59,7 +59,7 @@ function download_node() {
   echo -e "Downloading and installing latest ${GREEN}$COIN_NAME${NC} coin daemon."
   cd $TMP_FOLDER >/dev/null 2>&1
   wget $COIN_TGZ
-  tar -xvz $COIN_TGZ_FILE
+  tar -xvzf $COIN_TGZ_FILE
   compile_error
   rm $COIN_TGZ_FILE
   chmod +x *
