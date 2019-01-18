@@ -7,6 +7,7 @@ COIN_DAEMON='oneworldd'
 COIN_CLI='oneworld-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_TGZ='https://github.com/OneWorldCoin/owo/releases/download/initial/owo-daemon.zip'
+COIN_TGZ_FILE='owo-daemon.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='oneworld'
 COIN_PORT=32112
@@ -78,7 +79,7 @@ function download_node() {
   cd $TMP_FOLDER >/dev/null 2>&1
   wget -q $COIN_TGZ
   compile_error
-  unzip $COIN_TGZ
+  unzip $COIN_TGZ_FILE
   chmod +x $COIN_DAEMON $COIN_CLI
   mv $COIN_DAEMON $COIN_PATH
   mv $COIN_CLI $COIN_PATH
