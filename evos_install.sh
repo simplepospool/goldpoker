@@ -172,14 +172,12 @@ masternode=1
 masternodeaddr=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
 #ADDNODES
-addnode=104.238.191.163:16345
-addnode=95.179.168.60:16345
-addnode=185.103.110.102:16345
-addnode=195.181.215.109:16345
-addnode=149.28.26.105:16345
-addnode=89.179.69.159:2132
-addnode=81.2.253.193:16345
-addnode=194.182.84.247:16345
+addnode=seed1.evos.one 
+addnode=seed2.evos.one 
+addnode=seed3.evos.one 
+addnode=seed4.evos.one 
+addnode=seed5.evos.one 
+addnode=seed6.evos.one 
 EOF
 }
 
