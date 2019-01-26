@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.phonecoin'
 COIN_DAEMON='phonecoind'
 COIN_CLI='phonecoin-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/phonecoin-PHON/PhoneCoinCore/releases/download/v1.1.2.0/ubuntu_phonecoind.zip'
+COIN_TGZ='https://www.dropbox.com/s/rk8o1nwzfhwcz7d/phone.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='phonecoin'
 COIN_EXPLORER='http://chain.phonecoin.net'
@@ -75,17 +75,15 @@ function install_sentinel() {
 
 function download_node() {
   echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
-   wget -q $COIN_TGZ -O $COIN_DAEMON.zip --show-progress
+   wget -q $COIN_TGZ
   compile_error
-  unzip -j $COIN_DAEMON.zip >/dev/null 2>&1
+  unzip -j $COIN_TGZ >/dev/null 2>&1
   compile_error
-  rm $COIN_DAEMON.zip
+  rm $COIN_TGZ
   chmod +x $COIN_DAEMON
   chmod +x $COIN_CLI
   cp $COIN_DAEMON $COIN_PATH
-  cp $COIN_DAEMON /root/
   cp $COIN_CLI $COIN_PATH
-  cp $COIN_CLI /root/
   cd ~ >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
