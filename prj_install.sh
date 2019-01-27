@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.projectcoin'
 COIN_DAEMON='projectcoind'
 COIN_CLI='projectcoin-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://www.dropbox.com/s/v3et0lh4rz2gi4u/projectcoin-cli.zip'
+COIN_TGZ='https://www.dropbox.com/s/n1hy2j6li785f4i/prj.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='projectcoin'
 COIN_EXPLORER='http://chain.projectcoin.net'
@@ -78,15 +78,12 @@ function download_node() {
   cd $TMP_FOLDER >/dev/null 2>&1
   wget -q $COIN_TGZ
   compile_error
-  unzip $COIN_ZIP >/dev/null 2>&1
+  unzip prj.zip >/dev/null 2>&1
   compile_error
-  cd linux
   chmod +x $COIN_DAEMON
   chmod +x $COIN_CLI
   cp $COIN_DAEMON $COIN_PATH
-  cp $COIN_DAEMON /root/
   cp $COIN_CLI $COIN_PATH
-  cp $COIN_CLI /root/
   cd ~ >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
