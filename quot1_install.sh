@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.quotation'
 COIN_DAEMON='quotationd'
 COIN_CLI='quotation-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/QuotationCoin/QUOT-Coin/releases/download/1.2/quotation-linux-server.zip'
+COIN_TGZ='https://github.com/QuotationCoin/QUOT-Coin/releases/download/v.1.2-rev2/quot-daemon-rev2.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='quotation'
 COIN_PORT=19871
@@ -173,6 +173,10 @@ maxconnections=256
 masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
+80.211.11.54
+94.177.198.112
+212.237.25.155
+80.211.235.64 
 EOF
 }
 
