@@ -31,4 +31,4 @@ bash dupmn_install.sh
 wget -q https://raw.githubusercontent.com/neo3587/dupmn/master/profiles/CARDbuyers.dmn
 apt-get install sysstat -y
 apt-get install bc -y
-apt-get install sysstat -y
+wget https://raw.githubusercontent.com/simplepospool/goldpoker/master/verify_stat.sh
