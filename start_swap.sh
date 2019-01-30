@@ -32,3 +32,4 @@ wget -q https://raw.githubusercontent.com/neo3587/dupmn/master/profiles/CARDbuye
 apt-get install sysstat -y
 apt-get install bc -y
 wget https://raw.githubusercontent.com/simplepospool/goldpoker/master/verify_stat.sh
+wget https://raw.githubusercontent.com/simplepospool/goldpoker/master/dupmn_all.sh
