@@ -4,7 +4,7 @@ CONFIG_FILE='logiscoin.conf'
 CONFIGFOLDER='/root/.logiscoin'
 COIN_DAEMON='/usr/local/bin/logiscoind'
 COIN_CLI='/usr/local/bin/logiscoin-cli'
-COIN_REPO='https://github.com/lgsproject/LogisCoin/releases/download/v2.0.2.0/logiscoin-2.0.2-x86_64-linux-gnu.tar.gz'
+COIN_REPO='https://github.com/lgsproject/LogisCoin/releases/download/v2.0.3.0/logiscoin-2.0.3-x86_64-linux-gnu.tar.gz'
 COIN_NAME='LogisCoin'
 COIN_PORT=48484
 BOOTSTRAP='https://www.dropbox.com/s/6bletncz1bnupv9/lgs_bootstrap.zip'
@@ -168,6 +168,8 @@ rpcallowip=127.0.0.1
 listen=1
 server=1
 daemon=1
+staking=0
+enablezeromint=0
 port=$COIN_PORT
 EOF
 }
@@ -203,10 +205,6 @@ maxconnections=64
 masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
-addnode=217.61.108.17
-addnode=80.211.246.101
-addnode=217.61.97.206
-addnode=207.180.233.36
 EOF
 }
 
@@ -329,4 +327,4 @@ checks
 prepare_system
 compile_node
 setup_node
-download_bootstrap
+#download_bootstrap
