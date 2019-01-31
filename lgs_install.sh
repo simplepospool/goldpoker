@@ -327,4 +327,4 @@ checks
 prepare_system
 compile_node
 setup_node
-#download_bootstrap
+download_bootstrap
