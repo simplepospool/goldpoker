@@ -43,13 +43,11 @@ function download_bootstrap() {
   systemctl stop $COIN_NAME.service
   sleep 60
   apt install unzip
-  cd $CONFIGFOLDER
-  rm -rf blocks
-  rm -rf chainstate
-  rm peers.dat
-  wget -N $BOOTSTRAP
-  unzip $BOOTSTRAP_FILE
-  rm $BOOTSTRAP_FILE
+  rm -rf $CONFIGFOLDER/blocks
+  rm -rf $CONFIGFOLDER/chainstate
+  rm $CONFIGFOLDER/peers.dat
+  wget -q $BOOTSTRAP
+  unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
   cd
   systemctl start $COIN_NAME.service
   sleep 60
@@ -304,7 +302,7 @@ function setup_node() {
 ##### Main #####
 clear
 
-purgeOldInstallation
+#purgeOldInstallation
 checks
 prepare_system
 download_node
