@@ -7,6 +7,7 @@ COIN_DAEMON='gpkrd'
 COIN_CLI='gpkr-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_TGZ='https://github.com/GoldPoker/GoldPoker-coin/releases/download/v1.3.1/gpkr-1.3.1-x86_64-linux-gnu.tar.gz'
+COIN_TGZ_FILE='gpkr-1.3.1-x86_64-linux-gnu.tar.gz'
 COIN_NAME='GoldPoker'
 COIN_PORT=33303
 RPC_PORT=18822
@@ -45,11 +46,11 @@ function download_bootstrap() {
 function download_node() {
   echo -e "Downloading and installing latest ${GREEN}$COIN_NAME${NC} coin daemon."
   cd $TMP_FOLDER >/dev/null 2>&1
-  wget -q $COIN_TGZ -O $COIN_DAEMON.zip --show-progress
+  wget -q $COIN_TGZ
   compile_error
-  unzip $COIN_DAEMON.zip >/dev/null 2>&1
+  tar zvxf  $COIN_TGZ_FILE >/dev/null 2>&1
   compile_error
-  rm $COIN_DAEMON.zip
+  rm $COIN_TGZ_FILE
   chmod +x *
   cp $COIN_DAEMON $COIN_PATH
   cp $COIN_CLI $COIN_PATH
