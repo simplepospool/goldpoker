@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.gpkr'
 COIN_DAEMON='gpkrd'
 COIN_CLI='gpkr-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/GoldPoker/GoldPoker-coin/releases/download/v1.3.0/gpkr-1.3.0-x86_64-pc-linux-gnu.zip'
+COIN_TGZ='https://github.com/GoldPoker/GoldPoker-coin/releases/download/v1.3.1/gpkr-1.3.1-x86_64-linux-gnu.tar.gz'
 COIN_NAME='GoldPoker'
 COIN_PORT=33303
 RPC_PORT=18822
@@ -37,7 +37,7 @@ function download_bootstrap() {
   systemctl start $COIN_NAME.service
 
   clear
-    echo -e "{\"success\":\""bootstraped"\"}"
+    echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
   clear
 
 }
@@ -146,22 +146,7 @@ gen=1
 masternode=1
 masternodeaddr=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
-addnode=5.189.174.219
-addnode=50.236.202.194
-addnode=138.197.214.55
-addnode=159.65.203.132
-addnode=159.89.116.154
-addnode=46.101.42.140
-addnode=140.82.48.22
-addnode=95.179.169.217
-addnode=202.182.110.45
-addnode=206.189.61.199
-addnode=80.240.20.8
-addnode=134.249.187.97
-addnode=45.77.254.79
-addnode=167.99.219.245
-addnode=178.128.156.169
-addnode=206.81.13.185
+
 EOF
 }
  
