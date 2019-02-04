@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.altbet'
 COIN_DAEMON='altbetd'
 COIN_CLI='altbet-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/altbet/abet/releases/download/v1.3/altbet-v1.3-ubu1604.tar.gz'
+COIN_TGZ='https://github.com/altbet/abet/releases/download/v1.3.0.1/altbet-v1.3.0.1-ubu1604.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='altbet'
 COIN_PORT=2238
@@ -40,25 +40,17 @@ purgeOldInstallation() {
 }
 
 function download_bootstrap() {
-  systemctl stop $COIN_NAME.service
-  sleep 60
-  apt install unzip
-  cd $CONFIGFOLDER
-  rm -rf blocks
-  rm -rf chainstate
-  rm *.pid
-  rm *.dat
-  rm *.log
+  rm -rf $CONFIGFOLDER/blocks >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/chainstate >/dev/null 2>&1
+  rm $CONFIGFOLDER/*.pid >/dev/null 2>&1
+  rm $CONFIGFOLDER/*.dat >/dev/null 2>&1
+  rm $CONFIGFOLDER/*.log >/dev/null 2>&1
   wget -N $BOOTSTRAP
-  unzip $BOOTSTRAP_FILE
-  rm $BOOTSTRAP_FILE
-  cd
-  systemctl start $COIN_NAME.service
-  sleep 60
-
-  clear
-    echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
-  clear
+  unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
+ 
+  #clear
+    #echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
+  #clear
 
 }
 function install_sentinel() {
@@ -174,64 +166,22 @@ addnode=185.206.146.209:2238
 addnode=185.206.147.210:2238
 addnode=185.206.144.217:2238
 addnode=185.141.61.104:2238
-addnode=35.197.130.246:2238
-addnode=35.195.47.136:2238
-addnode=108.61.218.19:2238
-addnode=35.247.153.240:2238
-addnode=95.216.38.5:2238
-addnode=139.180.218.176:2238
-addnode=35.237.81.253:2238
-addnode=149.28.62.212:2238
-addnode=178.63.96.14:2238
-addnode=95.216.44.81:2238
-addnode=95.216.37.61:2238
-addnode=95.216.119.114:2238
-addnode=46.4.182.99:2238
-addnode=78.141.101.196:2238
-addnode=83.170.202.34:2238
-addnode=46.101.170.138:2238
-addnode=95.179.231.127:2238
-addnode=45.76.123.22:2238
-addnode=112.162.233.135:2238
-addnode=108.61.198.31:2238
-addnode=188.162.86.204:2238
-addnode=142.93.153.214:2238
-addnode=95.216.33.78:2238
-addnode=95.216.42.182:2238
-addnode=77.34.134.80:2238
-addnode=109.240.97.226:2238
-addnode=45.32.76.33:2238
-addnode=185.88.156.13:2238
-addnode=35.229.125.118:2238
-addnode=138.68.251.41:2238
-addnode=71.198.226.62:2238
-addnode=86.139.204.102:2238
-addnode=123.114.187.29:2238
-addnode=221.37.194.27:2238
-addnode=95.216.68.52:2238
-addnode=178.128.99.42:2238
-addnode=207.246.76.102:2238
-addnode=185.141.61.104:2238
-addnode=108.61.117.253:2238
-addnode=144.202.18.59:2238
-addnode=45.63.96.121:2238
-addnode=95.179.177.103:2238
-addnode=45.32.232.172:2238
-addnode=149.28.205.231:2238
-addnode=95.179.176.148:2238
-addnode=202.80.213.16:2238
-addnode=45.32.217.246:2238
-addnode=217.61.61.213:2238
-addnode=217.163.23.38:2238
-addnode=185.206.147.210:2238
-addnode=159.65.122.61:2238
-addnode=95.216.37.13:2238
-addnode=159.69.72.247:2238
-addnode=108.61.188.217:2238
-addnode=95.179.176.160:2238
-addnode=149.28.53.143:2238
-addnode=138.197.151.112:2238
-addnode=95.216.42.190:2238
+addnode=54.173.99.0:2238
+addnode=108.61.84.52:2238
+addnode=144.202.60.189:2238
+addnode=167.86.66.74:2238
+addnode=207.154.237.224:2238
+addnode=173.249.19.46:2238
+addnode=167.99.223.218:2238
+addnode=207.180.198.69:2238
+addnode=178.62.116.86:2238
+addnode=149.248.36.196:2238
+addnode=45.77.53.182:2238
+addnode=95.179.150.156:2238
+addnode=13.59.222.81:2238
+addnode=3.84.13.102:2238
+addnode=104.207.145.214:2238
+addnode=8.9.36.49:2238
 EOF
 }
 
@@ -354,6 +304,7 @@ function important_information() {
 function setup_node() {
   get_ip
   create_config
+  download_bootstrap
   create_key
   update_config
   enable_firewall
@@ -366,9 +317,9 @@ function setup_node() {
 ##### Main #####
 clear
 
-purgeOldInstallation
+#purgeOldInstallation
 checks
 prepare_system
 download_node
 setup_node
-download_bootstrap
+
