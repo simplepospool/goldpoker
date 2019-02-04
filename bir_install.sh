@@ -42,20 +42,18 @@ purgeOldInstallation() {
 
 function download_bootstrap() {
   systemctl stop $COIN_NAME.service
-  sleep 60
+  sleep 20
   apt install unzip
-  cd $CONFIGFOLDER
-  rm -rf blocks
-  rm -rf chainstate
-  rm *.pid
-  rm *.dat
-  rm *.log
+  rm -rf $CONFIGFOLDER/blocks
+  rm -rf $CONFIGFOLDER/chainstate
+  rm $CONFIGFOLDER/*.pid
+  rm $CONFIGFOLDER/*.dat
+  rm $CONFIGFOLDER/*.log
   wget -N $BOOTSTRAP
-  unzip $BOOTSTRAP_FILE
-  rm $BOOTSTRAP_FILE
+  unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
   cd
   systemctl start $COIN_NAME.service
-  sleep 60
+  sleep 5
 
   clear
     echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
@@ -313,7 +311,7 @@ function setup_node() {
 ##### Main #####
 clear
 
-purgeOldInstallation
+#purgeOldInstallation
 checks
 prepare_system
 download_node
