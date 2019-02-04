@@ -45,10 +45,10 @@ function download_bootstrap() {
   rm $CONFIGFOLDER/*.pid >/dev/null 2>&1
   rm $CONFIGFOLDER/*.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/*.log >/dev/null 2>&1
-  wget -N $BOOTSTRAP
+  wget -q $BOOTSTRAP
   unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
  
-  #clear
+  clear
     #echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
   #clear
 
