@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.revu'
 COIN_DAEMON='revud'
 COIN_CLI='revu-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='#'
+COIN_TGZ='https://github.com/REVU1/revucrypto/releases/download/v1.0-rev0/revu-daemon.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='revu'
 COIN_PORT=31335
@@ -68,9 +68,9 @@ function install_sentinel() {
 function download_node() {
   echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
   cd $TMP_FOLDER >/dev/null 2>&1
-  wget http://167.160.187.251/files/revud -O /usr/local/bin/revud
-  wget http://167.160.187.251/files/revu-cli -O /usr/local/bin/revu-cli
-  chmod +x /usr/local/bin/revu*
+  wget -q $COIN_TGZ
+  compile_error
+  unzip $COIN_ZIP -C $COIN_PATH >/dev/null 2>&1
   cd - >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
