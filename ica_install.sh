@@ -72,6 +72,8 @@ function download_node() {
   wget -q $COIN_TGZ
   compile_error
   tar xvzf $COIN_TGZ_FILE -C $COIN_PATH >/dev/null 2>&1
+  chmod +x $COIN_PATH$COIN_DAEMON
+  chmod +x $COIN_PATH$COIN_CLI
   cd - >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
