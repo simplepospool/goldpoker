@@ -1,15 +1,15 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='ichiba.conf'
-CONFIGFOLDER='/root/.ichiba'
-COIN_DAEMON='ichibad'
-COIN_CLI='ichiba-cli'
+CONFIG_FILE='ichibacoin.conf'
+CONFIGFOLDER='/root/.ichibacoin'
+COIN_DAEMON='ichibacoind'
+COIN_CLI='ichibacoin-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_TGZ='https://github.com/IchibaCoin/ICHIBA/releases/download/v1.0/IchibaCoin-.Daemon_Ubuntu-16.04.tar.gz'
 COIN_TGZ_FILE='IchibaCoin-.Daemon_Ubuntu-16.04.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='ichiba'
+COIN_NAME='ichibacoin'
 COIN_PORT=2219
 RPC_PORT=2220
 BOOTSTRAP='https://www.dropbox.com/s/ayhc6z27rvvxfn8/ica_bootstrap.zip'
