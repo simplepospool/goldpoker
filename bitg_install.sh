@@ -23,22 +23,17 @@ NC=''
 
 
 function download_bootstrap() {
-  systemctl stop $COIN_NAME.service
-  sleep 60
-  cd
-  cd $CONFIGFOLDER
-  rm -rf blocks
-  rm -rf chainstate
-  rm peers.dat
-  wget $BOOTSTRAP
-  unzip $BOOTSTRAP_ZIP
-  rm $BOOTSTRAP_ZIP
-  cd
-  systemctl start $COIN_NAME.service
-
+  rm -rf $CONFIGFOLDER/blocks >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/chainstate >/dev/null 2>&1
+  rm $CONFIGFOLDER/*.pid >/dev/null 2>&1
+  rm $CONFIGFOLDER/*.dat >/dev/null 2>&1
+  rm $CONFIGFOLDER/*.log >/dev/null 2>&1
+  wget -q $BOOTSTRAP
+  unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
+ 
   clear
-    echo -e "{\"success\":\""bootstraped"\"}"
-  clear
+    #echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
+  #clear
 
 }
  
@@ -285,6 +280,7 @@ clear
 function setup_node() {
   get_ip
   create_config
+  download_bootstrap
   create_key
   update_config
   enable_firewall
@@ -300,4 +296,4 @@ checks
 prepare_system
 download_node
 setup_node
-download_bootstrap
+
