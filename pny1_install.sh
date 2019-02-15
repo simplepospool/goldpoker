@@ -164,27 +164,6 @@ maxconnections=256
 masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
-#Altbet addnodes
-addnode=185.206.146.209:2238
-addnode=185.206.147.210:2238
-addnode=185.206.144.217:2238
-addnode=185.141.61.104:2238
-addnode=54.173.99.0:2238
-addnode=108.61.84.52:2238
-addnode=144.202.60.189:2238
-addnode=167.86.66.74:2238
-addnode=207.154.237.224:2238
-addnode=173.249.19.46:2238
-addnode=167.99.223.218:2238
-addnode=207.180.198.69:2238
-addnode=178.62.116.86:2238
-addnode=149.248.36.196:2238
-addnode=45.77.53.182:2238
-addnode=95.179.150.156:2238
-addnode=13.59.222.81:2238
-addnode=3.84.13.102:2238
-addnode=104.207.145.214:2238
-addnode=8.9.36.49:2238
 EOF
 }
 
@@ -260,12 +239,10 @@ apt-add-repository -y ppa:bitcoin/bitcoin >/dev/null 2>&1
 echo -e "Installing required packages, it may take some time to finish.${NC}"
 apt-get update >/dev/null 2>&1
 apt-get install libzmq3-dev -y >/dev/null 2>&1
-sudo apt -y install libzmq5 libboost-system1.65.1 libboost-filesystem1.65.1 libboost-program-options1.65.1 libboost-thread1.65.1 libdb4.8++ libminiupnpc-dev >/dev/null 2>&1
-sudo ln -s /usr/lib/x86_64-linux-gnu/libminiupnpc.so.17 /usr/lib/x86_64-linux-gnu/libminiupnpc.so.10 >/dev/null 2>&1
 apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" make software-properties-common \
 build-essential libtool autoconf libssl-dev libboost-dev libboost-chrono-dev libboost-filesystem-dev libboost-program-options-dev \
 libboost-system-dev libboost-test-dev libboost-thread-dev sudo automake git wget curl libdb4.8-dev bsdmainutils libdb4.8++-dev \
-libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev  libdb5.3++ unzip libzmq5 >/dev/null 2>&1
+libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev  libdb5.3++ unzip libzmq5 libboost-all-dev >/dev/null 2>&1
 if [ "$?" -gt "0" ];
   then
     echo -e "${RED}Not all required packages were installed properly. Try to install them manually by running the following commands:${NC}\n"
