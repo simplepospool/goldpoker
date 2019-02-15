@@ -11,7 +11,7 @@ COIN_NAME='CryptoFlow'
 COIN_PORT=3333
 RPC_PORT=3334
 BOOTSTRAP='https://www.dropbox.com/s/qmg7xox4esp4pvn/cfl_bootstrap.zip'
-BOOTSTRAP_ZIP='cfl_bootstrap.zip'
+BOOTSTRAP_FILE='cfl_bootstrap.zip'
  
 NODEIP=$(curl -s4 icanhazip.com)
  
