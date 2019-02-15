@@ -41,25 +41,21 @@ purgeOldInstallation() {
 }
 
 function download_bootstrap() {
-  systemctl stop $COIN_NAME.service
-  sleep 20
-  apt install unzip
-  rm -rf $CONFIGFOLDER/blocks
-  rm -rf $CONFIGFOLDER/chainstate
-  rm $CONFIGFOLDER/*.pid
-  rm $CONFIGFOLDER/*.dat
-  rm $CONFIGFOLDER/*.log
-  wget -N $BOOTSTRAP
+  rm -rf $CONFIGFOLDER/blocks >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/chainstate >/dev/null 2>&1
+  rm $CONFIGFOLDER/*.pid >/dev/null 2>&1
+  rm $CONFIGFOLDER/*.dat >/dev/null 2>&1
+  rm $CONFIGFOLDER/*.log >/dev/null 2>&1
+  wget -q $BOOTSTRAP
   unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
-  cd
-  systemctl start $COIN_NAME.service
-  sleep 5
-
+ 
   clear
-    echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
-  clear
+    #echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
+  #clear
 
 }
+
+
 function install_sentinel() {
   echo -e "${GREEN}Installing sentinel.${NC}"
   apt-get -y install python-virtualenv virtualenv >/dev/null 2>&1
@@ -299,6 +295,7 @@ function important_information() {
 function setup_node() {
   get_ip
   create_config
+  download_bootstrap
   create_key
   update_config
   enable_firewall
@@ -316,4 +313,4 @@ checks
 prepare_system
 download_node
 setup_node
-download_bootstrap
+
