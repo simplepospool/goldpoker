@@ -301,7 +301,7 @@ function setup_node() {
 ##### Main #####
 clear
 
-#purgeOldInstallation
+purgeOldInstallation
 checks
 prepare_system
 download_node
