@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.safeinsure'
 COIN_DAEMON='safeinsured'
 COIN_CLI='safeinsure-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/SafeInsure/sins-coin/releases/download/v1.0.0.5/safeinsure-1.0.0-x86_64-linux-gnu.tar.gz'
+COIN_TGZ='https://github.com/SafeInsure/sins-coin/releases/download/v1.0.0.6/safeinsure-1.0.0-x86_64-linux-gnu.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='safeinsure'
 COIN_PORT=39105
@@ -301,7 +301,7 @@ function setup_node() {
 ##### Main #####
 clear
 
-purgeOldInstallation
+#purgeOldInstallation
 checks
 prepare_system
 download_node
