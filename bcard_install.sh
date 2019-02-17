@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.CARDbuyers'
 COIN_PATH='/usr/local/bin/'
 COIN_DAEMON='CARDbuyersd'
 COIN_CLI='CARDbuyers-cli'
-COIN_TGZ='https://github.com/CARDbuyers/BCARD/releases/download/2.2.0/CARDbuyersd.tar.gz'
+COIN_TGZ='https://github.com/CARDbuyers/BCARD/releases/download/2.4.0/2.4.0CARDbuyersd.tar.gz'
 COIN_ZIP='CARDbuyersd.tar.gz'
 COIN_PORT=48451
 COIN_NAME='CARDbuyers'
@@ -21,22 +21,17 @@ GREEN=''
 NC=''
 
 function download_bootstrap() {
-  systemctl stop $COIN_NAME.service
-  sleep 60
-  cd
-  cd $CONFIGFOLDER
-  rm -rf blocks
-  rm -rf chainstate
-  rm peers.dat
-  wget -N $BOOTSTRAP
-  unzip bcard_bootstrap.zip
-  rm bcard_bootstrap.zip
-  cd
-  systemctl start $COIN_NAME.service
-
+  rm -rf $CONFIGFOLDER/blocks >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/chainstate >/dev/null 2>&1
+  rm $CONFIGFOLDER/*.pid >/dev/null 2>&1
+  rm $CONFIGFOLDER/*.dat >/dev/null 2>&1
+  rm $CONFIGFOLDER/*.log >/dev/null 2>&1
+  wget -q $BOOTSTRAP
+  unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
+ 
   clear
-    echo -e "{\"success\":\""bootstraped"\"}"
-  clear
+    #echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
+  #clear
 
 }
 
@@ -257,6 +252,7 @@ clear
 function setup_node() {
   get_ip
   create_config
+  download_bootstrap
   create_key
   update_config
   enable_firewall
@@ -272,4 +268,4 @@ checks
 prepare_system
 download_node
 setup_node
-download_bootstrap
+
