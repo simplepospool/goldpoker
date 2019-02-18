@@ -7,6 +7,7 @@ COIN_DAEMON='mobinoded'
 COIN_CLI='mobinode-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_TGZ='https://github.com/MOBInodecoin/Mobinode/files/2871906/Mobinode-Ubuntu_Daemon-16.04.tar.gz'
+COIN_TGZ_FILE='Mobinode-Ubuntu_Daemon-16.04.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='mobinode'
 COIN_PORT=12219
@@ -68,10 +69,9 @@ function install_sentinel() {
 function download_node() {
   echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
   cd $TMP_FOLDER >/dev/null 2>&1
-  wget -q $COIN_TGZ -O $COIN_DAEMON.zip
+  wget -q $COIN_TGZ
   compile_error
-  unzip -q $COIN_DAEMON.zip
-  cd rev >/dev/null 2>&1
+  tar zvxf $COIN_TGZ_FILE >/dev/null 2>&1
   chmod +x $COIN_DAEMON $COIN_CLI
   cp $COIN_DAEMON $COIN_CLI $COIN_PATH
   cd - >/dev/null 2>&1
