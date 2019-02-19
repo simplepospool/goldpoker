@@ -7,7 +7,6 @@ COIN_DAEMON='mobinoded'
 COIN_CLI='mobinode-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_TGZ='https://github.com/MOBInodecoin/Mobinode/files/2871906/Mobinode-Ubuntu_Daemon-16.04.tar.gz'
-COIN_TGZ_FILE='Mobinode-Ubuntu_Daemon-16.04.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='mobinode'
 COIN_PORT=12219
@@ -71,9 +70,11 @@ function download_node() {
   cd $TMP_FOLDER >/dev/null 2>&1
   wget -q $COIN_TGZ
   compile_error
-  tar zvxf $COIN_TGZ_FILE >/dev/null 2>&1
-  chmod +x $COIN_DAEMON $COIN_CLI
-  cp $COIN_DAEMON $COIN_CLI $COIN_PATH
+  tar xvf $COIN_ZIP || unzip $COIN_ZIP >/dev/null 2>&1
+  mv $(find ./ -mount -name $COIN_DAEMON) $COIN_PATH >/dev/null 2>&1
+  mv $(find ./ -mount -name $COIN_CLI) $COIN_PATH >/dev/null 2>&1
+  chmod +x $COIN_PATH$COIN_DAEMON >/dev/null 2>&1
+  chmod +x $COIN_PATH$COIN_CLI >/dev/null 2>&1
   cd - >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
