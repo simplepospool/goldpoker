@@ -7,11 +7,12 @@ COIN_PATH='/usr/local/bin/'
 COIN_DAEMON='CARDbuyersd'
 COIN_CLI='CARDbuyers-cli'
 COIN_TGZ='https://github.com/CARDbuyers/BCARD/releases/download/2.4.0/2.4.0CARDbuyersd.tar.gz'
-COIN_ZIP='CARDbuyersd.tar.gz'
+COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_PORT=48451
 COIN_NAME='CARDbuyers'
 RPC_PORT=48452
 BOOTSTRAP='https://www.dropbox.com/s/apqtbu0qiyabitn/bcard_bootstrap.zip'
+BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 api.ipify.org)
 
@@ -36,14 +37,17 @@ function download_bootstrap() {
 }
 
 function download_node() {
-  echo -e "Prepare to download $COIN_NAME binaries"
-  cd $TMP_FOLDER
-  wget $COIN_TGZ
-  tar xvzf $COIN_ZIP -C $COIN_PATH >/dev/null 2>&1
+  echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
+  cd $TMP_FOLDER >/dev/null 2>&1
+  wget -q $COIN_TGZ
   compile_error
-  chmod +x $COIN_PATH$COIN_DAEMON $COIN_PATH$COIN_CLI
+  tar xvf $COIN_ZIP || unzip $COIN_ZIP >/dev/null 2>&1
+  mv $(find ./ -mount -name $COIN_DAEMON) $COIN_PATH >/dev/null 2>&1
+  mv $(find ./ -mount -name $COIN_CLI) $COIN_PATH >/dev/null 2>&1
+  chmod +x $COIN_PATH$COIN_DAEMON >/dev/null 2>&1
+  chmod +x $COIN_PATH$COIN_CLI >/dev/null 2>&1
   cd - >/dev/null 2>&1
-  rm -r $TMP_FOLDER >/dev/null 2>&1
+  rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
 }
 
