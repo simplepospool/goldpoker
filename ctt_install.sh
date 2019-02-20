@@ -12,7 +12,7 @@ COIN_NAME='cryptoinvest'
 COIN_PORT=57810
 RPC_PORT=57811
 BOOTSTRAP='https://www.dropbox.com/s/i2ihq42871clof7/ctt_bootstrap.zip'
-BOOTSTRAP_FILE=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
+BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
 
