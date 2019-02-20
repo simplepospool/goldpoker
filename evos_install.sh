@@ -12,7 +12,7 @@ COIN_NAME='evos'
 COIN_PORT=16345
 RPC_PORT=16346
 BOOTSTRAP='https://www.dropbox.com/s/n4avqa5ziby06kg/evos_bootstrap.zip'
-BOOTSTRAP_FILE=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
+BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
 
