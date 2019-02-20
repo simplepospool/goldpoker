@@ -12,7 +12,7 @@ COIN_NAME='insifa'
 COIN_PORT=3509
 RPC_PORT=3510
 BOOTSTRAP='https://www.dropbox.com/s/swvuhadvyiqpa2z/isf_bootstrap.zip'
-BOOTSTRAP_FILE=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
+BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
 
