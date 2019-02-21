@@ -6,11 +6,13 @@ CONFIGFOLDER='/root/.gincoincore'
 COIN_DAEMON='gincoind'
 COIN_CLI='gincoin-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_REPO='https://github.com/gincoin-dev/gincoin-core/releases/download/1.1.0.0/gincoin-binaries-linux-64bit.tar.gz'
+COIN_REPO='https://github.com/GIN-coin/gincoin-core/releases/download/v1.2.1.0/gincoin-binaries-1.2.1-linux-64bit.tar.gz'
+COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='Gincoin'
 COIN_PORT=10111
 RPC_PORT=10211
 BOOTSTRAP='https://www.dropbox.com/s/6614rnaoypc9do5/gin_bootstrap.zip'
+BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 
 NODEIP=$(curl -s4 api.ipify.org)
@@ -21,38 +23,33 @@ GREEN=''
 NC=''
 
 function download_bootstrap() {
-  systemctl stop $COIN_NAME.service
-  sleep 60
-  cd
-  cd $CONFIGFOLDER
-  rm -rf blocks
-  rm -rf chainstate
-  rm peers.dat
-  wget -N $BOOTSTRAP
-  unzip gin_bootstrap.zip
-  rm gin_bootstrap.zip
-  cd
-  systemctl start $COIN_NAME.service
-
+  rm -rf $CONFIGFOLDER/blocks >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/chainstate >/dev/null 2>&1
+  rm $CONFIGFOLDER/*.pid >/dev/null 2>&1
+  rm $CONFIGFOLDER/*.dat >/dev/null 2>&1
+  rm $CONFIGFOLDER/*.log >/dev/null 2>&1
+  wget -q $BOOTSTRAP
+  unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
+  rm $BOOTSTRAP_FILE
+ 
   clear
-    echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
-  clear
+    #echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
+  #clear
 
 }
 
 
-function compile_node() {
-  echo -e "Preparing to download $COIN_NAME"
-  cd $TMP_FOLDER
-  wget -q $COIN_REPO
+function download_node() {
+  echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
+  cd $TMP_FOLDER >/dev/null 2>&1
+  wget -q $COIN_TGZ
   compile_error
-  COIN_ZIP=$(echo $COIN_REPO | awk -F'/' '{print $NF}')
-  tar xvzf $COIN_ZIP --strip 1 >/dev/null 2>&1
-  compile_error
-  cp $COIN_DAEMON $COIN_CLI $COIN_PATH
-  compile_error
-  strip $COIN_PATH$COIN_DAEMON $COIN_PATH$COIN_CLI
-  cd -
+  tar xvf $COIN_ZIP || unzip $COIN_ZIP >/dev/null 2>&1
+  mv $(find ./ -mount -name $COIN_DAEMON) $COIN_PATH >/dev/null 2>&1
+  mv $(find ./ -mount -name $COIN_CLI) $COIN_PATH >/dev/null 2>&1
+  chmod +x $COIN_PATH$COIN_DAEMON >/dev/null 2>&1
+  chmod +x $COIN_PATH$COIN_CLI >/dev/null 2>&1
+  cd - >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
 }
@@ -115,11 +112,13 @@ EOF
 }
 
 function create_key() {
-  echo -e "Enter your ${RED}$COIN_NAME Masternode Private Key${NC}. Leave it blank to generate a new ${RED}Masternode Private Key${NC} for you:"
+  echo -e "${YELLOW}Enter your ${RED}$COIN_NAME Masternode GEN Key${NC}. Or Press enter generate New Genkey"
   read -t 10 -e COINKEY
   if [[ -z "$COINKEY" ]]; then
   $COIN_PATH$COIN_DAEMON -daemon
-  sleep 30
+  while [[ ! $($COIN_CLI getblockcount 2> /dev/null) =~ ^[0-9]+$ ]]; do 
+    sleep 1
+  done
   if [ -z "$(ps axo cmd:100 | grep $COIN_DAEMON)" ]; then
    echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.{$NC}"
    exit 1
@@ -127,8 +126,10 @@ function create_key() {
   COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
   if [ "$?" -gt "0" ];
     then
-    echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the Private Key${NC}"
-    sleep 30
+    echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the GEN Key${NC}"
+    while [[ ! $($COIN_CLI getblockcount 2> /dev/null) =~ ^[0-9]+$ ]]; do 
+    sleep 1
+    done
     COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
   fi
   $COIN_PATH$COIN_CLI stop
@@ -261,6 +262,7 @@ clear
 function setup_node() {
   get_ip
   create_config
+  download_bootstrap
   create_key
   update_config
   enable_firewall
@@ -274,6 +276,6 @@ clear
 
 checks
 prepare_system
-compile_node
+download_node
 setup_node
-download_bootstrap
+
