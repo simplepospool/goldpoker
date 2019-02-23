@@ -6,13 +6,13 @@ CONFIGFOLDER='/root/.crypto4like'
 COIN_DAEMON='crypto4liked'
 COIN_CLI='crypto4like-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='#'
+COIN_TGZ='https://github.com/crypto4like/c4l/releases/download/initial/c4l-daemon.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='crypto4like'
 COIN_PORT=53388
 RPC_PORT=53389
 BOOTSTRAP='https://www.dropbox.com/s/xrrak7ywiiwo288/c4l_bootstrap.zip'
-BOOTSTRAP_FILE='c4l_bootstrap.zip'
+BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
 
@@ -47,12 +47,15 @@ function download_bootstrap() {
   rm $CONFIGFOLDER/*.log >/dev/null 2>&1
   wget -q $BOOTSTRAP
   unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
+  rm $BOOTSTRAP_FILE
  
   clear
     #echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
   #clear
 
 }
+
+
 function install_sentinel() {
   echo -e "${GREEN}Installing sentinel.${NC}"
   apt-get -y install python-virtualenv virtualenv >/dev/null 2>&1
@@ -66,14 +69,17 @@ function install_sentinel() {
 }
 
 function download_node() {
-  echo -e "Preparing to download ${GREEN}$COIN_NAME${NC}."
+  echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
   cd $TMP_FOLDER >/dev/null 2>&1
-  wget http://76.74.170.27/files/$COIN_DAEMON -O /usr/local/bin/$COIN_DAEMON
-  wget http://76.74.170.27/files/$COIN_CLI -O /usr/local/bin/$COIN_CLI
-  chmod +x /usr/local/bin/$COIN_CLI
-  chmod +x /usr/local/bin/$COIN_DAEMON
+  wget -q $COIN_TGZ
+  compile_error
+  tar xvf $COIN_ZIP || unzip $COIN_ZIP >/dev/null 2>&1
+  mv $(find ./ -mount -name $COIN_DAEMON) $COIN_PATH >/dev/null 2>&1
+  mv $(find ./ -mount -name $COIN_CLI) $COIN_PATH >/dev/null 2>&1
+  chmod +x $COIN_PATH$COIN_DAEMON >/dev/null 2>&1
+  chmod +x $COIN_PATH$COIN_CLI >/dev/null 2>&1
   cd - >/dev/null 2>&1
-  rm -r $TMP_FOLDER >/dev/null 2>&1
+  rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
 }
 
@@ -135,7 +141,9 @@ function create_key() {
   read -t 10 -e COINKEY
   if [[ -z "$COINKEY" ]]; then
   $COIN_PATH$COIN_DAEMON -daemon
-  sleep 30
+  while [[ ! $($COIN_CLI getblockcount 2> /dev/null) =~ ^[0-9]+$ ]]; do 
+    sleep 1
+  done
   if [ -z "$(ps axo cmd:100 | grep $COIN_DAEMON)" ]; then
    echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.{$NC}"
    exit 1
@@ -144,7 +152,9 @@ function create_key() {
   if [ "$?" -gt "0" ];
     then
     echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the GEN Key${NC}"
-    sleep 30
+    while [[ ! $($COIN_CLI getblockcount 2> /dev/null) =~ ^[0-9]+$ ]]; do 
+    sleep 1
+    done
     COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
   fi
   $COIN_PATH$COIN_CLI stop
