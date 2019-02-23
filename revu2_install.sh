@@ -12,7 +12,7 @@ COIN_NAME='revu'
 COIN_PORT=31335
 RPC_PORT=31336
 BOOTSTRAP='https://www.dropbox.com/s/9810otyl92aanpu/revu_bootstrap.zip'
-BOOTSTRAP_FILE='revu_bootstrap.zip'
+BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
 
@@ -47,12 +47,15 @@ function download_bootstrap() {
   rm $CONFIGFOLDER/*.log >/dev/null 2>&1
   wget -q $BOOTSTRAP
   unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
+  rm $BOOTSTRAP_FILE
  
   clear
     #echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
   #clear
 
 }
+
+
 function install_sentinel() {
   echo -e "${GREEN}Installing sentinel.${NC}"
   apt-get -y install python-virtualenv virtualenv >/dev/null 2>&1
@@ -68,15 +71,14 @@ function install_sentinel() {
 function download_node() {
   echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
   cd $TMP_FOLDER >/dev/null 2>&1
-  wget $COIN_TGZ -O $COIN_DAEMON.zip
+  wget -q $COIN_TGZ
   compile_error
-  unzip $COIN_DAEMON.zip
-  chmod +x $COIN_DAEMON
-  chmod +x $COIN_CLI
-  compile_error
-  cp $COIN_DAEMON $COIN_PATH
-  cp $COIN_CLI $COIN_PATH
-  cd ~ >/dev/null 2>&1
+  tar xvf $COIN_ZIP || unzip $COIN_ZIP >/dev/null 2>&1
+  mv $(find ./ -mount -name $COIN_DAEMON) $COIN_PATH >/dev/null 2>&1
+  mv $(find ./ -mount -name $COIN_CLI) $COIN_PATH >/dev/null 2>&1
+  chmod +x $COIN_PATH$COIN_DAEMON >/dev/null 2>&1
+  chmod +x $COIN_PATH$COIN_CLI >/dev/null 2>&1
+  cd - >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
 }
@@ -139,7 +141,9 @@ function create_key() {
   read -t 10 -e COINKEY
   if [[ -z "$COINKEY" ]]; then
   $COIN_PATH$COIN_DAEMON -daemon
-  sleep 30
+  while [[ ! $($COIN_CLI getblockcount 2> /dev/null) =~ ^[0-9]+$ ]]; do 
+    sleep 1
+  done
   if [ -z "$(ps axo cmd:100 | grep $COIN_DAEMON)" ]; then
    echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.{$NC}"
    exit 1
@@ -148,7 +152,9 @@ function create_key() {
   if [ "$?" -gt "0" ];
     then
     echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the GEN Key${NC}"
-    sleep 30
+    while [[ ! $($COIN_CLI getblockcount 2> /dev/null) =~ ^[0-9]+$ ]]; do 
+    sleep 1
+    done
     COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
   fi
   $COIN_PATH$COIN_CLI stop
