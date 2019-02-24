@@ -54,8 +54,6 @@ function download_bootstrap() {
   #clear
 
 }
-
-
 function install_sentinel() {
   echo -e "${GREEN}Installing sentinel.${NC}"
   apt-get -y install python-virtualenv virtualenv >/dev/null 2>&1
@@ -166,11 +164,11 @@ function update_config() {
   sed -i 's/daemon=1/daemon=0/' $CONFIGFOLDER/$CONFIG_FILE
   cat << EOF >> $CONFIGFOLDER/$CONFIG_FILE
 logintimestamps=1
-maxconnections=64
+maxconnections=256
+#bind=$NODEIP
 masternode=1
+externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
-masternodeaddr=$NODEIP:$COIN_PORT
-
 #Addnodes
 addnode=104.248.90.238:10300
 addnode=104.248.90.238:44516
@@ -211,6 +209,7 @@ addnode=95.179.148.14:35084
 addnode=95.179.148.14:51930
 addnode=95.179.158.88:37238
 addnode=95.179.158.88:50318
+
 EOF
 }
 
