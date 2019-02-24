@@ -12,7 +12,7 @@ COIN_NAME='klimatas'
 COIN_PORT=10300
 RPC_PORT=10301
 BOOTSTRAP='https://www.dropbox.com/s/t5mo1qsx4fmrlgn/kts_bootstrap.zip'
-BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')p'
+BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
 
