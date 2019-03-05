@@ -12,7 +12,7 @@ COIN_NAME='birakecoin'
 COIN_PORT=39697
 RPC_PORT=39698
 BOOTSTRAP='https://www.dropbox.com/s/zaxwqcnlgh3i5yk/bir_bootstrap.zip'
-BOOTSTRAP_FILE=COIN_ZIP=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
+BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
 
