@@ -6,13 +6,13 @@ CONFIGFOLDER='/root/.vitae'
 COIN_DAEMON='vitaed'
 COIN_CLI='vitae-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/VitaeTeam/Vitae/releases/download/4.3.0/vitae-4.3.0-linux-64.tar.gz'
+COIN_TGZ='https://github.com/VitaeTeam/Vitae/releases/download/v4.4.0.3/vitae-4.4.0.3-linux.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='vitae'
 COIN_PORT=8765
 RPC_PORT=8764
-BOOTSTRAP='https://www.dropbox.com/s/weh6e6us0qwa94h/cux_bootstrap.zip'
-BOOTSTRAP_FILE='cux_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/a0mlqi4krreazzg/vitae_bootstrap.zip'
+BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
 
@@ -40,25 +40,22 @@ purgeOldInstallation() {
 }
 
 function download_bootstrap() {
-  systemctl stop $COIN_NAME.service
-  sleep 60
-  apt install unzip
-  cd $CONFIGFOLDER
-  rm -rf blocks
-  rm -rf chainstate
-  rm peers.dat
-  wget -N $BOOTSTRAP
-  unzip $BOOTSTRAP_FILE
-  rm $BOOTSTRAP_FILE
-  cd
-  systemctl start $COIN_NAME.service
-  sleep 60
-
+  rm -rf $CONFIGFOLDER/blocks >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/chainstate >/dev/null 2>&1
+  rm $CONFIGFOLDER/*.pid >/dev/null 2>&1
+  rm $CONFIGFOLDER/*.dat >/dev/null 2>&1
+  rm $CONFIGFOLDER/*.log >/dev/null 2>&1
+  wget -q $BOOTSTRAP
+  unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
+  # rm $BOOTSTRAP_FILE
+ 
   clear
-    echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
-  clear
+    #echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
+  #clear
 
 }
+
+
 function install_sentinel() {
   echo -e "${GREEN}Installing sentinel.${NC}"
   apt-get -y install python-virtualenv virtualenv >/dev/null 2>&1
@@ -74,15 +71,14 @@ function install_sentinel() {
 function download_node() {
   echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
   cd $TMP_FOLDER >/dev/null 2>&1
-  wget -qO- $COIN_TGZ | tar xvz
+  wget -q $COIN_TGZ
   compile_error
-  cd vitae*
-  chmod +x $COIN_DAEMON
-  chmod +x $COIN_CLI
-  compile_error
-  cp $COIN_DAEMON $COIN_PATH
-  cp $COIN_CLI $COIN_PATH
-  cd ~ >/dev/null 2>&1
+  tar xvf $COIN_ZIP || unzip $COIN_ZIP >/dev/null 2>&1
+  mv $(find ./ -mount -name $COIN_DAEMON) $COIN_PATH >/dev/null 2>&1
+  mv $(find ./ -mount -name $COIN_CLI) $COIN_PATH >/dev/null 2>&1
+  chmod +x $COIN_PATH$COIN_DAEMON >/dev/null 2>&1
+  chmod +x $COIN_PATH$COIN_CLI >/dev/null 2>&1
+  cd - >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
 }
@@ -145,7 +141,9 @@ function create_key() {
   read -t 10 -e COINKEY
   if [[ -z "$COINKEY" ]]; then
   $COIN_PATH$COIN_DAEMON -daemon
-  sleep 30
+  while [[ ! $($COIN_CLI getblockcount 2> /dev/null) =~ ^[0-9]+$ ]]; do 
+    sleep 1
+  done
   if [ -z "$(ps axo cmd:100 | grep $COIN_DAEMON)" ]; then
    echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.{$NC}"
    exit 1
@@ -154,7 +152,9 @@ function create_key() {
   if [ "$?" -gt "0" ];
     then
     echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the GEN Key${NC}"
-    sleep 30
+    while [[ ! $($COIN_CLI getblockcount 2> /dev/null) =~ ^[0-9]+$ ]]; do 
+    sleep 1
+    done
     COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
   fi
   $COIN_PATH$COIN_CLI stop
@@ -294,6 +294,7 @@ function important_information() {
 function setup_node() {
   get_ip
   create_config
+  download_bootstrap
   create_key
   update_config
   enable_firewall
@@ -306,9 +307,8 @@ function setup_node() {
 ##### Main #####
 clear
 
-purgeOldInstallation
+#purgeOldInstallation
 checks
 prepare_system
 download_node
 setup_node
-#download_bootstrap
