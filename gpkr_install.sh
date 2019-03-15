@@ -141,7 +141,6 @@ clear
 function update_config() {
   cat << EOF >> $CONFIGFOLDER/$CONFIG_FILE
 #bind=$NODEIP
-gen=1
 masternode=1
 masternodeaddr=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
