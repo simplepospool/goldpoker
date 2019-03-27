@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='livenodes'
 COIN_PORT=30555
 RPC_PORT=30556
-BOOTSTRAP='https://www.dropbox.com/s/ooqmywy9hdi63a9/abet_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/ha7hkkaxlzew9jo/lno_bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -291,7 +291,7 @@ function important_information() {
 function setup_node() {
   get_ip
   create_config
-  #download_bootstrap
+  download_bootstrap
   create_key
   update_config
   enable_firewall
