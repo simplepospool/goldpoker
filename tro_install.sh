@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='trunk'
 COIN_PORT=23319
 RPC_PORT=23320
-BOOTSTRAP='https://www.dropbox.com/s/ooqmywy9hdi63a9/abet_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/bbv0g65kqu4dh97/tro_bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -170,14 +170,7 @@ masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
 #Addnodes
-addnode=157.230.186.21
-addnode=142.93.86.132
-addnode=178.62.224.251
-addnode=139.59.67.159
-addnode=142.93.32.211
-addnode=134.209.228.42
-addnode=167.99.185.124
-addnode=128.199.160.59
+
 EOF
 }
 
@@ -300,7 +293,7 @@ function important_information() {
 function setup_node() {
   get_ip
   create_config
-  #download_bootstrap
+  download_bootstrap
   create_key
   update_config
   enable_firewall
