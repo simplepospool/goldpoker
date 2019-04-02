@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='livenodes'
 COIN_PORT=30555
 RPC_PORT=30556
-BOOTSTRAP='https://www.dropbox.com/s/ha7hkkaxlzew9jo/lno_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/ce95lj7uxnufdr3/lno_bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
