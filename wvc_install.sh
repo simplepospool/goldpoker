@@ -6,12 +6,13 @@ CONFIGFOLDER='/root/.wavercoin'
 COIN_DAEMON='wavercoind'
 COIN_CLI='wavercoin-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/wavercoin/core-project/releases/download/v1.1/wvc-linux-v1.1.zip'
+COIN_TGZ='https://github.com/wavercoin/core-project/releases/download/v2.0/waver_v2.0-update.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='wavercoin'
 COIN_PORT=21501
 RPC_PORT=21502
-BOOTSTRAP='https://www.dropbox.com/s/x33z2xzizjuzfk2/wvc_bootstrap.zip'
+BOOTSTRAP='https://github.com/wavercoin/core-project/releases/download/v2.0/block-72001.zip'
+BOOTSTRAP1='https://www.dropbox.com/s/x33z2xzizjuzfk2/wvc_bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
