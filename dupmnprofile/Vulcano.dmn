@@ -1,0 +1,7 @@
+COIN_NAME="Vulcano"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="vulcanod"
+COIN_CLI="vulcano-cli"
+COIN_FOLDER="/root/.vulcanocore"
+COIN_CONFIG="vulcano.conf"
+COIN_SERVICE="Vulcano.service"

@@ -1,0 +1,7 @@
+COIN_NAME="quotation"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="quotationd"
+COIN_CLI="quotation-cli"
+COIN_FOLDER="/root/.quotation"
+COIN_CONFIG="quotation.conf"
+COIN_SERVICE="quotation.service"

@@ -1,0 +1,7 @@
+COIN_NAME="DeviantCore"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="deviantd"
+COIN_CLI="deviant-cli"
+COIN_FOLDER="/root/.DeviantCore"
+COIN_CONFIG="deviant.conf"
+COIN_SERVICE="DeviantCore.service"
