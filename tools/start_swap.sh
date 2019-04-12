@@ -1,11 +1,6 @@
 #!/bin/bash
 
 cd /var; sudo touch swap.img; sudo chmod 600 swap.img; sudo dd if=/dev/zero of=/var/swap.img bs=1024k count=8000; mkswap /var/swap.img; sudo swapon /var/swap.img; sudo free; sudo echo "/var/swap.img none swap sw 0 0" >> /etc/fstab
-wget https://raw.githubusercontent.com/simplepospool/goldpoker/master/verify_stat.sh
-wget https://raw.githubusercontent.com/simplepospool/goldpoker/master/dupmn_all.sh
-wget -q https://raw.githubusercontent.com/neo3587/dupmn/master/dupmn_install.sh
-bash dupmn_install.sh
-wget -q https://raw.githubusercontent.com/neo3587/dupmn/master/profiles/CARDbuyers.dmn
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
@@ -32,8 +27,8 @@ sudo apt-get dist-upgrade -y
 apt-get -y autoremove
 apt-get install sysstat -y
 apt-get install bc -y
-wget https://raw.githubusercontent.com/simplepospool/goldpoker/master/verify_stat.sh
-wget https://raw.githubusercontent.com/simplepospool/goldpoker/master/dupmn_all.sh
 wget -q https://raw.githubusercontent.com/neo3587/dupmn/master/dupmn_install.sh
 bash dupmn_install.sh
 wget -q https://raw.githubusercontent.com/neo3587/dupmn/master/profiles/CARDbuyers.dmn
+wget -q https://raw.githubusercontent.com/simplepospool/goldpoker/master/tools/verify_stat.sh
+wget -q https://raw.githubusercontent.com/simplepospool/goldpoker/master/tools/dupmn_all.sh
