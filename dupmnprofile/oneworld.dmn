@@ -1,0 +1,7 @@
+COIN_NAME="oneworld"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="oneworldd"
+COIN_CLI="oneworld-cli"
+COIN_FOLDER="/root/.oneworld"
+COIN_CONFIG="oneworld.conf"
+COIN_SERVICE="oneworld.service"

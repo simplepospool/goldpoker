@@ -1,0 +1,7 @@
+COIN_NAME="alphacup"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="alphacupd"
+COIN_CLI="alphacup-cli"
+COIN_FOLDER="/root/.alphacup"
+COIN_CONFIG="alphacup.conf"
+COIN_SERVICE="alphacup.service"
