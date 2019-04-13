@@ -1,0 +1,7 @@
+COIN_NAME="prx"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="prxd"
+COIN_CLI="prx-cli"
+COIN_FOLDER="/root/.prx"
+COIN_CONFIG="prx.conf"
+COIN_SERVICE="prx.service"
