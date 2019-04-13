@@ -1,0 +1,7 @@
+COIN_NAME="logiscoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="logiscoind"
+COIN_CLI="logiscoin-cli"
+COIN_FOLDER="/root/.logiscoin"
+COIN_CONFIG="logiscoin.conf"
+COIN_SERVICE="logiscoin.service"
