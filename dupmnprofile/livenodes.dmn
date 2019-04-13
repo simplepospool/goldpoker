@@ -1,0 +1,7 @@
+COIN_NAME="livenodes"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="livenodesd"
+COIN_CLI="livenodes-cli"
+COIN_FOLDER="/root/.livenodes"
+COIN_CONFIG="livenodes.conf"
+COIN_SERVICE="livenodes.service"
