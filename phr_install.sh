@@ -25,12 +25,14 @@ NC=''
 function download_bootstrap() {
   rm -rf $CONFIGFOLDER/blocks >/dev/null 2>&1
   rm -rf $CONFIGFOLDER/chainstate >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/sporks >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/zerocoin >/dev/null 2>&1
   rm $CONFIGFOLDER/*.pid >/dev/null 2>&1
   rm $CONFIGFOLDER/*.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/*.log >/dev/null 2>&1
   wget -q $BOOTSTRAP
   unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
-  rm $BOOTSTRAP_FILE
+  # rm $BOOTSTRAP_FILE
  
   clear
     #echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
