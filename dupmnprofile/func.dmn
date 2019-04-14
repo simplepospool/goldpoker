@@ -1,0 +1,7 @@
+COIN_NAME="func"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="funcd"
+COIN_CLI="func-cli"
+COIN_FOLDER="/root/.func"
+COIN_CONFIG="func.conf"
+COIN_SERVICE="func.service"
