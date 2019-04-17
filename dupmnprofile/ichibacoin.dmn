@@ -1,0 +1,7 @@
+COIN_NAME="ichibacoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="ichibacoind"
+COIN_CLI="ichibacoin-cli"
+COIN_FOLDER="/root/.ichibacoin"
+COIN_CONFIG="ichibacoin.conf"
+COIN_SERVICE="ichibacoin.service"
