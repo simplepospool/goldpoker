@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='lightpaycoin'
 COIN_PORT=39797
 RPC_PORT=39798
-BOOTSTRAP='https://www.dropbox.com/s/kzorn603sv883cv/lpc_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/sx678su1aw20rng/lpc_bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -47,7 +47,7 @@ function download_bootstrap() {
   rm $CONFIGFOLDER/*.log >/dev/null 2>&1
   wget -q $BOOTSTRAP
   unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
-  rm $BOOTSTRAP_FILE
+  # rm $BOOTSTRAP_FILE
  
   clear
     #echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
