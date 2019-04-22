@@ -1,0 +1,7 @@
+COIN_NAME="cryptoinvest"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="cryptoinvestd"
+COIN_CLI="cryptoinvest-cli"
+COIN_FOLDER="/root/.cryptoinvest"
+COIN_CONFIG="cryptoinvest.conf"
+COIN_SERVICE="cryptoinvest.service"
