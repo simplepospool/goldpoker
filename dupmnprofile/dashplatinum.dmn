@@ -1,0 +1,7 @@
+COIN_NAME="dashplatinum"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="dashplatinumd"
+COIN_CLI="dashplatinum-cli"
+COIN_FOLDER="/root/.dashplatinum"
+COIN_CONFIG="dashplatinum.conf"
+COIN_SERVICE="dashplatinum.service"

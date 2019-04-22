@@ -1,0 +1,7 @@
+COIN_NAME="dashgreen"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="dashgreend"
+COIN_CLI="dashgreen-cli"
+COIN_FOLDER="/root/.dashgreen"
+COIN_CONFIG="dashgreen.conf"
+COIN_SERVICE="dashgreen.service"
