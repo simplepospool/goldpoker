@@ -1,0 +1,7 @@
+COIN_NAME="projectcoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="projectcoind"
+COIN_CLI="projectcoin-cli"
+COIN_FOLDER="/root/.projectcoin"
+COIN_CONFIG="projectcoin.conf"
+COIN_SERVICE="projectcoin.service"
