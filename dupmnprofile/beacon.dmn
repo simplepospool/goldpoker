@@ -1,0 +1,7 @@
+COIN_NAME="beacon"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="beacond"
+COIN_CLI="beacon-cli"
+COIN_FOLDER="/root/.beacon"
+COIN_CONFIG="beacon.conf"
+COIN_SERVICE="beacon.service"
