@@ -12,7 +12,7 @@ COIN_NAME='mobinode'
 COIN_PORT=12219
 RPC_PORT=12220
 BOOTSTRAP='https://www.dropbox.com/s/q0n7nu6y0tytzyz/mobi_bootstrap.zip'
-BOOTSTRAP_FILE='mobi_bootstrap.zip'
+BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
 
@@ -47,6 +47,7 @@ function download_bootstrap() {
   rm $CONFIGFOLDER/*.log >/dev/null 2>&1
   wget -q $BOOTSTRAP
   unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
+  # rm $BOOTSTRAP_FILE
  
   clear
     #echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
