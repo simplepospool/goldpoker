@@ -1,0 +1,7 @@
+COIN_NAME="mobinode"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="mobinoded"
+COIN_CLI="mobinode-cli"
+COIN_FOLDER="/root/.mobinode"
+COIN_CONFIG="mobinode.conf"
+COIN_SERVICE="mobinode.service"
