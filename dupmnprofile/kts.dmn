@@ -1,0 +1,7 @@
+COIN_NAME="kts"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="ktsd"
+COIN_CLI="kts-cli"
+COIN_FOLDER="/root/.kts"
+COIN_CONFIG="kts.conf"
+COIN_SERVICE="kts.service"
