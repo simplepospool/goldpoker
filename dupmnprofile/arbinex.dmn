@@ -1,0 +1,7 @@
+COIN_NAME="arbinex"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="arbinexd"
+COIN_CLI="arbinex-cli"
+COIN_FOLDER="/root/.arbinex"
+COIN_CONFIG="arbinex.conf"
+COIN_SERVICE="arbinex.service"
