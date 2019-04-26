@@ -1,0 +1,7 @@
+COIN_NAME="pny"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="pnyd"
+COIN_CLI="pny-cli"
+COIN_FOLDER="/root/.peony"
+COIN_CONFIG="pny.conf"
+COIN_SERVICE="pny.service"
