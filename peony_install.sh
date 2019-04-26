@@ -1,14 +1,14 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='peony.conf'
+CONFIG_FILE='pny.conf'
 CONFIGFOLDER='/root/.peony'
-COIN_DAEMON='peonyd'
-COIN_CLI='peony-cli'
+COIN_DAEMON='pnyd'
+COIN_CLI='pny-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://www.dropbox.com/s/oyplstt1gq1gfi3/peony.zip'
+COIN_TGZ='https://github.com/PeonyTeam/peony/releases/download/v2.0.1/pny-2.0.1-x86_64-linux-gnu.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='peony'
+COIN_NAME='pny'
 COIN_PORT=16889
 RPC_PORT=16890
 BOOTSTRAP='https://www.dropbox.com/s/ft2i5wuhexg4anm/peony_bootstrap.zip'
