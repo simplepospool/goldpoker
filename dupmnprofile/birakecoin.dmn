@@ -1,0 +1,7 @@
+COIN_NAME="birakecoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="birakecoind"
+COIN_CLI="birakecoin-cli"
+COIN_FOLDER="/root/.birakecoin"
+COIN_CONFIG="birakecoin.conf"
+COIN_SERVICE="birakecoin.service"
