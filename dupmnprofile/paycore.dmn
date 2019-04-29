@@ -1,0 +1,7 @@
+COIN_NAME="paycore"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="paycored"
+COIN_CLI="paycore-cli"
+COIN_FOLDER="/root/.paycore"
+COIN_CONFIG="paycore.conf"
+COIN_SERVICE="paycore.service"
