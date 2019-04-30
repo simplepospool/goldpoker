@@ -1,0 +1,7 @@
+COIN_NAME="trunk"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="trunkd"
+COIN_CLI="trunk-cli"
+COIN_FOLDER="/root/.trunk"
+COIN_CONFIG="trunk.conf"
+COIN_SERVICE="trunk.service"
