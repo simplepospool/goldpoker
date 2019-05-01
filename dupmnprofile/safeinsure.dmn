@@ -1,0 +1,7 @@
+COIN_NAME="safeinsure"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="safeinsured"
+COIN_CLI="safeinsure-cli"
+COIN_FOLDER="/root/.safeinsure"
+COIN_CONFIG="safeinsure.conf"
+COIN_SERVICE="safeinsure.service"
