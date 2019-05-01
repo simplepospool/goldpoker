@@ -1,0 +1,7 @@
+COIN_NAME="dach"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="dachd"
+COIN_CLI="dach-cli"
+COIN_FOLDER="/root/.dach"
+COIN_CONFIG="dach.conf"
+COIN_SERVICE="dach.service"
