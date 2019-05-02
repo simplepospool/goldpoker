@@ -1,17 +1,17 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='altbet.conf'
-CONFIGFOLDER='/root/.altbet'
-COIN_DAEMON='altbetd'
-COIN_CLI='altbet-cli'
+CONFIG_FILE='profitbase.conf'
+CONFIGFOLDER='/root/.profitbase'
+COIN_DAEMON='profitbased'
+COIN_CLI='profitbase-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/altbet/abet/releases/download/v.2.0.0.1/altbet-v2.0.0.1-ubu1604.tar.gz'
+COIN_TGZ='https://github.com/ProfitBaseCoin/Profitbase/releases/download/1.1.0.0/Profitbase-1.1.0.0-daemon_ubuntu_16.04.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='altbet'
-COIN_PORT=2238
-RPC_PORT=2239
-BOOTSTRAP='https://www.dropbox.com/s/ooqmywy9hdi63a9/abet_bootstrap.zip'
+COIN_NAME='profitbase'
+COIN_PORT=1516
+RPC_PORT=1517
+BOOTSTRAP='https://www.dropbox.com/s/c2yj000mqv1fjfq/pbc_bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -173,27 +173,16 @@ masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
 
-#Altbet addnodes
-addnode=185.206.146.209:2238
-addnode=185.206.147.210:2238
-addnode=185.206.144.217:2238
-addnode=185.141.61.104:2238
-addnode=54.173.99.0:2238
-addnode=108.61.84.52:2238
-addnode=144.202.60.189:2238
-addnode=167.86.66.74:2238
-addnode=207.154.237.224:2238
-addnode=173.249.19.46:2238
-addnode=167.99.223.218:2238
-addnode=207.180.198.69:2238
-addnode=178.62.116.86:2238
-addnode=149.248.36.196:2238
-addnode=45.77.53.182:2238
-addnode=95.179.150.156:2238
-addnode=13.59.222.81:2238
-addnode=3.84.13.102:2238
-addnode=104.207.145.214:2238
-addnode=8.9.36.49:2238
+#Addnodes
+
+addnode=45.77.127.68
+addnode=108.61.78.45
+addnode=149.248.62.176
+addnode=95.179.132.255
+addnode=140.82.52.50
+addnode=45.76.92.226
+addnode=95.179.228.6
+addnode=45.77.234.76
 EOF
 }
 
