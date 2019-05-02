@@ -1,0 +1,7 @@
+COIN_NAME="profitbase"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="profitbased"
+COIN_CLI="profitbase-cli"
+COIN_FOLDER="/root/.profitbase"
+COIN_CONFIG="profitbase.conf"
+COIN_SERVICE="profitbase.service"
