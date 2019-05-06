@@ -9,8 +9,8 @@ COIN_PATH='/usr/local/bin/'
 COIN_TGZ='https://github.com/bulpgame/Bulpcoin/releases/download/v1.0.0/BulpCoin-v1.0.0-linux.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='bulpcoin'
-COIN_PORT=25883
-RPC_PORT=25884
+COIN_PORT=25887
+RPC_PORT=25888
 BOOTSTRAP='https://www.dropbox.com/s/ste8i0ar81d2cq7/bulp_bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
@@ -40,11 +40,13 @@ purgeOldInstallation() {
 }
 
 function download_bootstrap() {
+  rm -rf $CONFIGFOLDER/blocks >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/chainstate >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/sporks >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/zerocoin >/dev/null 2>&1
   rm -rf $CONFIGFOLDER/database >/dev/null 2>&1
-  rm -rf $CONFIGFOLDER/smsgDB >/dev/null 2>&1
-  rm -rf $CONFIGFOLDER/txleveldb >/dev/null 2>&1
-  rm $CONFIGFOLDER/*.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/*.pid >/dev/null 2>&1
+  rm $CONFIGFOLDER/*.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/*.log >/dev/null 2>&1
   wget -q $BOOTSTRAP
   unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
@@ -74,7 +76,9 @@ function download_node() {
   compile_error
   tar xvf $COIN_ZIP || unzip $COIN_ZIP >/dev/null 2>&1
   mv $(find ./ -mount -name $COIN_DAEMON) $COIN_PATH >/dev/null 2>&1
+  mv $(find ./ -mount -name $COIN_CLI) $COIN_PATH >/dev/null 2>&1
   chmod +x $COIN_PATH$COIN_DAEMON >/dev/null 2>&1
+  chmod +x $COIN_PATH$COIN_CLI >/dev/null 2>&1
   cd - >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
@@ -130,14 +134,6 @@ listen=1
 server=1
 daemon=1
 port=$COIN_PORT
-addnode=173.249.28.35
-addnode=207.180.212.96
-addnode=5.189.139.75
-addnode=140.82.52.45
-addnode=207.180.213.15
-addnode=144.217.224.88
-addnode=161.129.66.36
-addnode=80.240.21.202
 EOF
 }
 
@@ -177,16 +173,14 @@ masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
 
-#Bulpcoin addnodes
-addnode=144.217.224.88:25883
-addnode=167.86.71.90:25883
-addnode=144.217.224.88:25813
-addnode=167.86.71.90:25813
-addnode=144.217.224.88:41062
-addnode=34.73.144.153:25883
-addnode=45.61.144.108:25883
-addnode=104.192.102.153:25883
-adnode=86.57.193.186:25883
+addnode=173.249.28.35
+addnode=207.180.212.96
+addnode=5.189.139.75
+addnode=140.82.52.45
+addnode=207.180.213.15
+addnode=144.217.224.88
+addnode=161.129.66.36
+addnode=80.240.21.202 
 EOF
 }
 
