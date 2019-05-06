@@ -1,0 +1,7 @@
+COIN_NAME="bulpcoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="bulpcoind"
+COIN_CLI="bulpcoin-cli"
+COIN_FOLDER="/root/.bulpcoincore"
+COIN_CONFIG="bulpcoin.conf"
+COIN_SERVICE="bulpcoin.service"

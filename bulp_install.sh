@@ -2,13 +2,13 @@
 
 TMP_FOLDER=$(mktemp -d)
 CONFIG_FILE='bulpcoin.conf'
-CONFIGFOLDER='/root/.bulpcoin'
+CONFIGFOLDER='/root/.bulpcoincore'
 COIN_DAEMON='bulpcoind'
 COIN_CLI='bulpcoin-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_TGZ='https://github.com/bulpgame/Bulpcoin/releases/download/v1.0.0/BulpCoin-v1.0.0-linux.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='Bulpcoin'
+COIN_NAME='bulpcoin'
 COIN_PORT=25883
 RPC_PORT=25884
 BOOTSTRAP='https://www.dropbox.com/s/ste8i0ar81d2cq7/bulp_bootstrap.zip'
@@ -130,6 +130,14 @@ listen=1
 server=1
 daemon=1
 port=$COIN_PORT
+addnode=173.249.28.35
+addnode=207.180.212.96
+addnode=5.189.139.75
+addnode=140.82.52.45
+addnode=207.180.213.15
+addnode=144.217.224.88
+addnode=161.129.66.36
+addnode=80.240.21.202
 EOF
 }
 
