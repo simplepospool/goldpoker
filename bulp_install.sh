@@ -1,12 +1,12 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='Bulpcoin.conf'
-CONFIGFOLDER='/root/.BulpcoinMN'
+CONFIG_FILE='bulpcoin.conf'
+CONFIGFOLDER='/root/.bulpcoin'
 COIN_DAEMON='bulpcoind'
-COIN_CLI='bulpcoind'
+COIN_CLI='bulpcoin-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://www.dropbox.com/s/2bkdgx30nd5tvbh/bulpcoind.zip'
+COIN_TGZ='https://github.com/bulpgame/Bulpcoin/releases/download/v1.0.0/BulpCoin-v1.0.0-linux.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='Bulpcoin'
 COIN_PORT=25883

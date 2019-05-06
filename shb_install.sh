@@ -7,11 +7,12 @@ COIN_DAEMON='skyhubd'
 COIN_CLI='skyhub-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_TGZ='https://github.com/SkyHuBs/skyhub/releases/download/v1.1/SkyHub-1.1.0-x86_64-pc-linux-gnu.zip'
+COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='skyhub'
 COIN_PORT=25010
 RPC_PORT=51473
 BOOTSTRAP='https://www.dropbox.com/s/8zjwjfkgwniyliw/shb_bootstrap.zip'
-BOOTSTRAP_ZIP='shb_bootstrap.zip'
+BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
  
 NODEIP=$(curl -s4 icanhazip.com)
  
@@ -23,23 +24,21 @@ NC=''
 
 
 function download_bootstrap() {
-  systemctl stop $COIN_NAME.service
-  sleep 60
-  apt install unzip
-  cd
-  cd $CONFIGFOLDER
-  rm -rf blocks
-  rm -rf chainstate
-  rm peers.dat
-  wget -N $BOOTSTRAP
-  unzip $BOOTSTRAP_ZIP
-  rm $BOOTSTRAP_ZIP
-  cd
-  systemctl start $COIN_NAME.service
-
+  rm -rf $CONFIGFOLDER/blocks >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/chainstate >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/sporks >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/zerocoin >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/database >/dev/null 2>&1
+  rm $CONFIGFOLDER/*.pid >/dev/null 2>&1
+  rm $CONFIGFOLDER/*.dat >/dev/null 2>&1
+  rm $CONFIGFOLDER/*.log >/dev/null 2>&1
+  wget -q $BOOTSTRAP
+  unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
+  # rm $BOOTSTRAP_FILE
+ 
   clear
-    echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
-  clear
+    #echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
+  #clear
 
 }
 
@@ -58,17 +57,16 @@ purgeOldInstallation() {
 }
  
 function download_node() {
-  echo -e "Downloading and installing latest ${GREEN}$COIN_NAME${NC} coin daemon."
+  echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
   cd $TMP_FOLDER >/dev/null 2>&1
-  wget -q $COIN_TGZ -O $COIN_DAEMON.zip --show-progress
+  wget -q $COIN_TGZ
   compile_error
-  unzip -j $COIN_DAEMON.zip >/dev/null 2>&1
-  compile_error
-  rm $COIN_DAEMON.zip
-  chmod +x *
-  cp $COIN_DAEMON $COIN_PATH
-  cp $COIN_CLI $COIN_PATH
-  cd ~ >/dev/null 2>&1
+  tar xvf $COIN_ZIP || unzip $COIN_ZIP >/dev/null 2>&1
+  mv $(find ./ -mount -name $COIN_DAEMON) $COIN_PATH >/dev/null 2>&1
+  mv $(find ./ -mount -name $COIN_CLI) $COIN_PATH >/dev/null 2>&1
+  chmod +x $COIN_PATH$COIN_DAEMON >/dev/null 2>&1
+  chmod +x $COIN_PATH$COIN_CLI >/dev/null 2>&1
+  cd - >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
 }
@@ -133,11 +131,13 @@ EOF
 }
  
 function create_key() {
-  echo -e "Enter your ${RED}$COIN_NAME Masternode Private Key${NC}. Leave it blank to generate a new ${RED}Masternode Private Key${NC} for you:"
+  echo -e "${YELLOW}Enter your ${RED}$COIN_NAME Masternode GEN Key${NC}. Or Press enter generate New Genkey"
   read -t 10 -e COINKEY
   if [[ -z "$COINKEY" ]]; then
   $COIN_PATH$COIN_DAEMON -daemon
-  sleep 30
+  while [[ ! $($COIN_CLI getblockcount 2> /dev/null) =~ ^[0-9]+$ ]]; do 
+    sleep 1
+  done
   if [ -z "$(ps axo cmd:100 | grep $COIN_DAEMON)" ]; then
    echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.{$NC}"
    exit 1
@@ -145,8 +145,10 @@ function create_key() {
   COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
   if [ "$?" -gt "0" ];
     then
-    echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the Private Key${NC}"
-    sleep 30
+    echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the GEN Key${NC}"
+    while [[ ! $($COIN_CLI getblockcount 2> /dev/null) =~ ^[0-9]+$ ]]; do 
+    sleep 1
+    done
     COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
   fi
   $COIN_PATH$COIN_CLI stop
@@ -283,6 +285,7 @@ clear
 function setup_node() {
   get_ip
   create_config
+  download_bootstrap
   create_key
   update_config
   enable_firewall
@@ -294,9 +297,9 @@ function setup_node() {
 ##### Main #####
 clear
 
-purgeOldInstallation
+#purgeOldInstallation
 checks
 prepare_system
 download_node
 setup_node
-download_bootstrap
+
