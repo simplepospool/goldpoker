@@ -1,0 +1,7 @@
+COIN_NAME="smm"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="smmd"
+COIN_CLI="smm-cli"
+COIN_FOLDER="/root/.smm"
+COIN_CONFIG="smm.conf"
+COIN_SERVICE="smm.service"
