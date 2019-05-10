@@ -1,0 +1,7 @@
+COIN_NAME="skyhub"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="skyhubd"
+COIN_CLI="skyhub-cli"
+COIN_FOLDER="/root/.skyhub"
+COIN_CONFIG="skyhub.conf"
+COIN_SERVICE="skyhub.service"
