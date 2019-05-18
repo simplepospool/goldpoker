@@ -1,0 +1,7 @@
+COIN_NAME="GreenPayCoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="GreenPayCoind"
+COIN_CLI="GreenPayCoin-cli"
+COIN_FOLDER="/root/.GreenPayCoin"
+COIN_CONFIG="GreenPayCoin.conf"
+COIN_SERVICE="GreenPayCoin.service"
