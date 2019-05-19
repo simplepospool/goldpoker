@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='phonecoin'
 COIN_EXPLORER='http://chain.phonecoin.net'
 COIN_PORT=12222
-RPC_PORT=1222
+RPC_PORT=12223
 BOOTSTRAP='https://www.dropbox.com/s/tfdpca1tpdhjvpp/phone_bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
