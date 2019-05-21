@@ -1,0 +1,7 @@
+COIN_NAME="csports"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="csportsd"
+COIN_CLI="csports-cli"
+COIN_FOLDER="/root/.csports"
+COIN_CONFIG="csports.conf"
+COIN_SERVICE="csports.service"
