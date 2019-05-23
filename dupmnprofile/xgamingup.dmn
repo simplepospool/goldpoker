@@ -1,0 +1,7 @@
+COIN_NAME="xgamingup"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="xgamingupd"
+COIN_CLI="xgamingup-cli"
+COIN_FOLDER="/root/.xgamingup"
+COIN_CONFIG="xgamingup.conf"
+COIN_SERVICE="xgamingup.service"
