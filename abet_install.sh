@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='altbet'
 COIN_PORT=2238
 RPC_PORT=2239
-BOOTSTRAP='https://www.dropbox.com/s/ooqmywy9hdi63a9/abet_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/0uon0g0w84o55it/abet_bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
