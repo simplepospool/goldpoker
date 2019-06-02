@@ -1,14 +1,14 @@
 #!/bin/bash
  
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='bitcoingreen.conf'
-CONFIGFOLDER='/root/.bitcoingreen'
-COIN_DAEMON='bitcoingreend'
-COIN_CLI='bitcoingreen-cli'
+CONFIG_FILE='bitgreen.conf'
+CONFIGFOLDER='/root/.bitgreen'
+COIN_DAEMON='bitgreend'
+COIN_CLI='bitgreen-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/bitcoingreen/bitcoingreen/releases/download/v1.3.0/bitcoingreen-1.3.0-x86_64-linux-gnu.tar.gz'
+COIN_TGZ='https://github.com/bitgreen/bitgreen/releases/download/v1.3.1/bitgreen-1.3.1-x86_64-linux-gnu.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='bitcoingreen'
+COIN_NAME='bitgreen'
 COIN_PORT=9333
 RPC_PORT=17100
 BOOTSTRAP='https://www.dropbox.com/s/d256pgdlj32xeie/bitg_bootstrap.zip'

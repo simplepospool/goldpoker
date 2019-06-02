@@ -1,0 +1,7 @@
+COIN_NAME="bitgreen"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="bitgreend"
+COIN_CLI="bitgreen-cli"
+COIN_FOLDER="/root/.bitgreen"
+COIN_CONFIG="bitgreen.conf"
+COIN_SERVICE="bitgreen.service"

@@ -1,7 +1,0 @@
-COIN_NAME="bitcoingreen"
-COIN_PATH="/usr/local/bin/"
-COIN_DAEMON="bitcoingreend"
-COIN_CLI="bitcoingreen-cli"
-COIN_FOLDER="/root/.bitcoingreen"
-COIN_CONFIG="bitcoingreen.conf"
-COIN_SERVICE="bitcoingreen.service"
