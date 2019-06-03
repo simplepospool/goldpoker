@@ -1,0 +1,1 @@
+*/5 * * * * cd ~/SIN/infinitynode_surveyor.sh 2>&1 >> infinity-cron.log
