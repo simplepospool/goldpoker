@@ -1,17 +1,17 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='sin.conf'
-CONFIGFOLDER='/root/.sin'
-COIN_DAEMON='sind'
-COIN_CLI='sin-cli'
+CONFIG_FILE='cryptoyen.conf'
+CONFIGFOLDER='/root/.cryptoyen'
+COIN_DAEMON='cryptoyend'
+COIN_CLI='cryptoyen-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://www.dropbox.com/s/su4xnsj8syk0z98/sin_daemon_1604.zip'
+COIN_TGZ='https://www.dropbox.com/s/oqd3o2pfcirnowg/yen.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='sin'
-COIN_PORT=20970
-RPC_PORT=20971
-BOOTSTRAP='https://www.dropbox.com/s/p2jao7n0q3i5jv1/sin_bootstrap.zip'
+COIN_NAME='cryptoyen'
+COIN_PORT=37701
+RPC_PORT=37702
+BOOTSTRAP='https://www.dropbox.com/s/sevrj9a3ix50q6a/yen_bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -172,133 +172,17 @@ maxconnections=256
 masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
+cryptoyenstake=0
+litemode=1
 
-#SIN addnodes
-addnode=104.248.17.3:40692
-addnode=46.101.152.7:46878
-addnode=104.248.133.94:20970
-addnode=46.101.227.238:20970
-addnode=51.254.197.178:59367
-addnode=176.98.42.202:57630
-addnode=76.108.75.234:53099
-addnode=217.240.105.26:52266
-addnode=119.194.83.150:51834
-addnode=5.157.115.132:45018
-addnode=193.95.206.212:61478
-addnode=92.255.202.33:49817
-addnode=84.227.202.187:50920
-addnode=96.76.132.58:62821
-addnode=59.18.162.74:65302
-addnode=87.227.207.234:56300
-addnode=85.12.208.182:55373
-addnode=95.31.251.80:20970
-addnode=46.233.42.249:60174
-addnode=92.187.112.30:20970
-addnode=188.218.4.181:54858
-addnode=79.18.67.18:64255
-addnode=104.35.172.250:50710
-addnode=188.186.76.31:24557
-addnode=207.148.117.227:20970
-addnode=1.215.154.59:58086
-addnode=178.128.107.22:20970
-addnode=78.160.28.77:58127
-addnode=176.50.103.236:56126
-addnode=212.112.121.123:56706
-addnode=94.180.233.124:54477
-addnode=142.93.138.172:47724
-addnode=77.66.176.208:65163
-addnode=202.149.101.114:65185
-addnode=171.231.109.121:64447
-addnode=37.232.173.42:50246
-addnode=95.27.46.15:14404
-addnode=109.172.25.193:61075
-addnode=85.202.228.70:50165
-addnode=171.100.141.106:49499
-addnode=134.90.164.19:50142
-addnode=76.242.25.250:4267
-addnode=123.206.229.120:20970
-addnode=185.153.179.10:51384
-addnode=85.235.165.2:51886
-addnode=95.87.203.47:64619
-addnode=103.17.246.160:50414
-addnode=128.82.17.5:35805
-addnode=109.242.173.67:39352
-addnode=68.44.41.64:53894
-addnode=188.43.112.104:50366
-addnode=109.92.193.54:63807
-addnode=89.249.114.112:54044
-addnode=198.27.74.99:20970
-addnode=112.11.230.137:20193
-addnode=72.83.232.107:60480
-addnode=73.102.42.45:51906
-addnode=49.228.246.228:64750
-addnode=89.216.28.92:61131
-addnode=89.3.178.185:43294
-addnode=46.53.211.24:49688
-addnode=109.106.139.185:57896
-addnode=90.188.9.247:62514
-addnode=36.65.91.3:7761
-addnode=122.193.136.47:60494
-addnode=121.184.2.236:62294
-addnode=195.135.213.205:50904
-addnode=185.50.24.206:60884
-addnode=89.222.164.199:6690
-addnode=188.234.213.120:51815
-addnode=212.34.243.162:54130
-addnode=185.65.134.169:56680
-addnode=58.173.226.173:59209
-addnode=37.79.203.164:65183
-addnode=193.178.228.89:50551
-addnode=95.87.223.188:55400
-addnode=46.21.75.34:57572
-addnode=37.79.41.243:1163
-addnode=124.122.34.151:54720
-addnode=85.198.130.43:50018
-addnode=124.121.201.88:61299
-addnode=80.92.235.238:51791
-addnode=5.105.61.181:9475
-addnode=14.116.68.60:3663
-addnode=146.255.225.190:60760
-addnode=91.225.48.32:55723
-addnode=93.183.234.113:51207
-addnode=81.108.229.40:54430
-addnode=93.81.53.134:53998
-addnode=109.194.51.104:53058
-addnode=178.76.217.226:59722
-addnode=84.194.181.38:57013
-addnode=95.78.252.47:61048
-addnode=171.233.208.198:52306
-addnode=37.21.18.63:57139
-addnode=80.220.139.129:53022
-addnode=176.123.218.22:65467
-addnode=5.18.214.195:2545
-addnode=112.22.111.120:8533
-addnode=96.52.142.0:54168
-addnode=5.142.140.248:64643
-addnode=93.151.221.198:4070
-addnode=88.230.20.12:24675
-addnode=115.73.1.239:53404
-addnode=73.168.84.118:60179
-addnode=96.23.125.159:57042
-addnode=31.134.191.24:49911
-addnode=176.112.163.7:64803
-addnode=171.248.190.79:49946
-addnode=79.145.72.38:59112
-addnode=24.133.144.104:55483
-addnode=113.100.38.186:32535
-addnode=116.109.238.227:2051
-addnode=184.22.22.178:52027
-addnode=178.76.228.4:52485
-addnode=183.128.191.35:52600
-addnode=125.27.151.100:51973
-addnode=85.15.69.230:62383
-addnode=185.153.179.27:56051
-addnode=68.44.41.64:56966
-addnode=60.175.196.87:51281
-addnode=46.147.193.168:52284
-addnode=193.35.100.225:10400
-addnode=14.161.34.33:54376
-addnode=78.102.218.47:2469
+#CryptoYEN addnodes
+addnode=seed1.cryptoyen.icu
+addnode=seed2.cryptoyen.icu
+addnode=seed3.cryptoyen.icu
+addnode=seed4.cryptoyen.icu
+addnode=seed5.cryptoyen.icu
+banscore=250
+bantime=360
 
 EOF
 }
@@ -364,13 +248,6 @@ if [ -n "$(pidof $COIN_DAEMON)" ] || [ -e "$COIN_DAEMOM" ] ; then
 fi
 }
 
-function create_crontab() {
-mkdir SIN
-cd SIN
-wget -q https://raw.githubusercontent.com/simplepospool/goldpoker/master/tools/infinitynode_surveyor.sh
-crontab -l | { cat; echo "*/5 * * * * cd ~/SIN/infinitynode_surveyor.sh 2>&1 >> infinity-cron.log"; } | crontab -
-}
-
 function prepare_system() {
 echo -e "Preparing the VPS to setup. ${CYAN}$COIN_NAME${NC} ${RED}Masternode${NC}"
 apt-get update >/dev/null 2>&1
@@ -434,10 +311,9 @@ function setup_node() {
   update_config
   enable_firewall
   #install_sentinel
-  create_crontab
   important_information
   configure_systemd
-  }
+}
 
 
 ##### Main #####
@@ -448,5 +324,4 @@ checks
 prepare_system
 download_node
 setup_node
-
 
