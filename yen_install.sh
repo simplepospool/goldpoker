@@ -168,21 +168,13 @@ function update_config() {
   cat << EOF >> $CONFIGFOLDER/$CONFIG_FILE
 logintimestamps=1
 maxconnections=256
-#bind=$NODEIP
+bind=$NODEIP
 masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
-cryptoyenstake=0
-litemode=1
+
 
 #CryptoYEN addnodes
-addnode=seed1.cryptoyen.icu
-addnode=seed2.cryptoyen.icu
-addnode=seed3.cryptoyen.icu
-addnode=seed4.cryptoyen.icu
-addnode=seed5.cryptoyen.icu
-banscore=250
-bantime=360
 
 EOF
 }
