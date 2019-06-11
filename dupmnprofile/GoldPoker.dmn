@@ -1,0 +1,7 @@
+COIN_NAME="GoldPoker"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="gpkrd"
+COIN_CLI="gpkr-cli"
+COIN_FOLDER="/root/.gpkr"
+COIN_CONFIG="gpkr.conf"
+COIN_SERVICE="GoldPoker.service"
