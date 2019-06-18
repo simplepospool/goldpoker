@@ -1,17 +1,17 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='livenodes.conf'
-CONFIGFOLDER='/root/.livenodes'
-COIN_DAEMON='livenodesd'
-COIN_CLI='livenodes-cli'
+CONFIG_FILE='coinmegatrend.conf'
+CONFIGFOLDER='/root/.coinmegatrend'
+COIN_DAEMON='coinmegatrendd'
+COIN_CLI='coinmegatrend-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/livenodescoin/livenodescoin/releases/download/v1.0.7/livenodes-1.0.7-headless-x86_64-linux-gnu.tar.gz'
+COIN_TGZ='https://www.dropbox.com/s/pka3msdu2ixtqc4/cmtr.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='livenodes'
-COIN_PORT=30555
-RPC_PORT=30556
-BOOTSTRAP='https://www.dropbox.com/s/ce95lj7uxnufdr3/lno_bootstrap.zip'
+COIN_NAME='coinmegatrend'
+COIN_PORT=16031
+RPC_PORT=16032
+BOOTSTRAP='https://www.dropbox.com/s/00mbt6uqxn2ekiq/cmtr_bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -42,12 +42,15 @@ purgeOldInstallation() {
 function download_bootstrap() {
   rm -rf $CONFIGFOLDER/blocks >/dev/null 2>&1
   rm -rf $CONFIGFOLDER/chainstate >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/sporks >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/zerocoin >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/database >/dev/null 2>&1
   rm $CONFIGFOLDER/*.pid >/dev/null 2>&1
   rm $CONFIGFOLDER/*.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/*.log >/dev/null 2>&1
   wget -q $BOOTSTRAP
   unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
-  rm $BOOTSTRAP_FILE
+  # rm $BOOTSTRAP_FILE
  
   clear
     #echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
@@ -76,6 +79,8 @@ function download_node() {
   mv $(find ./ -mount -name $COIN_CLI) $COIN_PATH >/dev/null 2>&1
   chmod +x $COIN_PATH$COIN_DAEMON >/dev/null 2>&1
   chmod +x $COIN_PATH$COIN_CLI >/dev/null 2>&1
+  strip $COIN_PATH$COIN_DAEMON >/dev/null 2>&1
+  strip $COIN_PATH$COIN_CLI >/dev/null 2>&1
   cd - >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
@@ -169,6 +174,10 @@ maxconnections=256
 masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
+
+#CMTR addnodes
+addnode=149.28.146.108
+
 EOF
 }
 
@@ -309,3 +318,4 @@ checks
 prepare_system
 download_node
 setup_node
+
