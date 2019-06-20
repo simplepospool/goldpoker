@@ -1,0 +1,7 @@
+COIN_NAME="cryptoyen"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="cryptoyend"
+COIN_CLI="cryptoyen-cli"
+COIN_FOLDER="/root/.cryptoyen"
+COIN_CONFIG="cryptoyen.conf"
+COIN_SERVICE="cryptoyen.service"
