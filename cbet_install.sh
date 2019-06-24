@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.classicbets'
 COIN_DAEMON='classicbetsd'
 COIN_CLI='classicbets-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/ClassicBets/cbet-coin/releases/download/1.0.0.2/classicbets-masternode.tar.gz'
+COIN_TGZ='https://github.com/ClassicBets/cbet-coin/releases/download/2.0.0.0/classicbets-masternode.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='classicbets'
 COIN_PORT=7777
@@ -308,7 +308,7 @@ function important_information() {
 function setup_node() {
   get_ip
   create_config
-  download_bootstrap
+  # download_bootstrap
   create_key
   update_config
   enable_firewall
