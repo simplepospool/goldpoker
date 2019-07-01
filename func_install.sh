@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='func'
 COIN_PORT=12280
 RPC_PORT=12281
-BOOTSTRAP='#'
+BOOTSTRAP='https://www.dropbox.com/s/c53z84y2atxmip0/func_bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -292,7 +292,7 @@ function important_information() {
 function setup_node() {
   get_ip
   create_config
-  #download_bootstrap
+  download_bootstrap
   create_key
   update_config
   enable_firewall
