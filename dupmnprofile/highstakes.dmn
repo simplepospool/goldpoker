@@ -1,0 +1,7 @@
+COIN_NAME="highstakes"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="highstakesd"
+COIN_CLI="highstakes-cli"
+COIN_FOLDER="/root/.highstakes"
+COIN_CONFIG="highstakes.conf"
+COIN_SERVICE="highstakes.service"
