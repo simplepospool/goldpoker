@@ -1,0 +1,7 @@
+COIN_NAME="coinmegatrend"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="coinmegatrendd"
+COIN_CLI="coinmegatrend-cli"
+COIN_FOLDER="/root/.coinmegatrend"
+COIN_CONFIG="coinmegatrend.conf"
+COIN_SERVICE="coinmegatrend.service"

@@ -6,11 +6,11 @@ CONFIGFOLDER='/root/.altbet'
 COIN_DAEMON='altbetd'
 COIN_CLI='altbet-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/altbet/abet/releases/download/v.2.0.0.3/altbet-v2.0.0.3-ubu1604.tar.gz'
+COIN_TGZ='https://github.com/altbet/abet/releases/download/v1.0.0.0/altbet-v1.0.0.0-ubu1604.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='altbet'
-COIN_PORT=2238
-RPC_PORT=2239
+COIN_PORT=8322
+RPC_PORT=8323
 BOOTSTRAP='https://www.dropbox.com/s/ooqmywy9hdi63a9/abet_bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
@@ -149,14 +149,14 @@ function create_key() {
    echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.{$NC}"
    exit 1
   fi
-  COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
+  COINKEY=$(try_cmd $COIN_PATH$COIN_CLI "createmasternodekey" "masternode genkey")
   if [ "$?" -gt "0" ];
     then
     echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the GEN Key${NC}"
     while [[ ! $($COIN_CLI getblockcount 2> /dev/null) =~ ^[0-9]+$ ]]; do 
     sleep 1
     done
-    COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
+    COINKEY=$(try_cmd $COIN_PATH$COIN_CLI "createmasternodekey" "masternode genkey")
   fi
   $COIN_PATH$COIN_CLI stop
 fi
@@ -174,6 +174,9 @@ externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
 
 #Altbet addnodes
+addnode=140.82.1.78
+addnode=8.9.36.49
+addnode=140.82.48.162
 
 EOF
 }
@@ -304,6 +307,14 @@ function setup_node() {
   #install_sentinel
   important_information
   configure_systemd
+}
+
+function try_cmd() {
+    # <$1 = exec> | <$2 = try> | <$3 = catch>
+    exec 2> /dev/null
+    local check=$($1 $2)
+    [[ "$check" ]] && echo $check || echo $($1 $3)
+    exec 2> /dev/tty
 }
 
 
