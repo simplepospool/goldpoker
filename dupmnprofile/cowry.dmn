@@ -1,0 +1,7 @@
+COIN_NAME="cowry"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="cowryd"
+COIN_CLI="cowry-cli"
+COIN_FOLDER="/root/.cowry"
+COIN_CONFIG="cowry.conf"
+COIN_SERVICE="cowry.service"
