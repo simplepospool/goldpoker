@@ -1,0 +1,7 @@
+COIN_NAME="npccoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="npccoind"
+COIN_CLI="npccoin-cli"
+COIN_FOLDER="/root/.npccoin"
+COIN_CONFIG="npccoin.conf"
+COIN_SERVICE="npccoin.service"
