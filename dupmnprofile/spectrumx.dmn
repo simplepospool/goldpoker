@@ -1,0 +1,7 @@
+COIN_NAME="spectrumx"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="spectrumxd"
+COIN_CLI="spectrumx-cli"
+COIN_FOLDER="/root/.spectrumx"
+COIN_CONFIG="spectrumx.conf"
+COIN_SERVICE="spectrumx.service"
