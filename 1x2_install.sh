@@ -3,7 +3,7 @@
 TMP_FOLDER=$(mktemp -d)
 CONFIG_FILE='1x2coin.conf'
 CONFIGFOLDER='/root/.1x2coin'
-COIN_DAEMON='1x2coin'
+COIN_DAEMON='1x2coind'
 COIN_CLI='1x2coin-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_TGZ='https://github.com/1X2coin/1X2coin/releases/download/v1.0.0/1x2coin-1.0.0-x86_64-linux-gnu.tar.gz'
