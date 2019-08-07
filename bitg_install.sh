@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='bitgreen'
 COIN_PORT=9333
 RPC_PORT=17100
-BOOTSTRAP='https://www.dropbox.com/s/d256pgdlj32xeie/bitg_bootstrap.zip'
+BOOTSTRAP='http://164.68.112.107/bitg-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
  
 NODEIP=$(curl -s4 icanhazip.com)
