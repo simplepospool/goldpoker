@@ -1,17 +1,17 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='insifa.conf'
-CONFIGFOLDER='/root/.insifa'
-COIN_DAEMON='insifad'
-COIN_CLI='insifa-cli'
+CONFIG_FILE='snowgem.conf'
+CONFIGFOLDER='/root/.snowgem'
+COIN_DAEMON='snowgemd'
+COIN_CLI='snowgem-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/Insifa/insifa/releases/download/v1.0.0/insifa-1.0.0-x86_64-linux-gnu.tar.gz'
+COIN_TGZ='https://github.com/Snowgem/Snowgem/releases/download/v3000456-20190726/snowgem-ubuntu16.04-3000456-20190728.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='insifa'
-COIN_PORT=3509
-RPC_PORT=3510
-BOOTSTRAP='http://164.68.112.107/isf-bootstrap.zip'
+COIN_NAME='snowgem'
+COIN_PORT=16113
+RPC_PORT=16114
+BOOTSTRAP='http://164.68.112.107/xsg-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -42,20 +42,21 @@ purgeOldInstallation() {
 function download_bootstrap() {
   rm -rf $CONFIGFOLDER/blocks >/dev/null 2>&1
   rm -rf $CONFIGFOLDER/chainstate >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/sporks >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/zerocoin >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/database >/dev/null 2>&1
   rm $CONFIGFOLDER/*.pid >/dev/null 2>&1
   rm $CONFIGFOLDER/*.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/*.log >/dev/null 2>&1
   wget -q $BOOTSTRAP
   unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
-  rm $BOOTSTRAP_FILE
+  # rm $BOOTSTRAP_FILE
  
   clear
     #echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
   #clear
 
 }
-
-
 function install_sentinel() {
   echo -e "${GREEN}Installing sentinel.${NC}"
   apt-get -y install python-virtualenv virtualenv >/dev/null 2>&1
@@ -78,6 +79,8 @@ function download_node() {
   mv $(find ./ -mount -name $COIN_CLI) $COIN_PATH >/dev/null 2>&1
   chmod +x $COIN_PATH$COIN_DAEMON >/dev/null 2>&1
   chmod +x $COIN_PATH$COIN_CLI >/dev/null 2>&1
+  strip $COIN_PATH$COIN_DAEMON >/dev/null 2>&1
+  strip $COIN_PATH$COIN_CLI >/dev/null 2>&1
   cd - >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
@@ -148,14 +151,14 @@ function create_key() {
    echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.{$NC}"
    exit 1
   fi
-  COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
+  COINKEY=$(try_cmd $COIN_PATH$COIN_CLI "createmasternodekey" "masternode genkey")
   if [ "$?" -gt "0" ];
     then
     echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the GEN Key${NC}"
     while [[ ! $($COIN_CLI getblockcount 2> /dev/null) =~ ^[0-9]+$ ]]; do 
     sleep 1
     done
-    COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
+    COINKEY=$(try_cmd $COIN_PATH$COIN_CLI "createmasternodekey" "masternode genkey")
   fi
   $COIN_PATH$COIN_CLI stop
 fi
@@ -167,10 +170,18 @@ function update_config() {
   cat << EOF >> $CONFIGFOLDER/$CONFIG_FILE
 logintimestamps=1
 maxconnections=256
+#bind=$NODEIP
 masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
-masternodeaddr=$NODEIP:$COIN_PORT
+
+#snowgem addnodes
+addnode=explorer.snowgem.org
+addnode=insight.snowgem.org
+addnode=dnsseed1.snowgem.org
+addnode=dnsseed2.snowgem.org
+addnode=dnsseed3.snowgem.org
+
 EOF
 }
 
@@ -290,10 +301,18 @@ function important_information() {
  clear
 }
 
+function try_cmd() {
+    # <$1 = exec> | <$2 = try> | <$3 = catch>
+    exec 2> /dev/null
+    local check=$($1 $2)
+    [[ "$check" ]] && echo $check || echo $($1 $3)
+    exec 2> /dev/tty
+}
+
 function setup_node() {
   get_ip
   create_config
-  download_bootstrap
+  #download_bootstrap
   create_key
   update_config
   enable_firewall
