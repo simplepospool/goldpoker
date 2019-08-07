@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='pivx'
 COIN_PORT=51472
 RPC_PORT=51473
-BOOTSTRAP='https://www.dropbox.com/s/j0dw6w2bgg6ey1e/pivx_bootstrap.zip'
+BOOTSTRAP='http://164.68.112.107/pivx-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
