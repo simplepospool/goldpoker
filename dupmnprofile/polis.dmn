@@ -1,0 +1,7 @@
+COIN_NAME="polis"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="polisd"
+COIN_CLI="polis-cli"
+COIN_FOLDER="/root/.poliscore"
+COIN_CONFIG="polis.conf"
+COIN_SERVICE="polis.service"
