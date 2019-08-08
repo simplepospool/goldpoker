@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='bitblocks'
 COIN_PORT=58697
 RPC_PORT=58698
-BOOTSTRAP='https://github.com/BitBlocksProject/BitBlocks/releases/download/1.1.0/bootstrap-b06062019.zip'
+BOOTSTRAP='http://164.68.112.107/bbk-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)

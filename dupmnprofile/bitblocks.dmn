@@ -1,0 +1,7 @@
+COIN_NAME="bitblocks"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="bitblocksd"
+COIN_CLI="bitblocks-cli"
+COIN_FOLDER="/root/.bitblocks"
+COIN_CONFIG="bitblocks.conf"
+COIN_SERVICE="bitblocks.service"
