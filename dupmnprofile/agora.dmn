@@ -1,0 +1,7 @@
+COIN_NAME="agora"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="agorad"
+COIN_CLI="agora-cli"
+COIN_FOLDER="/root/.agora"
+COIN_CONFIG="agora.conf"
+COIN_SERVICE="agora.service"
