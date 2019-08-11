@@ -11,8 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='polis'
 COIN_PORT=24126
 RPC_PORT=24127
-BOOTSTRAP='https://www.dropbox.com/s/hm5et4f0bsosbmu/polis_bootstrap.zip'
-# http://164.68.112.107/polis-bootstrap.zip'
+BOOTSTRAP='http://164.68.112.107/polis-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 SENTINEL_REPO='https://github.com/polispay/sentinel.git'
 
