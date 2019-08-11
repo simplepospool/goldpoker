@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.poliscore'
 COIN_DAEMON='polisd'
 COIN_CLI='polis-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/polispay/polis/releases/download/v1.4.9/poliscore-1.4.9-x86_64-linux-gnu.tar.gz'
+COIN_TGZ='https://github.com/polispay/polis/releases/download/v1.4.18/poliscore-1.4.18-x86_64-linux-gnu.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='polis'
 COIN_PORT=24126
@@ -66,9 +66,10 @@ function install_sentinel() {
   cd $CONFIGFOLDER/sentinel
   virtualenv ./venv >/dev/null 2>&1
   ./venv/bin/pip install -r requirements.txt >/dev/null 2>&1
-  echo  "* * * * * cd $CONFIGFOLDER/sentinel && ./venv/bin/python bin/sentinel.py >> $CONFIGFOLDER/sentinel.log 2>&1" > $CONFIGFOLDER/$COIN_NAME.cron
-  crontab $CONFIGFOLDER/$COIN_NAME.cron
-  rm $CONFIGFOLDER/$COIN_NAME.cron >/dev/null 2>&1
+  (crontab -l 2>/dev/null; echo "* * * * * cd $CONFIGFOLDER/sentinel && ./venv/bin/python bin/sentinel.py >> $CONFIGFOLDER/sentinel.log 2>&1") | crontab -
+  #echo  "* * * * * cd $CONFIGFOLDER/sentinel && ./venv/bin/python bin/sentinel.py >> $CONFIGFOLDER/sentinel.log 2>&1" > $CONFIGFOLDER/$COIN_NAME.cron
+  #crontab $CONFIGFOLDER/$COIN_NAME.cron
+  #rm $CONFIGFOLDER/$COIN_NAME.cron >/dev/null 2>&1
 }
 
 function download_node() {
