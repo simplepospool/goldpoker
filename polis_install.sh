@@ -12,7 +12,7 @@ COIN_NAME='polis'
 COIN_PORT=24126
 RPC_PORT=24127
 BOOTSTRAP='https://www.dropbox.com/s/hm5et4f0bsosbmu/polis_bootstrap.zip'
-#http://164.68.112.107/polis-bootstrap.zip'
+# http://164.68.112.107/polis-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 SENTINEL_REPO='https://github.com/polispay/sentinel.git'
 
@@ -178,23 +178,6 @@ externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
 
 #polis addnodes
-addnode=insight.polispay.org:24126
-addnode=explorer.polispay.org:24126
-addnode=104.238.154.100:24126
-addnode=107.191.57.97:24126
-addnode=107.173.29.198:24126
-addnode=172.245.90.219:24126
-addnode=209.250.254.52:24126
-addnode=95.179.176.241:24126
-addnode=95.179.177.232:24126
-addnode=95.179.145.247:24126
-addnode=66.42.37.214:24126
-addnode=104.238.154.100:24126
-addnode=107.191.57.97:24126
-addnode=108.61.199.39:24126
-addnode=172.245.90.219:24126
-addnode=144.202.59.4:24126
-addnode=95.179.135.220:24126
 
 EOF
 }
