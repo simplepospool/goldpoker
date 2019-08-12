@@ -1,0 +1,7 @@
+COIN_NAME="ghrcoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="ghrcoind"
+COIN_CLI="ghrcoin-cli"
+COIN_FOLDER="/root/.ghrcoin"
+COIN_CONFIG="ghrcoin.conf"
+COIN_SERVICE="ghrcoin.service"
