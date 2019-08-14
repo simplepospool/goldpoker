@@ -1,0 +1,7 @@
+COIN_NAME="MakeMyCoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="MakeMyCoind"
+COIN_CLI="MakeMyCoin-cli"
+COIN_FOLDER="/root/.MakeMyCoin"
+COIN_CONFIG="MakeMyCoin.conf"
+COIN_SERVICE="MakeMyCoin.service"
