@@ -1,0 +1,7 @@
+COIN_NAME="Dudgx"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="Dudgxd"
+COIN_CLI="Dudgx-cli"
+COIN_FOLDER="/root/.Dudgx"
+COIN_CONFIG="Dudgx.conf"
+COIN_SERVICE="Dudgx.service"
