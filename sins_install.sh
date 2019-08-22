@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='safeinsure'
 COIN_PORT=39105
 RPC_PORT=39106
-BOOTSTRAP='https://www.dropbox.com/s/b2xlh9ls5ovvlb2/sins_bootstrap.zip'
+BOOTSTRAP='http://164.68.119.61/sins-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -42,11 +42,15 @@ purgeOldInstallation() {
 function download_bootstrap() {
   rm -rf $CONFIGFOLDER/blocks >/dev/null 2>&1
   rm -rf $CONFIGFOLDER/chainstate >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/sporks >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/zerocoin >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/database >/dev/null 2>&1
   rm $CONFIGFOLDER/*.pid >/dev/null 2>&1
   rm $CONFIGFOLDER/*.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/*.log >/dev/null 2>&1
   wget -q $BOOTSTRAP
   unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
+  rm $BOOTSTRAP_FILE
  
   clear
     #echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
