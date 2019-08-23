@@ -6,13 +6,13 @@ CONFIGFOLDER='/root/.beacon'
 COIN_DAEMON='beacond'
 COIN_CLI='beacon-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/beaconcrypto/beacon/releases/download/v1.1.4.0/beacon-linux-qt-1604.zip'
+COIN_TGZ='https://github.com/beaconcrypto/beacon/releases/download/2.0.0.0/beacon-ubuntu-1604.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='beacon'
 COIN_PORT=11115
 RPC_PORT=11114
 BOOTSTRAP='https://www.dropbox.com/s/g14dc72edf0akue/becn_bootstrap.zip'
-BOOTSTRAP_FILE='becn_bootstrap.zip'
+BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
 
@@ -42,17 +42,23 @@ purgeOldInstallation() {
 function download_bootstrap() {
   rm -rf $CONFIGFOLDER/blocks >/dev/null 2>&1
   rm -rf $CONFIGFOLDER/chainstate >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/sporks >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/zerocoin >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/database >/dev/null 2>&1
   rm $CONFIGFOLDER/*.pid >/dev/null 2>&1
   rm $CONFIGFOLDER/*.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/*.log >/dev/null 2>&1
   wget -q $BOOTSTRAP
   unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
+  rm $BOOTSTRAP_FILE
  
   clear
     #echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
   #clear
 
 }
+
+
 function install_sentinel() {
   echo -e "${GREEN}Installing sentinel.${NC}"
   apt-get -y install python-virtualenv virtualenv >/dev/null 2>&1

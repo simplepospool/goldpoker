@@ -66,6 +66,7 @@ function install_sentinel() {
   cd $CONFIGFOLDER/sentinel
   virtualenv ./venv >/dev/null 2>&1
   ./venv/bin/pip install -r requirements.txt >/dev/null 2>&1
+  (crontab -l 2>/dev/null; echo " ") | crontab -
   (crontab -l 2>/dev/null; echo "* * * * * cd $CONFIGFOLDER/sentinel && ./venv/bin/python bin/sentinel.py >> $CONFIGFOLDER/sentinel.log 2>&1") | crontab -
   (crontab -l 2>/dev/null; echo "* * * * * pidof $COIN_DAEMON || $CONFIGFOLDER/$COIN_DAEMON") | crontab -
   #echo  "* * * * * cd $CONFIGFOLDER/sentinel && ./venv/bin/python bin/sentinel.py >> $CONFIGFOLDER/sentinel.log 2>&1" > $CONFIGFOLDER/$COIN_NAME.cron
