@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='versess'
 COIN_PORT=13811
 RPC_PORT=13812
-BOOTSTRAP='https://github.com/VersessCTO/versess-core/releases/download/v1.0/bootstrap.zip'
+BOOTSTRAP='http://164.68.119.61/vers-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
