@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.MakeMyCoin'
 COIN_DAEMON='MakeMyCoind'
 COIN_CLI='MakeMyCoin-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://www.dropbox.com/s/q11u5kyinmy3x5n/mmco_v1.zip'
+COIN_TGZ='https://www.dropbox.com/s/yx3h1drzptf68u3/mmco_v2.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='MakeMyCoin'
 COIN_PORT=12163
@@ -50,7 +50,7 @@ function download_bootstrap() {
   rm $CONFIGFOLDER/*.log >/dev/null 2>&1
   wget -q $BOOTSTRAP
   unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
-  # rm $BOOTSTRAP_FILE
+  rm $BOOTSTRAP_FILE
  
   clear
     #echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
