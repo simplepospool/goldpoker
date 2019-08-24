@@ -1,0 +1,7 @@
+COIN_NAME="xvic"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="xvicd"
+COIN_CLI="xvic-cli"
+COIN_FOLDER="/root/.xvic"
+COIN_CONFIG="xvic.conf"
+COIN_SERVICE="xvic.service"
