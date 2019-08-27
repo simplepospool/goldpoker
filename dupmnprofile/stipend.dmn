@@ -1,0 +1,7 @@
+COIN_NAME="stipend"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="stipendd"
+COIN_CLI="stipend-cli"
+COIN_FOLDER="/root/.stipend-core"
+COIN_CONFIG="stipend.conf"
+COIN_SERVICE="stipend.service"
