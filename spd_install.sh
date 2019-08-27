@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='stipend'
 COIN_PORT=46978
 RPC_PORT=46979
-BOOTSTRAP='https://www.dropbox.com/s/x44p7gf9ywpwrcq/spd_bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/yxo7cnsg09mp3r0/spd_bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
  
 NODEIP=$(curl -s4 icanhazip.com)
