@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='stipend'
 COIN_PORT=46978
 RPC_PORT=46979
-BOOTSTRAP='https://www.dropbox.com/s/yxo7cnsg09mp3r0/spd_bootstrap.zip'
+BOOTSTRAP='http://164.68.119.61/spd-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
  
 NODEIP=$(curl -s4 icanhazip.com)
@@ -108,6 +108,7 @@ function create_config() {
   cat << EOF > $CONFIGFOLDER/$CONFIG_FILE
 rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
+rpcport=$RPC_PORT
 rpcallowip=127.0.0.1
 listen=1
 server=1
