@@ -2,11 +2,11 @@
  
 TMP_FOLDER=$(mktemp -d)
 CONFIG_FILE='stipend.conf'
-CONFIGFOLDER='/root/.stipend'
+CONFIGFOLDER='/root/.stipend-core'
 COIN_DAEMON='stipendd'
-COIN_CLI='stipendd'
+COIN_CLI='stipend-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/Stipend-Developer/stipend/releases/download/5.1.0.1/precompiled-daemon-5.1.0.1.zip'
+COIN_TGZ='https://github.com/Stipend-Developer/stipend-core/releases/download/spd-v1.0.0.0/stipend-ubuntu-16.04-node.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='stipend'
 COIN_PORT=46978
