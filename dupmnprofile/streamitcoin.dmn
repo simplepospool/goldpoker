@@ -1,0 +1,7 @@
+COIN_NAME="streamitcoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="streamitcoind"
+COIN_CLI="streamitcoin-cli"
+COIN_FOLDER="/root/.streamitcoin"
+COIN_CONFIG="streamitcoin.conf"
+COIN_SERVICE="streamitcoin.service"
