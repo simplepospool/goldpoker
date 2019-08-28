@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='streamitcoin'
 COIN_PORT=63636
 RPC_PORT=63637
-BOOTSTRAP='https://www.dropbox.com/s/9q1yo1ntfptncqc/stream_bootstrap.zip'
+BOOTSTRAP='http://164.68.119.61/stream-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -175,7 +175,7 @@ masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
 
-#1x2 addnodes
+#streamitcoin addnodes
 
 
 EOF
