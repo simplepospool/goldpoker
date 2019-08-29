@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.pivx'
 COIN_DAEMON='pivxd'
 COIN_CLI='pivx-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/PIVX-Project/PIVX/releases/download/v3.3.0/pivx-3.3.0-x86_64-linux-gnu.tar.gz'
+COIN_TGZ='https://github.com/PIVX-Project/PIVX/releases/download/v3.4.0/pivx-3.4.0-x86_64-linux-gnu.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='pivx'
 COIN_PORT=51472
@@ -42,18 +42,23 @@ purgeOldInstallation() {
 function download_bootstrap() {
   rm -rf $CONFIGFOLDER/blocks >/dev/null 2>&1
   rm -rf $CONFIGFOLDER/chainstate >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/sporks >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/zerocoin >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/database >/dev/null 2>&1
   rm $CONFIGFOLDER/*.pid >/dev/null 2>&1
   rm $CONFIGFOLDER/*.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/*.log >/dev/null 2>&1
   wget -q $BOOTSTRAP
   unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
-  # rm $BOOTSTRAP_FILE
+  rm $BOOTSTRAP_FILE
  
   clear
     #echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
   #clear
 
 }
+
+
 function install_sentinel() {
   echo -e "${GREEN}Installing sentinel.${NC}"
   apt-get -y install python-virtualenv virtualenv >/dev/null 2>&1
@@ -146,14 +151,14 @@ function create_key() {
    echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.{$NC}"
    exit 1
   fi
-  COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
+  COINKEY=$(try_cmd $COIN_PATH$COIN_CLI "createmasternodekey" "masternode genkey")
   if [ "$?" -gt "0" ];
     then
     echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the GEN Key${NC}"
     while [[ ! $($COIN_CLI getblockcount 2> /dev/null) =~ ^[0-9]+$ ]]; do 
     sleep 1
     done
-    COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
+    COINKEY=$(try_cmd $COIN_PATH$COIN_CLI "createmasternodekey" "masternode genkey")
   fi
   $COIN_PATH$COIN_CLI stop
 fi
@@ -287,6 +292,14 @@ function important_information() {
  clear
   echo -e "{\"success\":\""TRUE"\", \"coin\":\""$COIN_NAME"\", \"port\":\""$COIN_PORT"\", \"ip\":\""$NODEIP"\", \"mnip\":\""$NODEIP:$COIN_PORT"\", \"privatekey\":\""$COINKEY"\", \"startmn\":\""$COIN_DAEMON -daemon"\", \"stopmn\":\""$COIN_CLI stop"\", \"getinfomn\":\""$COIN_CLI getinfo"\", \"statusmn\":\""$COIN_CLI masternode status"\", \"startservice\":\""systemctl start $COIN_NAME.service"\", \"stopservice\":\""systemctl stop $COIN_NAME.service"\", \"configfolder\":\""$CONFIGFOLDER"\"}"
  clear
+}
+
+function try_cmd() {
+    # <$1 = exec> | <$2 = try> | <$3 = catch>
+    exec 2> /dev/null
+    local check=$($1 $2)
+    [[ "$check" ]] && echo $check || echo $($1 $3)
+    exec 2> /dev/tty
 }
 
 function setup_node() {
