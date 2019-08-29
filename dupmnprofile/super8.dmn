@@ -1,0 +1,7 @@
+COIN_NAME="super8"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="super8d"
+COIN_CLI="super8-cli"
+COIN_FOLDER="/root/.super8"
+COIN_CONFIG="super8.conf"
+COIN_SERVICE="super8.service"
