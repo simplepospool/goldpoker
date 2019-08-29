@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='super8'
 COIN_PORT=8798
 RPC_PORT=8799
-BOOTSTRAP='https://www.dropbox.com/s/dzs6sq48wbafmfh/s8_bootstrap.zip'
+BOOTSTRAP='http://164.68.119.61/s8-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
