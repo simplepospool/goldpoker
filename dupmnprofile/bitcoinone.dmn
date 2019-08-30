@@ -1,0 +1,7 @@
+COIN_NAME="bitcoinone"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="bitcoinoned"
+COIN_CLI="bitcoinone-cli"
+COIN_FOLDER="/root/.bitcoinone"
+COIN_CONFIG="bitcoinone.conf"
+COIN_SERVICE="bitcoinone.service"
