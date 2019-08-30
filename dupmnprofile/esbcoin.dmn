@@ -1,0 +1,7 @@
+COIN_NAME="esbcoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="esbcoind"
+COIN_CLI="esbcoin-cli"
+COIN_FOLDER="/root/.esbcoin"
+COIN_CONFIG="esbcoin.conf"
+COIN_SERVICE="esbcoin.service"
