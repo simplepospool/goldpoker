@@ -1,16 +1,16 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='1x2coin.conf'
-CONFIGFOLDER='/root/.1x2coin'
-COIN_DAEMON='1x2coind'
-COIN_CLI='1x2coin-cli'
+CONFIG_FILE='sap.conf'
+CONFIGFOLDER='/root/.sap'
+COIN_DAEMON='sapd'
+COIN_CLI='sap-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/1X2coin/1X2coin/releases/download/v1.0.0/1x2coin-1.0.0-x86_64-linux-gnu.tar.gz'
+COIN_TGZ='https://github.com/SapphireCoreCoin/SAPP/releases/download/v1.1.0/SAPP-Linux-Daemon.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='1x2coin'
-COIN_PORT=9214
-RPC_PORT=9215
+COIN_NAME='sap'
+COIN_PORT=45328
+RPC_PORT=45329
 BOOTSTRAP='http://164.68.112.107/1x2-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
@@ -175,7 +175,7 @@ masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
 
-#1x2 addnodes
+#sap addnodes
 
 
 EOF
