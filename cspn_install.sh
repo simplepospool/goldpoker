@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='csports'
 COIN_PORT=13370
 RPC_PORT=13371
-BOOTSTRAP='https://www.dropbox.com/s/x7rvgkuomurmg9c/cspn_bootstrap.zip'
+BOOTSTRAP='http://164.68.119.61/cspn-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
