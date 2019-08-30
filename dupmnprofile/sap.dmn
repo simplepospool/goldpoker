@@ -1,0 +1,7 @@
+COIN_NAME="sap"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="sapd"
+COIN_CLI="sap-cli"
+COIN_FOLDER="/root/.sap"
+COIN_CONFIG="sap.conf"
+COIN_SERVICE="sap.service"
