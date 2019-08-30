@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='esbcoin'
 COIN_PORT=32322
 RPC_PORT=32323
-BOOTSTRAP='https://www.dropbox.com/s/6l0zacvyi8z8ur3/esbc_bootstrap.zip'
+BOOTSTRAP='http://164.68.119.61/esbcoin-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
