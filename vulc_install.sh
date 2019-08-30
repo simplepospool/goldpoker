@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='Vulcano'
 COIN_PORT=62543
 RPC_PORT=62542
-BOOTSTRAP='https://www.dropbox.com/s/mt1op3rcku35bb6/vulc_bootstrap.zip'
+BOOTSTRAP='http://164.68.119.61/vulc-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
  
 NODEIP=$(curl -s4 icanhazip.com)
