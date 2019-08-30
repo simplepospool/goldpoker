@@ -1,17 +1,17 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='ParadiseCoin.conf'
-CONFIGFOLDER='/root/.ParadiseCoin'
-COIN_DAEMON='ParadiseCoind'
-COIN_CLI='ParadiseCoin-cli'
+CONFIG_FILE='1x2coin.conf'
+CONFIGFOLDER='/root/.1x2coin'
+COIN_DAEMON='1x2coind'
+COIN_CLI='1x2coin-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/ParadiseCoin/ParadiseCoin-MN-script/releases/download/v1.3.6/ParadiseCoin.tar.gz'
+COIN_TGZ='https://github.com/1X2coin/1X2coin/releases/download/v1.0.0/1x2coin-1.0.0-x86_64-linux-gnu.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='ParadiseCoin'
-COIN_PORT=45369
-RPC_PORT=45370
-BOOTSTRAP='http://164.68.119.61/prd-bootstrap.zip'
+COIN_NAME='1x2coin'
+COIN_PORT=9214
+RPC_PORT=9215
+BOOTSTRAP='http://164.68.112.107/1x2-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -175,7 +175,7 @@ masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
 
-#prd addnodes
+#1x2 addnodes
 
 
 EOF
