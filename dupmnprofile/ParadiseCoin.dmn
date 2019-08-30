@@ -1,0 +1,7 @@
+COIN_NAME="ParadiseCoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="ParadiseCoind"
+COIN_CLI="ParadiseCoin-cli"
+COIN_FOLDER="/root/.ParadiseCoin"
+COIN_CONFIG="ParadiseCoin.conf"
+COIN_SERVICE="ParadiseCoin.service"
