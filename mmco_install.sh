@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='MakeMyCoin'
 COIN_PORT=12163
 RPC_PORT=12164
-BOOTSTRAP='https://www.dropbox.com/s/668bwoamy4nne65/mmco_bootstrap.zip'
+BOOTSTRAP='http://164.68.119.61/mmco-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
