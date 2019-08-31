@@ -1,0 +1,7 @@
+COIN_NAME="cryptoverification"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="cryptoverificationd"
+COIN_CLI="cryptoverification-cli"
+COIN_FOLDER="/root/.cryptoverification"
+COIN_CONFIG="cryptoverification.conf"
+COIN_SERVICE="cryptoverification.service"
