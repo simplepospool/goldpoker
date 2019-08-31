@@ -176,7 +176,22 @@ externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
 
 #fls addnodes
-
+addnode=195.46.187.71:12270
+addnode=142.93.233.108:12270
+addnode=165.22.203.61:12270
+addnode=45.63.100.26:12270
+addnode=51.83.72.145:12270
+addnode=134.209.93.244:12270
+addnode=108.61.188.68:12270
+addnode=51.38.50.68:12270
+addnode=46.101.244.207:12270
+addnode=104.238.185.49:12270
+addnode=194.160.80.213:12270
+addnode=51.68.45.51:12270
+addnode=159.65.185.239:12270
+addnode=204.48.18.155:12270
+addnode=128.199.201.114:12270
+addnode=178.128.54.221:12270
 
 EOF
 }
