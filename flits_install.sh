@@ -6,12 +6,12 @@ CONFIGFOLDER='/root/.fls'
 COIN_DAEMON='flsd'
 COIN_CLI='fls-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/flitsnode/flits-core/releases/download/v1.0.0/FLITS-1.0.0-ubuntu-1604-server.zip'
+COIN_TGZ='https://github.com/flitsnode/flits-core/releases/download/v1.0.1/fls-1.0.1-x86_64-linux-gnu.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='fls'
 COIN_PORT=12271
 RPC_PORT=12272
-BOOTSTRAP='https://github.com/flitsnode/flits-core/releases/download/v1.0.0/bootstrap-16-07-2019.zip'
+BOOTSTRAP='http://164.68.112.107/fls-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
