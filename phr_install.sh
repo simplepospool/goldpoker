@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.phore'
 COIN_DAEMON='phored'
 COIN_CLI='phore-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/phoreproject/Phore/releases/download/v1.6.1/phore-1.6.1-x86_64-linux-gnu.tar.gz'
+COIN_TGZ='https://github.com/phoreproject/Phore/releases/download/v1.6.3/phore-1.6.3-x86_64-linux-gnu.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='phore'
 COIN_PORT=11771
@@ -32,7 +32,7 @@ function download_bootstrap() {
   rm $CONFIGFOLDER/*.log >/dev/null 2>&1
   wget -q $BOOTSTRAP
   unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
-  # rm $BOOTSTRAP_FILE
+  rm $BOOTSTRAP_FILE
  
   clear
     #echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
