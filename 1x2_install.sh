@@ -132,10 +132,12 @@ rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
 rpcport=$RPC_PORT
 rpcallowip=127.0.0.1
+#------------------
 listen=1
 server=1
 daemon=1
 port=$COIN_PORT
+#------------------
 EOF
 }
 
@@ -171,10 +173,11 @@ function update_config() {
 logintimestamps=1
 maxconnections=256
 #bind=$NODEIP
+#-----------------------------
 masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
-
+#-----------------------------
 #1x2 addnodes
 
 
