@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='platinum'
 COIN_PORT=22583
 RPC_PORT=22584
-BOOTSTRAP='https://github.com/Platinum-Core/platinum/releases/download/v2.2.2/botstrap-02-09-2019.zip'
+BOOTSTRAP='http://164.68.119.61/plat-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
