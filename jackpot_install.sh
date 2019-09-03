@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='jackpot'
 COIN_PORT=17771
 RPC_PORT=17772
-BOOTSTRAP='https://www.dropbox.com/s/udgyg5an8p1qyvo/777_bootstrap.zip'
+BOOTSTRAP='http://164.68.119.61/777-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
