@@ -1,0 +1,7 @@
+COIN_NAME="platinum"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="platinumd"
+COIN_CLI="platinum-cli"
+COIN_FOLDER="/root/.platinum"
+COIN_CONFIG="platinum.conf"
+COIN_SERVICE="platinum.service"
