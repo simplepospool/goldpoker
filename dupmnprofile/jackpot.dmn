@@ -1,0 +1,7 @@
+COIN_NAME="jackpot"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="jackpotd"
+COIN_CLI="jackpot-cli"
+COIN_FOLDER="/root/.jackpot"
+COIN_CONFIG="jackpot.conf"
+COIN_SERVICE="jackpot.service"
