@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='worx'
 COIN_PORT=3300
 RPC_PORT=3301
-BOOTSTRAP='https://github.com/worxcoin/worx/releases/download/1.5.1.1/bootstrap.zip'
+BOOTSTRAP='http://164.68.119.61/worx-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
