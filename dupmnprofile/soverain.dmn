@@ -1,0 +1,7 @@
+COIN_NAME="soverain"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="soveraind"
+COIN_CLI="soverain-cli"
+COIN_FOLDER="/root/.soverain"
+COIN_CONFIG="soverain.conf"
+COIN_SERVICE="soverain.service"
