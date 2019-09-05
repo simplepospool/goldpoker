@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='kts'
 COIN_PORT=10300
 RPC_PORT=10301
-BOOTSTRAP='https://www.dropbox.com/s/t5mo1qsx4fmrlgn/kts_bootstrap.zip'
+BOOTSTRAP='http://164.68.119.61/kts-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
