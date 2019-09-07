@@ -1,4 +1,4 @@
-COIN_NAME="clear"
+COIN_NAME="clr"
 COIN_PATH="/usr/local/bin/"
 COIN_DAEMON="clrd"
 COIN_CLI="clr-cli"
