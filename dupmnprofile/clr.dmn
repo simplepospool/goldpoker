@@ -1,0 +1,7 @@
+COIN_NAME="clear"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="clrd"
+COIN_CLI="clr-cli"
+COIN_FOLDER="/root/.clr"
+COIN_CONFIG="clr.conf"
+COIN_SERVICE="clear.service"
