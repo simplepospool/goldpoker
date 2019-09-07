@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='cryptoyen'
 COIN_PORT=37701
 RPC_PORT=37702
-BOOTSTRAP='https://www.dropbox.com/s/sevrj9a3ix50q6a/yen_bootstrap.zip'
+BOOTSTRAP='http://164.68.119.61/yen-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
