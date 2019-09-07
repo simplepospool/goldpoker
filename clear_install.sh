@@ -48,7 +48,7 @@ function download_bootstrap() {
   rm $CONFIGFOLDER/*.pid >/dev/null 2>&1
   rm $CONFIGFOLDER/*.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/*.log >/dev/null 2>&1
-  wget -q $BOOTSTRAP
+  wget $BOOTSTRAP
   unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
   rm $BOOTSTRAP_FILE
  
