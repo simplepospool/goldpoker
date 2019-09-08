@@ -1,0 +1,7 @@
+COIN_NAME="rapids"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="rapidsd"
+COIN_CLI="rapids-cli"
+COIN_FOLDER="/root/.rapids"
+COIN_CONFIG="rapids.conf"
+COIN_SERVICE="rapids.service"
