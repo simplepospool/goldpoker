@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='xchainz'
 COIN_PORT=14815
 RPC_PORT=14816
-BOOTSTRAP='https://github.com/axanthics/xcz/releases/download/v1.0.0/bootstrap.zip'
+BOOTSTRAP='http://164.68.119.61/xcz-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
