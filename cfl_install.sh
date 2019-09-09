@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='cryptoflow'
 COIN_PORT=3333
 RPC_PORT=3334
-BOOTSTRAP='https://www.dropbox.com/s/qmg7xox4esp4pvn/cfl_bootstrap.zip'
+BOOTSTRAP='http://164.68.119.61/cfl-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
  
 NODEIP=$(curl -s4 icanhazip.com)
