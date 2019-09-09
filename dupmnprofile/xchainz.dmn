@@ -1,0 +1,7 @@
+COIN_NAME="xchainz"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="xchainzd"
+COIN_CLI="xchainz-cli"
+COIN_FOLDER="/root/.xchainz"
+COIN_CONFIG="xchainz.conf"
+COIN_SERVICE="xchainz.service"
