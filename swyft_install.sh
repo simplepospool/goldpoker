@@ -44,6 +44,7 @@ function download_bootstrap() {
   rm -rf $CONFIGFOLDER/chainstate >/dev/null 2>&1
   rm -rf $CONFIGFOLDER/sporks >/dev/null 2>&1
   rm -rf $CONFIGFOLDER/zerocoin >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/indexes >/dev/null 2>&1
   rm -rf $CONFIGFOLDER/database >/dev/null 2>&1
   rm $CONFIGFOLDER/*.pid >/dev/null 2>&1
   rm $CONFIGFOLDER/*.dat >/dev/null 2>&1
