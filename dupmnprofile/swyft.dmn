@@ -1,0 +1,7 @@
+COIN_NAME="swyft"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="swyftd"
+COIN_CLI="swyft-cli"
+COIN_FOLDER="/root/.swyftcore"
+COIN_CONFIG="swyft.conf"
+COIN_SERVICE="swyft.service"
