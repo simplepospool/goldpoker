@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='xvic'
 COIN_PORT=17500
 RPC_PORT=17501
-BOOTSTRAP='https://www.dropbox.com/s/9n14rbvxncqa9h7/xvic_bootstrap.zip'
+BOOTSTRAP='http://164.68.119.61/xvic-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
