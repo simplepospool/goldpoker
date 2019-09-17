@@ -1,0 +1,7 @@
+COIN_NAME="wac"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="wacd"
+COIN_CLI="wac-cli"
+COIN_FOLDER="/root/.wac"
+COIN_CONFIG="wac.conf"
+COIN_SERVICE="wac.service"
