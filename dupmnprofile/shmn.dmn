@@ -1,0 +1,7 @@
+COIN_NAME="shmn"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="shmnd"
+COIN_CLI="shmn-cli"
+COIN_FOLDER="/root/.shmn"
+COIN_CONFIG="shmn.conf"
+COIN_SERVICE="shmn.service"
