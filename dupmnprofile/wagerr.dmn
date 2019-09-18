@@ -1,0 +1,7 @@
+COIN_NAME="wagerr"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="wagerrd"
+COIN_CLI="wagerr-cli"
+COIN_FOLDER="/root/.wagerr"
+COIN_CONFIG="wagerr.conf"
+COIN_SERVICE="wagerr.service"
