@@ -10,7 +10,7 @@ COIN_TGZ='https://github.com/bitcoinbabys/StrongHandsMasterNode/releases/downloa
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='shmn'
 COIN_PORT=50005
-RPC_PORT=50006
+RPC_PORT=50055
 BOOTSTRAP='https://www.dropbox.com/s/irujbv5xgnqrjrw/shmn_bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
