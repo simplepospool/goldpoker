@@ -1,0 +1,7 @@
+COIN_NAME="dexergi"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="dexergid"
+COIN_CLI="dexergi-cli"
+COIN_FOLDER="/root/.dexergi"
+COIN_CONFIG="dexergi.conf"
+COIN_SERVICE="dexergi.service"
