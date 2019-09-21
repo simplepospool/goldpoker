@@ -1,0 +1,7 @@
+COIN_NAME="zdx"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="zdxd"
+COIN_CLI="zdx-cli"
+COIN_FOLDER="/root/.ZDXcore"
+COIN_CONFIG="zdx.conf"
+COIN_SERVICE="zdx.service"
