@@ -178,7 +178,7 @@ masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
 #-----------------------------
-#1x2 addnodes
+#$COIN_NAME addnodes
 
 
 EOF
