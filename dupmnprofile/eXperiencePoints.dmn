@@ -1,0 +1,7 @@
+COIN_NAME="eXperiencePoints"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="eXperiencePointsd"
+COIN_CLI="eXperiencePoints-cli"
+COIN_FOLDER="/root/.eXperiencePoints"
+COIN_CONFIG="eXperiencePoints.conf"
+COIN_SERVICE="eXperiencePoints.service"
