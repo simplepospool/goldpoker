@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='eXperiencePoints'
 COIN_PORT=19324
 RPC_PORT=19325
-BOOTSTRAP='https://www.dropbox.com/s/q1jto7usr9jne7q/xp_bootstrap.zip'
+BOOTSTRAP='http://164.68.119.61/xp-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
