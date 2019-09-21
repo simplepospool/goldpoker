@@ -10,7 +10,7 @@ COIN_TGZ='https://www.dropbox.com/s/unfdf15kri3eohx/XPv2.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='eXperiencePoints'
 COIN_PORT=19324
-RPC_PORT=19324
+RPC_PORT=19325
 BOOTSTRAP='https://www.dropbox.com/s/q1jto7usr9jne7q/xp_bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
@@ -133,7 +133,7 @@ rpcpassword=$RPCPASSWORD
 rpcport=$RPC_PORT
 rpcallowip=127.0.0.1
 #------------------
-listen=0
+listen=1
 server=1
 daemon=1
 port=$COIN_PORT
