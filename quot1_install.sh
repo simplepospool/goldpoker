@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='quotation'
 COIN_PORT=19871
 RPC_PORT=19872
-BOOTSTRAP='https://www.dropbox.com/s/8ziwb6syy3xqiiy/quot_bootstrap.zip'
+BOOTSTRAP='http://164.68.119.61/quot-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -47,7 +47,7 @@ function download_bootstrap() {
   rm $CONFIGFOLDER/*.log >/dev/null 2>&1
   wget -q $BOOTSTRAP
   unzip -oq $BOOTSTRAP_FILE -d $CONFIGFOLDER
-  # rm $BOOTSTRAP_FILE
+  rm $BOOTSTRAP_FILE
  
   clear
     #echo -e "{\"success\":\""$COIN_NAME bootstraped"\"}"
@@ -168,6 +168,7 @@ function update_config() {
 logintimestamps=1
 maxconnections=64
 #bind=$NODEIP
+gen=0
 masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
