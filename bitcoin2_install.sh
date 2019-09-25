@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='bitcoin2'
 COIN_PORT=8333
 RPC_PORT=8334
-BOOTSTRAP='https://www.dropbox.com/s/8c3hqhod3c57wny/btc2_bootstrap.zip'
+BOOTSTRAP='http://164.68.119.61/btc2-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
