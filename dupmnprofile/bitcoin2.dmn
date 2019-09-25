@@ -1,0 +1,7 @@
+COIN_NAME="bitcoin2"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="bitcoin2d"
+COIN_CLI="bitcoin2-cli"
+COIN_FOLDER="/root/.bitcoin2"
+COIN_CONFIG="bitcoin2.conf"
+COIN_SERVICE="bitcoin2.service"
