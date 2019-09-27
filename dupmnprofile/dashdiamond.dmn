@@ -1,0 +1,7 @@
+COIN_NAME="dashdiamond"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="dashdiamondd"
+COIN_CLI="dashdiamond-cli"
+COIN_FOLDER="/root/.dashdiamond"
+COIN_CONFIG="dashdiamond.conf"
+COIN_SERVICE="dashdiamond.service"
