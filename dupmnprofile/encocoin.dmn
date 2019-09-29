@@ -1,0 +1,7 @@
+COIN_NAME="encocoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="encocoind"
+COIN_CLI="encocoin-cli"
+COIN_FOLDER="/root/.encocoin"
+COIN_CONFIG="encocoin.conf"
+COIN_SERVICE="encocoin.service"
