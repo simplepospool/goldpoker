@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='encocoin'
 COIN_PORT=12044
 RPC_PORT=12045
-BOOTSTRAP='https://www.dropbox.com/s/jh1iu5e1aa61ujs/xnk_bootstrap.zip'
+BOOTSTRAP='http://164.68.119.61/xnk-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
