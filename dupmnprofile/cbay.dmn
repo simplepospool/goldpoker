@@ -1,0 +1,7 @@
+COIN_NAME="cbay"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="cbayd"
+COIN_CLI="cbay-cli"
+COIN_FOLDER="/root/.cbay"
+COIN_CONFIG="cbay.conf"
+COIN_SERVICE="cbay.service"
