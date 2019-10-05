@@ -1,0 +1,7 @@
+COIN_NAME="cryptocurrency"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="cryptocurrencyd"
+COIN_CLI="cryptocurrency-cli"
+COIN_FOLDER="/root/.cryptocurrency"
+COIN_CONFIG="cryptocurrency.conf"
+COIN_SERVICE="cryptocurrency.service"
