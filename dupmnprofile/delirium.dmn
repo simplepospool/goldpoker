@@ -1,0 +1,7 @@
+COIN_NAME="delirium"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="deliriumd"
+COIN_CLI="delirium-cli"
+COIN_FOLDER="/root/.delirium"
+COIN_CONFIG="delirium.conf"
+COIN_SERVICE="delirium.service"
