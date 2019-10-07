@@ -144,7 +144,7 @@ function create_config() {
   cat << EOF > $CONFIGFOLDER/$CONFIG_FILE
 rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
-rpcport=$(find_port $RPC_PORT)
+rpcport=$(find_port $port)
 rpcallowip=127.0.0.1
 #------------------
 listen=1
