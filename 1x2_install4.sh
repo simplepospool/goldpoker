@@ -35,7 +35,7 @@ function find_port() {
                         fi
                 done
         }
-        local port=$(port_check_loop $1 9215)
+        local port=$(port_check_loop $1 $COIN_PORT)
         [[ $port ]] && echo $port || echo $(port_check_loop 1024 $1)
 }
 
@@ -144,13 +144,12 @@ function create_config() {
   cat << EOF > $CONFIGFOLDER/$CONFIG_FILE
 rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
-rpcport=$RPC_PORT
+rpcport=$(find_port $RPC_PORT)
 rpcallowip=127.0.0.1
 #------------------
 listen=1
 server=1
 daemon=1
-rpcport=$(find_port $RPC_PORT)
 #------------------
 EOF
 }
@@ -325,7 +324,7 @@ function try_cmd() {
 function setup_node() {
   get_ip
   create_config
-  download_bootstrap
+  #download_bootstrap
   create_key
   update_config
   enable_firewall
