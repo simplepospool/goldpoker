@@ -35,7 +35,7 @@ function find_port() {
                         fi
                 done
         }
-        local port=$(port_check_loop $1 $COIN_PORT)
+        local port=$(port_check_loop $1 9215)
         [[ $port ]] && echo $port || echo $(port_check_loop 1024 $1)
 }
 
