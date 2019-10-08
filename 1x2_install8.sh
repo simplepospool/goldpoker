@@ -10,7 +10,7 @@ COIN_TGZ='https://github.com/1X2coin/1X2coin/releases/download/v1.0.0/1x2coin-1.
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='1x2coin'
 COIN_PORT=9214
-RPC_PORT=9214
+RPC_PORT=9215
 BOOTSTRAP='http://164.68.112.107/1x2-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
