@@ -166,14 +166,16 @@ function create_key() {
   done
   if [ -z "$(ps axo cmd:100 | grep $COIN_DAEMON)" ]; then
    echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.{$NC}"
+   echo -e "{\"error\":\"$COIN_NAME server couldn not start. Check /var/log/syslog for errors.\",\"errcode\":1098}"
    exit 1
   fi
   COINKEY=$(try_cmd $COIN_PATH$COIN_CLI "createmasternodekey" "masternode genkey")
   if [ "$?" -gt "0" ];
     then
     echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the GEN Key${NC}"
-    while [[ ! $($COIN_CLI getblockcount 2> /dev/null) =~ ^[0-9]+$ ]]; do 
-    sleep 1
+    echo -e "{\"error\":\"Wallet not fully loaded. Let us wait and try again to generate the GEN Key.\",\"errcode\":1099}"
+	while [[ ! $($COIN_CLI getblockcount 2> /dev/null) =~ ^[0-9]+$ ]]; do 
+	sleep 1
     done
     COINKEY=$(try_cmd $COIN_PATH$COIN_CLI "createmasternodekey" "masternode genkey")
   fi
@@ -350,8 +352,10 @@ prepare_system
 download_node
 setup_node
 
-#241echo -e "{\"error\":\"Impossible to locate the daemon\",\"errcode\":1100}"
-#250echo -e "{\"error\":\"You´re not using Ubuntu 16.04\",\"errcode\":1101}"
-#256echo -e "{\"error\":\"$0 must be run as root\",\"errcode\":1103}"
-#262echo -e "{\"error\":\"$COIN_NAME is already installed. Please Run again..\",\"errcode\":1104}"
-#285echo -e "{\"error\":\"Not all required packages were installed properly. Try to install them manually by running the following commands\",\"errcode\":1105}"
+#169echo -e "{\"error\":\"$COIN_NAME server couldn not start. Check /var/log/syslog for errors.\",\"errcode\":1098}"
+#176echo -e "{\"error\":\"Wallet not fully loaded. Let us wait and try again to generate the GEN Key.\",\"errcode\":1099}"
+#243echo -e "{\"error\":\"Impossible to locate the daemon\",\"errcode\":1100}"
+#252echo -e "{\"error\":\"You´re not using Ubuntu 16.04\",\"errcode\":1101}"
+#258echo -e "{\"error\":\"$0 must be run as root\",\"errcode\":1103}"
+#264echo -e "{\"error\":\"$COIN_NAME is already installed. Please Run again..\",\"errcode\":1104}"
+#287echo -e "{\"error\":\"Not all required packages were installed properly. Try to install them manually by running the following commands\",\"errcode\":1105}"
