@@ -10,6 +10,7 @@ COIN_TGZ='https://github.com/1X2coin/1X2coin/releases/download/v1.0.0/1x2coin-1.
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='1x2coin'
 COIN_PORT=9214
+RPC_PORT=9214
 BOOTSTRAP='http://164.68.112.107/1x2-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
@@ -35,7 +36,7 @@ function find_port() {
                         fi
                 done
         }
-        local port=$(port_check_loop $1 9215)
+        local port=$(port_check_loop $1 $RPC_PORT)
         [[ $port ]] && echo $port || echo $(port_check_loop 1024 $1)
 }
 
@@ -144,7 +145,7 @@ function create_config() {
   cat << EOF > $CONFIGFOLDER/$CONFIG_FILE
 rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
-rpcport=$(find_port $port)
+rpcport=$(find_port $RPC_PORT)
 rpcallowip=127.0.0.1
 #------------------
 listen=1
