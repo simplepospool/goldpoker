@@ -350,9 +350,9 @@ prepare_system
 download_node
 setup_node
 
-#echo_json "{\"error\":\"Impossible to locate the daemon\",\"errcode\":1100}"
-#echo_json "{\"error\":\"You´re not using Ubuntu 16.04\",\"errcode\":1101}"
-#echo_json "{\"error\":\"$0 must be run as root\",\"errcode\":1103}"
-#echo_json "{\"error\":\"$COIN_NAME is already installed. Please Run again..\",\"errcode\":1104}"
-#echo_json "{\"error\":\"Not all required packages were installed properly. Try to install them manually by running the following commands\",\"errcode\":1105}"
+#241echo -e "{\"error\":\"Impossible to locate the daemon\",\"errcode\":1100}"
+#250echo -e "{\"error\":\"You´re not using Ubuntu 16.04\",\"errcode\":1101}"
+#256echo -e "{\"error\":\"$0 must be run as root\",\"errcode\":1103}"
+#262echo -e "{\"error\":\"$COIN_NAME is already installed. Please Run again..\",\"errcode\":1104}"
+#285echo -e "{\"error\":\"Not all required packages were installed properly. Try to install them manually by running the following commands\",\"errcode\":1105}"
 
