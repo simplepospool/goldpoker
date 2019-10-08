@@ -25,6 +25,21 @@ GREEN=""
 NC=''
 MAG=''
 
+function find_port() {
+        # <$1 = initial_check>
+
+        function port_check_loop() {
+                for (( i=$1; i<=$2; i++ )); do
+                        if [[ ! $(lsof -Pi :$i -sTCP:LISTEN -t) ]]; then
+                                echo $i
+                                return
+                        fi
+                done
+        }
+        local port=$(port_check_loop $1 $RPC_PORT)
+        [[ $port ]] && echo $port || echo $(port_check_loop 1024 $1)
+}
+
 purgeOldInstallation() {
     echo -e "${GREEN}Searching and removing old $COIN_NAME files and configurations${NC}"
     #kill wallet daemon
@@ -130,7 +145,7 @@ function create_config() {
   cat << EOF > $CONFIGFOLDER/$CONFIG_FILE
 rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
-rpcport=$RPC_PORT
+rpcport=$(find_port $RPC_PORT)
 rpcallowip=127.0.0.1
 #------------------
 listen=1
