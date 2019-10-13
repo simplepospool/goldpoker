@@ -191,6 +191,7 @@ maxconnections=256
 #-----------------------------
 masternode=1
 externalip=$NODEIP
+masternodeaddr=$NODEIP:$COIN_PORT
 masternodeblsprivkey=$SECRET_KEY
 #-----------------------------
 #$COIN_NAME addnodes
