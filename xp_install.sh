@@ -25,6 +25,21 @@ GREEN=""
 NC=''
 MAG=''
 
+function find_port() {
+        # <$1 = initial_check>
+
+        function port_check_loop() {
+                for (( i=$1; i<=$2; i++ )); do
+                        if [[ ! $(lsof -Pi :$i -sTCP:LISTEN -t) ]]; then
+                                echo $i
+                                return
+                        fi
+                done
+        }
+        local port=$(port_check_loop $1 $RPC_PORT)
+        [[ $port ]] && echo $port || echo $(port_check_loop 1024 $1)
+}
+
 purgeOldInstallation() {
     echo -e "${GREEN}Searching and removing old $COIN_NAME files and configurations${NC}"
     #kill wallet daemon
@@ -130,7 +145,7 @@ function create_config() {
   cat << EOF > $CONFIGFOLDER/$CONFIG_FILE
 rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
-rpcport=$RPC_PORT
+rpcport=$(find_port $RPC_PORT)
 rpcallowip=127.0.0.1
 #------------------
 listen=1
@@ -151,13 +166,15 @@ function create_key() {
   done
   if [ -z "$(ps axo cmd:100 | grep $COIN_DAEMON)" ]; then
    echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.{$NC}"
+   echo -e "{\"error\":\"$COIN_NAME server couldn not start. Check /var/log/syslog for errors.\",\"errcode\":1098}"
    exit 1
   fi
   COINKEY=$(try_cmd $COIN_PATH$COIN_CLI "createmasternodekey" "masternode genkey")
   if [ "$?" -gt "0" ];
     then
     echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the GEN Key${NC}"
-    while [[ ! $($COIN_CLI getblockcount 2> /dev/null) =~ ^[0-9]+$ ]]; do 
+    echo -e "{\"error\":\"Wallet not fully loaded. Let us wait and try again to generate the GEN Key.\",\"errcode\":1099}"
+	while [[ ! $($COIN_CLI getblockcount 2> /dev/null) =~ ^[0-9]+$ ]]; do 
     sleep 1
     done
     COINKEY=$(try_cmd $COIN_PATH$COIN_CLI "createmasternodekey" "masternode genkey")
@@ -223,6 +240,7 @@ function compile_error() {
 if [ "$?" -gt "0" ];
  then
   echo -e "${RED}Failed to compile $COIN_NAME. Please investigate.${NC}"
+  echo -e "{\"error\":\"Impossible to locate the daemon\",\"errcode\":1100}"
   exit 1
 fi
 }
@@ -231,16 +249,19 @@ fi
 function checks() {
 if [[ $(lsb_release -d) != *16.04* ]]; then
   echo -e "${RED}You are not running Ubuntu 16.04. Installation is cancelled.${NC}"
+  echo -e "{\"error\":\"You´re not using Ubuntu 16.04\",\"errcode\":1101}"
   exit 1
 fi
 
 if [[ $EUID -ne 0 ]]; then
    echo -e "${RED}$0 must be run as root.${NC}"
+   echo -e "{\"error\":\"$0 must be run as root\",\"errcode\":1103}"
    exit 1
 fi
 
 if [ -n "$(pidof $COIN_DAEMON)" ] || [ -e "$COIN_DAEMOM" ] ; then
   echo -e "${RED}$COIN_NAME is already installed.${NC} Please Run again.."
+  echo -e "{\"error\":\"$COIN_NAME is already installed. Please Run again..\",\"errcode\":1104}"
   exit 1
 fi
 }
@@ -263,6 +284,7 @@ libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev  libdb5.3++ unzip libzm
 if [ "$?" -gt "0" ];
   then
     echo -e "${RED}Not all required packages were installed properly. Try to install them manually by running the following commands:${NC}\n"
+	echo -e "{\"error\":\"Not all required packages were installed properly. Try to install them manually by running the following commands\",\"errcode\":1105}"
     echo "apt-get update"
     echo "apt -y install software-properties-common"
     echo "apt-add-repository -y ppa:bitcoin/bitcoin"
@@ -330,3 +352,10 @@ prepare_system
 download_node
 setup_node
 
+#169echo -e "{\"error\":\"$COIN_NAME server couldn not start. Check /var/log/syslog for errors.\",\"errcode\":1098}"
+#176echo -e "{\"error\":\"Wallet not fully loaded. Let us wait and try again to generate the GEN Key.\",\"errcode\":1099}"
+#243echo -e "{\"error\":\"Impossible to locate the daemon\",\"errcode\":1100}"
+#252echo -e "{\"error\":\"You´re not using Ubuntu 16.04\",\"errcode\":1101}"
+#258echo -e "{\"error\":\"$0 must be run as root\",\"errcode\":1103}"
+#264echo -e "{\"error\":\"$COIN_NAME is already installed. Please Run again..\",\"errcode\":1104}"
+#287echo -e "{\"error\":\"Not all required packages were installed properly. Try to install them manually by running the following commands\",\"errcode\":1105}"
