@@ -1,0 +1,7 @@
+COIN_NAME="peng"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="pengd"
+COIN_CLI="peng-cli"
+COIN_FOLDER="/root/.peng"
+COIN_CONFIG="peng.conf"
+COIN_SERVICE="peng.service"
