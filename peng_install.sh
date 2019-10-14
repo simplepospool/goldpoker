@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='peng'
 COIN_PORT=3182
 RPC_PORT=3183
-BOOTSTRAP='https://github.com/WG91/MasterNode-scripts/releases/download/PENG/bootstrap.zip'
+BOOTSTRAP='http://164.68.119.61/peng-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
