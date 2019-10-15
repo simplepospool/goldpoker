@@ -15,6 +15,7 @@ sudo apt-get install qttools5-dev-tools libgmp3-dev autoconf -y
 sudo apt-get install automake libtool -y
 sudo add-apt-repository ppa:bitcoin/bitcoin -y
 sudo apt-get update -y
+apt-get intall dos2unix -y
 sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
 apt-get install fail2ban -y
 apt-get install sysstat -y
