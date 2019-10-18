@@ -1,0 +1,7 @@
+COIN_NAME="midas"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="midasd"
+COIN_CLI="midas-cli"
+COIN_FOLDER="/root/.midas"
+COIN_CONFIG="midas.conf"
+COIN_SERVICE="midas.service"
