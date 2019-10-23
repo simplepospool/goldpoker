@@ -1,0 +1,7 @@
+COIN_NAME="allsafe"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="allsafed"
+COIN_CLI="allsafe-cli"
+COIN_FOLDER="/root/.allsafe"
+COIN_CONFIG="allsafe.conf"
+COIN_SERVICE="allsafe.service"
