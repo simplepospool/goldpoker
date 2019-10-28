@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='unigrid'
 COIN_PORT=51922
 RPC_PORT=51923
-BOOTSTRAP='https://www.dropbox.com/s/eegpegqo075xclz/unigrid_bootstrap.zip'
+BOOTSTRAP='http://164.68.116.197/unigrid-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
