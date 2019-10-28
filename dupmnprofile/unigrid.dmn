@@ -1,0 +1,7 @@
+COIN_NAME="unigrid"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="unigridd"
+COIN_CLI="unigrid-cli"
+COIN_FOLDER="/root/.unigrid"
+COIN_CONFIG="unigrid.conf"
+COIN_SERVICE="unigrid.service"
