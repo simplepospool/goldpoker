@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='reecore.conf'
+CONFIG_FILE='Reecore.conf'
 CONFIGFOLDER='/root/.Reecore'
 COIN_DAEMON='reecored'
 COIN_CLI='reecore-cli'
