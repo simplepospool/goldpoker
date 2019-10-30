@@ -1,0 +1,7 @@
+COIN_NAME="reecore"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="reecored"
+COIN_CLI="reecore-cli"
+COIN_FOLDER="/root/.Reecore"
+COIN_CONFIG="reecore.conf"
+COIN_SERVICE="reecore.service"
