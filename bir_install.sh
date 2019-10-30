@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='birakecoin'
 COIN_PORT=39697
 RPC_PORT=39698
-BOOTSTRAP='https://www.dropbox.com/s/zaxwqcnlgh3i5yk/bir_bootstrap.zip'
+BOOTSTRAP='http://164.68.116.197/bir-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -149,7 +149,6 @@ rpcport=$(find_port $RPC_PORT)
 rpcallowip=127.0.0.1
 #------------------
 listen=1
-txindex=1
 prune=500
 server=1
 daemon=1
