@@ -1,0 +1,7 @@
+COIN_NAME="escortcoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="escortcoind"
+COIN_CLI="escortcoin-cli"
+COIN_FOLDER="/root/.escortcoin"
+COIN_CONFIG="escortcoin.conf"
+COIN_SERVICE="escortcoin.service"
