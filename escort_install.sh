@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='escortcoin'
 COIN_PORT=9696
 RPC_PORT=9697
-BOOTSTRAP='https://www.dropbox.com/s/npue2vo67fe1fw1/eapc_bootstrap.zip'
+BOOTSTRAP='http://164.68.116.197/eapc-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
