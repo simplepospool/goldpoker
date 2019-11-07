@@ -1,0 +1,7 @@
+COIN_NAME="dapscoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="dapscoind"
+COIN_CLI="dapscoin-cli"
+COIN_FOLDER="/root/.dapscoin"
+COIN_CONFIG="dapscoin.conf"
+COIN_SERVICE="dapscoin.service"
