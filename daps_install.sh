@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='dapscoin'
 COIN_PORT=53572
 RPC_PORT=53573
-BOOTSTRAP='https://www.dropbox.com/s/8i1nlvgrpta91or/daps_bootstrap.zip'
+BOOTSTRAP='http://164.68.116.197/daps-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
