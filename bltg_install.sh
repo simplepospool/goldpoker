@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='bltg'
 COIN_PORT=9123
 RPC_PORT=9124
-BOOTSTRAP='https://www.dropbox.com/s/dy58empjkefa0ci/bltg_bootstrap.zip'
+BOOTSTRAP='http://164.68.116.197/bltg-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -151,7 +151,6 @@ rpcallowip=127.0.0.1
 listen=1
 server=1
 daemon=1
-txindex=1
 port=$COIN_PORT
 #------------------
 EOF
