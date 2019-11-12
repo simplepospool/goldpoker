@@ -1,0 +1,7 @@
+COIN_NAME="bltg"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="bltgd"
+COIN_CLI="bltg-cli"
+COIN_FOLDER="/root/.bltg"
+COIN_CONFIG="bltg.conf"
+COIN_SERVICE="bltg.service"
