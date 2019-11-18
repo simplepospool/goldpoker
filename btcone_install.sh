@@ -9,8 +9,8 @@ COIN_PATH='/usr/local/bin/'
 COIN_TGZ='https://github.com/bitcoinone/Bitcoin-ONE/releases/download/v2.0/bitcoinone-16_04_x86_64-linux-gnu.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='bitcoinone'
-COIN_PORT=41472
-RPC_PORT=41473
+COIN_PORT=31242
+RPC_PORT=31243
 BOOTSTRAP='http://164.68.119.61/btcone-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
