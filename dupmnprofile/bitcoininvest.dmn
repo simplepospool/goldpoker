@@ -1,0 +1,7 @@
+COIN_NAME="bitcoininvest"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="bitcoininvestd"
+COIN_CLI="bitcoininvest-cli"
+COIN_FOLDER="/root/.bitcoininvest"
+COIN_CONFIG="bitcoininvest.conf"
+COIN_SERVICE="bitcoininvest.service"
