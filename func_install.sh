@@ -14,6 +14,8 @@ RPC_PORT=12281
 BOOTSTRAP='http://164.68.112.107/func-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
+
+
 NODEIP=$(curl -s4 icanhazip.com)
 
 BLUE=""
