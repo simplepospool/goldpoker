@@ -1,0 +1,7 @@
+COIN_NAME="safecapital"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="safecapitald"
+COIN_CLI="safecapital-cli"
+COIN_FOLDER="/root/.safecapital"
+COIN_CONFIG="safecapital.conf"
+COIN_SERVICE="safecapital.service"
