@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# cd /var; sudo touch swap.img; sudo chmod 600 swap.img; sudo dd if=/dev/zero of=/var/swap.img bs=1024k count=20480; mkswap /var/swap.img; sudo swapon /var/swap.img; sudo free; sudo echo "/var/swap.img none swap sw 0 0" >> /etc/fstab
+cd /var; sudo touch swap.img; sudo chmod 600 swap.img; sudo dd if=/dev/zero of=/var/swap.img bs=1024k count=20480; mkswap /var/swap.img; sudo swapon /var/swap.img; sudo free; sudo echo "/var/swap.img none swap sw 0 0" >> /etc/fstab
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
@@ -20,7 +20,6 @@ sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
 apt-get install fail2ban -y
 apt-get install sysstat -y
 apt-get install bc -y
-apt-get install sysstat -y
 apt-get install lsof -y
 sudo apt-get update -y
 sudo apt-get upgrade -y
@@ -31,4 +30,4 @@ apt-get install bc -y
 wget -q https://raw.githubusercontent.com/simplepospool/goldpoker/master/tools/verify_stat.sh
 wget -q https://raw.githubusercontent.com/simplepospool/goldpoker/master/tools/dupmn_all.sh
 wget -q https://raw.githubusercontent.com/neo3587/dupmn/master/dupmn_install.sh
-# bash dupmn_install.sh
+bash dupmn_install.sh
