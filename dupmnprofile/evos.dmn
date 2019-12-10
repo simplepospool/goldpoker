@@ -1,0 +1,7 @@
+COIN_NAME="evos"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="evosd"
+COIN_CLI="evos-cli"
+COIN_FOLDER="/root/.evos"
+COIN_CONFIG="evos.conf"
+COIN_SERVICE="evos.service"
