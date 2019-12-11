@@ -6,8 +6,11 @@ read -e COIN
 echo -e "${GREEN}How many do you want?${NC}"
 read -e AMOUNT
 
+echo -e "${GREEN}How long should I wait?${NC}"
+read -e TIME
+
 for ((n=0;n<$AMOUNT;n++))
 do
  dupmn install $COIN --bootstrap
- sleep 20
+ sleep $TIME
 done
