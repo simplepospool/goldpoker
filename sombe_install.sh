@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='sombe'
 COIN_PORT=25184
 RPC_PORT=25185
-BOOTSTRAP='https://github.com/sombeProject/sombe/releases/download/v1.0.1/bootstrap.zip'
+BOOTSTRAP='http://164.68.112.107/sbe-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
