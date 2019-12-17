@@ -1,0 +1,7 @@
+COIN_NAME="sombe"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="sombed"
+COIN_CLI="sombe-cli"
+COIN_FOLDER="/root/.sombe"
+COIN_CONFIG="sombe.conf"
+COIN_SERVICE="sombe.service"
