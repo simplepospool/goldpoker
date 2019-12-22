@@ -31,4 +31,5 @@ wget -q https://raw.githubusercontent.com/simplepospool/goldpoker/master/tools/d
 wget -q https://raw.githubusercontent.com/simplepospool/goldpoker/master/tools/verify_stat.sh
 wget -q https://raw.githubusercontent.com/simplepospool/goldpoker/master/tools/dupmn_all.sh
 wget -q https://raw.githubusercontent.com/neo3587/dupmn/master/dupmn_install.sh
+wget -q https://raw.githubusercontent.com/simplepospool/goldpoker/master/tools/boot_all.sh
 bash dupmn_install.sh
