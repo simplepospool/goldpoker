@@ -2,7 +2,7 @@
 
 TMP_FOLDER=$(mktemp -d)
 CONFIG_FILE='masterwin.conf'
-CONFIGFOLDER='/root/.MASTERWIN'
+CONFIGFOLDER='/root/.masterwin'
 COIN_DAEMON='masterwind'
 COIN_CLI='masterwin-cli'
 COIN_PATH='/usr/local/bin/'
