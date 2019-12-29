@@ -1,0 +1,7 @@
+COIN_NAME="bitcom"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="bitcomd"
+COIN_CLI="bitcom-cli"
+COIN_FOLDER="/root/.bitcom"
+COIN_CONFIG="bitcom.conf"
+COIN_SERVICE="bitcom.service"
