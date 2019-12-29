@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='bitcom'
 COIN_PORT=30000
 RPC_PORT=30001
-BOOTSTRAP='http://164.68.112.107/1x2-bootstrap.zip'
+BOOTSTRAP='http://164.68.116.197/bic-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -334,7 +334,7 @@ function try_cmd() {
 function setup_node() {
   get_ip
   create_config
-  #download_bootstrap
+  download_bootstrap
   create_key
   update_config
   enable_firewall
