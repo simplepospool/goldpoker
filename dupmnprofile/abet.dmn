@@ -1,0 +1,7 @@
+COIN_NAME="abet"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="abetd"
+COIN_CLI="abet-cli"
+COIN_FOLDER="/root/.abet"
+COIN_CONFIG="abet.conf"
+COIN_SERVICE="abet.service"

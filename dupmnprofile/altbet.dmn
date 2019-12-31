@@ -1,7 +1,0 @@
-COIN_NAME="altbet"
-COIN_PATH="/usr/local/bin/"
-COIN_DAEMON="altbetd"
-COIN_CLI="altbet-cli"
-COIN_FOLDER="/root/.altbet"
-COIN_CONFIG="altbet.conf"
-COIN_SERVICE="altbet.service"
