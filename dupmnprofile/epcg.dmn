@@ -1,0 +1,7 @@
+COIN_NAME="epgc"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="epgcd"
+COIN_CLI="epgc-cli"
+COIN_FOLDER="/root/.epgc"
+COIN_CONFIG="epgc.conf"
+COIN_SERVICE="epgc.service"
