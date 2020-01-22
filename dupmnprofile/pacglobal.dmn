@@ -1,0 +1,7 @@
+COIN_NAME="pacglobal"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="pacglobald"
+COIN_CLI="pacglobal-cli"
+COIN_FOLDER="/root/.PACGlobal"
+COIN_CONFIG="pacglobal.conf"
+COIN_SERVICE="pacglobal.service"
