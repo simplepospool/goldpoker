@@ -1,0 +1,7 @@
+COIN_NAME="simulacrum"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="simulacrumd"
+COIN_CLI="simulacrum-cli"
+COIN_FOLDER="/root/.simulacrum"
+COIN_CONFIG="simulacrum.conf"
+COIN_SERVICE="simulacrum.service"
