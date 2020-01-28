@@ -1,0 +1,7 @@
+COIN_NAME="byron"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="byrond"
+COIN_CLI="byron-cli"
+COIN_FOLDER="/root/.byron"
+COIN_CONFIG="byron.conf"
+COIN_SERVICE="byron.service"
