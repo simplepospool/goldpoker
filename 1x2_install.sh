@@ -149,6 +149,7 @@ rpcport=$(find_port $RPC_PORT)
 rpcallowip=127.0.0.1
 #------------------
 listen=1
+txindex=1
 server=1
 daemon=1
 port=$COIN_PORT
