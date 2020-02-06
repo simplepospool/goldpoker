@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.epgc'
 COIN_DAEMON='epgcd'
 COIN_CLI='epgc-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://www.dropbox.com/s/wtzews4pxbron8q/epg_v1.zip'
+COIN_TGZ='https://www.dropbox.com/s/kotnvc9moh0p594/epgcv103.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='epgc'
 COIN_PORT=29442
@@ -199,8 +199,12 @@ masternodeprivkey=$COINKEY
 #$COIN_NAME addnodes
 
 addnode=134.255.218.45:29442
-addnode=92.42.46.121:29442
-addnode=134.255.234.59:29442
+addnode=173.199.119.55:29442
+addnode=149.28.34.121:29442
+addnode=207.148.17.239:29442
+addnode=45.77.97.72:29442
+addnode=107.191.41.22:29442
+addnode=8.9.6.254:29442
 
 EOF
 }
