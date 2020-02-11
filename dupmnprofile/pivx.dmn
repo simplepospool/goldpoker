@@ -1,0 +1,7 @@
+COIN_NAME="pivx"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="pivxd"
+COIN_CLI="pivx-cli"
+COIN_FOLDER="/root/.pivx"
+COIN_CONFIG="pivx.conf"
+COIN_SERVICE="pivx.service"
