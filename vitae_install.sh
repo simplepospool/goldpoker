@@ -25,6 +25,21 @@ GREEN=""
 NC=''
 MAG=''
 
+function find_port() {
+        # <$1 = initial_check>
+
+        function port_check_loop() {
+                for (( i=$1; i<=$2; i++ )); do
+                        if [[ ! $(lsof -Pi :$i -sTCP:LISTEN -t) ]]; then
+                                echo $i
+                                return
+                        fi
+                done
+        }
+        local port=$(port_check_loop $1 $RPC_PORT)
+        [[ $port ]] && echo $port || echo $(port_check_loop 1024 $1)
+}
+
 purgeOldInstallation() {
     echo -e "${GREEN}Searching and removing old $COIN_NAME files and configurations${NC}"
     #kill wallet daemon
@@ -42,6 +57,9 @@ purgeOldInstallation() {
 function download_bootstrap() {
   rm -rf $CONFIGFOLDER/blocks >/dev/null 2>&1
   rm -rf $CONFIGFOLDER/chainstate >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/sporks >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/zerocoin >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/database >/dev/null 2>&1
   rm $CONFIGFOLDER/*.pid >/dev/null 2>&1
   rm $CONFIGFOLDER/*.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/*.log >/dev/null 2>&1
@@ -54,8 +72,6 @@ function download_bootstrap() {
   #clear
 
 }
-
-
 function install_sentinel() {
   echo -e "${GREEN}Installing sentinel.${NC}"
   apt-get -y install python-virtualenv virtualenv >/dev/null 2>&1
@@ -78,6 +94,8 @@ function download_node() {
   mv $(find ./ -mount -name $COIN_CLI) $COIN_PATH >/dev/null 2>&1
   chmod +x $COIN_PATH$COIN_DAEMON >/dev/null 2>&1
   chmod +x $COIN_PATH$COIN_CLI >/dev/null 2>&1
+  strip $COIN_PATH$COIN_DAEMON >/dev/null 2>&1
+  strip $COIN_PATH$COIN_CLI >/dev/null 2>&1
   cd - >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
@@ -127,12 +145,15 @@ function create_config() {
   cat << EOF > $CONFIGFOLDER/$CONFIG_FILE
 rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
-rpcport=$RPC_PORT
+rpcport=$(find_port $RPC_PORT)
 rpcallowip=127.0.0.1
+#------------------
 listen=1
+txindex=1
 server=1
 daemon=1
 port=$COIN_PORT
+#------------------
 EOF
 }
 
@@ -146,16 +167,18 @@ function create_key() {
   done
   if [ -z "$(ps axo cmd:100 | grep $COIN_DAEMON)" ]; then
    echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.{$NC}"
+   echo -e "{\"error\":\"$COIN_NAME server couldn not start. Check /var/log/syslog for errors.\",\"errcode\":1098}"
    exit 1
   fi
-  COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
+  COINKEY=$(try_cmd $COIN_PATH$COIN_CLI "createmasternodekey" "masternode genkey")
   if [ "$?" -gt "0" ];
     then
     echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the GEN Key${NC}"
-    while [[ ! $($COIN_CLI getblockcount 2> /dev/null) =~ ^[0-9]+$ ]]; do 
+    echo -e "{\"error\":\"Wallet not fully loaded. Let us wait and try again to generate the GEN Key.\",\"errcode\":1099}"
+	while [[ ! $($COIN_CLI getblockcount 2> /dev/null) =~ ^[0-9]+$ ]]; do 
     sleep 1
     done
-    COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
+    COINKEY=$(try_cmd $COIN_PATH$COIN_CLI "createmasternodekey" "masternode genkey")
   fi
   $COIN_PATH$COIN_CLI stop
 fi
@@ -168,10 +191,26 @@ function update_config() {
 logintimestamps=1
 maxconnections=256
 #bind=$NODEIP
+#-----------------------------
 masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
-#Addnodes
+#-----------------------------
+#$COIN_NAME addnodes
+
+addnode=173.48.82.37
+addnode=140.82.24.121
+addnode=45.32.230.157
+addnode=185.24.97.11
+addnode=207.148.107.95
+addnode=217.163.28.214
+addnode=94.215.96.11
+addnode=163.172.168.196
+addnode=159.69.14.12
+addnode=99.242.139.218
+addnode=106.215.132.34
+addnode=207.246.95.137
+
 EOF
 }
 
@@ -214,6 +253,7 @@ function compile_error() {
 if [ "$?" -gt "0" ];
  then
   echo -e "${RED}Failed to compile $COIN_NAME. Please investigate.${NC}"
+  echo -e "{\"error\":\"Impossible to locate the daemon\",\"errcode\":1100}"
   exit 1
 fi
 }
@@ -222,16 +262,19 @@ fi
 function checks() {
 if [[ $(lsb_release -d) != *16.04* ]]; then
   echo -e "${RED}You are not running Ubuntu 16.04. Installation is cancelled.${NC}"
+  echo -e "{\"error\":\"You´re not using Ubuntu 16.04\",\"errcode\":1101}"
   exit 1
 fi
 
 if [[ $EUID -ne 0 ]]; then
    echo -e "${RED}$0 must be run as root.${NC}"
+   echo -e "{\"error\":\"$0 must be run as root\",\"errcode\":1103}"
    exit 1
 fi
 
 if [ -n "$(pidof $COIN_DAEMON)" ] || [ -e "$COIN_DAEMOM" ] ; then
   echo -e "${RED}$COIN_NAME is already installed.${NC} Please Run again.."
+  echo -e "{\"error\":\"$COIN_NAME is already installed. Please Run again..\",\"errcode\":1104}"
   exit 1
 fi
 }
@@ -254,6 +297,7 @@ libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev  libdb5.3++ unzip libzm
 if [ "$?" -gt "0" ];
   then
     echo -e "${RED}Not all required packages were installed properly. Try to install them manually by running the following commands:${NC}\n"
+	echo -e "{\"error\":\"Not all required packages were installed properly. Try to install them manually by running the following commands\",\"errcode\":1105}"
     echo "apt-get update"
     echo "apt -y install software-properties-common"
     echo "apt-add-repository -y ppa:bitcoin/bitcoin"
@@ -291,6 +335,14 @@ function important_information() {
  clear
 }
 
+function try_cmd() {
+    # <$1 = exec> | <$2 = try> | <$3 = catch>
+    exec 2> /dev/null
+    local check=$($1 $2)
+    [[ "$check" ]] && echo $check || echo $($1 $3)
+    exec 2> /dev/tty
+}
+
 function setup_node() {
   get_ip
   create_config
@@ -312,3 +364,11 @@ checks
 prepare_system
 download_node
 setup_node
+
+#169echo -e "{\"error\":\"$COIN_NAME server couldn not start. Check /var/log/syslog for errors.\",\"errcode\":1098}"
+#176echo -e "{\"error\":\"Wallet not fully loaded. Let us wait and try again to generate the GEN Key.\",\"errcode\":1099}"
+#243echo -e "{\"error\":\"Impossible to locate the daemon\",\"errcode\":1100}"
+#252echo -e "{\"error\":\"You´re not using Ubuntu 16.04\",\"errcode\":1101}"
+#258echo -e "{\"error\":\"$0 must be run as root\",\"errcode\":1103}"
+#264echo -e "{\"error\":\"$COIN_NAME is already installed. Please Run again..\",\"errcode\":1104}"
+#287echo -e "{\"error\":\"Not all required packages were installed properly. Try to install them manually by running the following commands\",\"errcode\":1105}"
