@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.StakeCubeCore'
 COIN_DAEMON='stakecubed'
 COIN_CLI='stakecube-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/stakecube/stakecube/releases/download/c9fbcb219/stakecube-ubuntu16.tgz'
+COIN_TGZ='https://github.com/stakecube/StakeCubeCoin/releases/download/v1.0.0.2/scc-1.0.0.2-linux-gnu.tgz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='stakecube'
 COIN_PORT=40000
@@ -196,9 +196,7 @@ externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
 #-----------------------------
 #$COIN_NAME addnodes
-addnode=95.179.170.58
-addnode=95.179.168.253
-addnode=45.76.24.216
+
 
 EOF
 }
