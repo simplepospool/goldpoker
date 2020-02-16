@@ -1,0 +1,7 @@
+COIN_NAME="fdreserve"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="fdreserved"
+COIN_CLI="fdreserve-cli"
+COIN_FOLDER="/root/.fdreserve"
+COIN_CONFIG="fdreserve.conf"
+COIN_SERVICE="fdreserve.service"
