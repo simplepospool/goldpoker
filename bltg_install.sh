@@ -6,11 +6,11 @@ CONFIGFOLDER='/root/.bltg'
 COIN_DAEMON='bltgd'
 COIN_CLI='bltg-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/Block-Logic-Technology-Group/bltg/releases/download/v3.0.1/bltg-3.0.1-x86_64-linux-gnu.tar.gz'
+COIN_TGZ='https://github.com/Block-Logic-Technology-Group/bltg/releases/download/v3.1.1/bltg-3.1.1-x86_64-linux-gnu.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='bltg'
-COIN_PORT=9123
-RPC_PORT=9124
+COIN_PORT=17127
+RPC_PORT=17128
 BOOTSTRAP='http://164.68.116.197/bltg-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
