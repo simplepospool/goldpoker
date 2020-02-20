@@ -1,0 +1,7 @@
+COIN_NAME="Adast"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="Adastd"
+COIN_CLI="Adast-cli"
+COIN_FOLDER="/root/.Adast"
+COIN_CONFIG="Adast.conf"
+COIN_SERVICE="Adast.service"
