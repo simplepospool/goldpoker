@@ -1,0 +1,7 @@
+COIN_NAME="new808coin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="new808coind"
+COIN_CLI="new808coin-cli"
+COIN_FOLDER="/root/.new808coin"
+COIN_CONFIG="new808coin.conf"
+COIN_SERVICE="new808coin.service"
