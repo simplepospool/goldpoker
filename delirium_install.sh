@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='delirium'
 COIN_PORT=30100
 RPC_PORT=30101
-BOOTSTRAP='https://www.dropbox.com/s/r05l8zestsu0iuu/dlc_bootstrap.zip'
+BOOTSTRAP='http://164.68.116.197/dlc-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)

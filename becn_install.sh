@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='beacon'
 COIN_PORT=11115
 RPC_PORT=11114
-BOOTSTRAP='https://www.dropbox.com/s/g14dc72edf0akue/becn_bootstrap.zip'
+BOOTSTRAP='http://164.68.116.197/becn-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
