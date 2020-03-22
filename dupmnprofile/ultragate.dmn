@@ -1,0 +1,7 @@
+COIN_NAME="ultragate"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="ultragated"
+COIN_CLI="ultragate-cli"
+COIN_FOLDER="/root/.ultragate"
+COIN_CONFIG="ultragate.conf"
+COIN_SERVICE="ultragate.service"
