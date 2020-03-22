@@ -1,17 +1,17 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='byron.conf'
-CONFIGFOLDER='/root/.byron'
-COIN_DAEMON='byrond'
-COIN_CLI='byron-cli'
+CONFIG_FILE='ultragate.conf'
+CONFIGFOLDER='/root/.ultragate'
+COIN_DAEMON='ultragated'
+COIN_CLI='ultragate-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://www.dropbox.com/s/8beahnaqku4ovms/byron_v1.zip'
+COIN_TGZ='https://github.com/ultranatum/ultragate/releases/download/v1.0.0.2/ultragate-1.0.0.2-x86_64-linux-gnu.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='byron'
-COIN_PORT=27215
-RPC_PORT=27216
-BOOTSTRAP='http://164.68.116.197/byron-bootstrap.zip'
+COIN_NAME='ultragate'
+COIN_PORT=32852
+RPC_PORT=32853
+BOOTSTRAP='https://www.dropbox.com/s/7nz0lw62o1sxvlj/ulg_bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -278,10 +278,6 @@ apt-add-repository -y ppa:bitcoin/bitcoin >/dev/null 2>&1
 echo -e "Installing required packages, it may take some time to finish.${NC}"
 apt-get update >/dev/null 2>&1
 apt-get install libzmq3-dev -y >/dev/null 2>&1
-sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y >/dev/null 2>&1
-apt-get update -y >/dev/null 2>&1
-apt-get upgrade -y >/dev/null 2>&1
-apt-get install --only-upgrade libstdc++6 -y >/dev/null 2>&1
 apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" make software-properties-common \
 build-essential libtool autoconf libssl-dev libboost-dev libboost-chrono-dev libboost-filesystem-dev libboost-program-options-dev \
 libboost-system-dev libboost-test-dev libboost-thread-dev sudo automake git wget curl libdb4.8-dev bsdmainutils libdb4.8++-dev \
