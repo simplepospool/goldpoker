@@ -1,17 +1,15 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='ultragate.conf'
-CONFIGFOLDER='/root/.ultragate'
-COIN_DAEMON='ultragated'
-COIN_CLI='ultragate-cli'
+CONFIG_FILE='LitecoinPlus.conf'
+CONFIGFOLDER='/root/.LitecoinPlus'
+COIN_DAEMON='litecoinplusd'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/ultranatum/ultragate/releases/download/v1.0.0.2/ultragate-1.0.0.2-x86_64-linux-gnu.tar.gz'
+COIN_TGZ='https://www.dropbox.com/s/pov15ixb7e4e3re/litecoinplusd_5101.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='ultragate'
-COIN_PORT=32852
-RPC_PORT=32853
-BOOTSTRAP='http://164.68.116.197/ulg-bootstrap.zip'
+COIN_NAME='litecoinplusd'
+RPC_PORT=4545
+BOOTSTRAP='http://164.68.112.107/1x2-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -44,21 +42,17 @@ purgeOldInstallation() {
     echo -e "${GREEN}Searching and removing old $COIN_NAME files and configurations${NC}"
     #kill wallet daemon
 	sudo killall $COIN_DAEMON > /dev/null 2>&1
-    #remove old ufw port allow
-    sudo ufw delete allow $COIN_PORT/tcp > /dev/null 2>&1
     #remove old files
-    sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1
+    sudo rm $COIN_DAEMON > /dev/null 2>&1
     sudo rm -rf ~/.$COIN_NAME > /dev/null 2>&1
     #remove binaries and $COIN_NAME utilities
-    cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
+    cd /usr/local/bin && sudo rm $COIN_DAEMON > /dev/null 2>&1 && cd
     echo -e "${GREEN}* Done${NONE}";
 }
 
 function download_bootstrap() {
-  rm -rf $CONFIGFOLDER/blocks >/dev/null 2>&1
-  rm -rf $CONFIGFOLDER/chainstate >/dev/null 2>&1
-  rm -rf $CONFIGFOLDER/sporks >/dev/null 2>&1
-  rm -rf $CONFIGFOLDER/zerocoin >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/database >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/themes >/dev/null 2>&1
   rm -rf $CONFIGFOLDER/database >/dev/null 2>&1
   rm $CONFIGFOLDER/*.pid >/dev/null 2>&1
   rm $CONFIGFOLDER/*.dat >/dev/null 2>&1
@@ -91,11 +85,8 @@ function download_node() {
   compile_error
   tar xvf $COIN_ZIP || unzip $COIN_ZIP >/dev/null 2>&1
   mv $(find ./ -mount -name $COIN_DAEMON) $COIN_PATH >/dev/null 2>&1
-  mv $(find ./ -mount -name $COIN_CLI) $COIN_PATH >/dev/null 2>&1
   chmod +x $COIN_PATH$COIN_DAEMON >/dev/null 2>&1
-  chmod +x $COIN_PATH$COIN_CLI >/dev/null 2>&1
   strip $COIN_PATH$COIN_DAEMON >/dev/null 2>&1
-  strip $COIN_PATH$COIN_CLI >/dev/null 2>&1
   cd - >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
@@ -112,7 +103,7 @@ Group=root
 Type=forking
 #PIDFile=$CONFIGFOLDER/$COIN_NAME.pid
 ExecStart=$COIN_PATH$COIN_DAEMON -daemon -conf=$CONFIGFOLDER/$CONFIG_FILE -datadir=$CONFIGFOLDER
-ExecStop=-$COIN_PATH$COIN_CLI -conf=$CONFIGFOLDER/$CONFIG_FILE -datadir=$CONFIGFOLDER stop
+ExecStop=-$COIN_PATH$COIN_DAEMON -conf=$CONFIGFOLDER/$CONFIG_FILE -datadir=$CONFIGFOLDER stop
 Restart=always
 PrivateTmp=true
 TimeoutStopSec=60s
@@ -152,55 +143,10 @@ listen=1
 txindex=1
 server=1
 daemon=1
-port=$COIN_PORT
 #------------------
 EOF
 }
 
-function create_key() {
-  echo -e "${YELLOW}Enter your ${RED}$COIN_NAME Masternode GEN Key${NC}. Or Press enter generate New Genkey"
-  read -t 10 -e COINKEY
-  if [[ -z "$COINKEY" ]]; then
-  $COIN_PATH$COIN_DAEMON -daemon
-  while [[ ! $($COIN_CLI getblockcount 2> /dev/null) =~ ^[0-9]+$ ]]; do 
-    sleep 1
-  done
-  if [ -z "$(ps axo cmd:100 | grep $COIN_DAEMON)" ]; then
-   echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.{$NC}"
-   echo -e "{\"error\":\"$COIN_NAME server couldn not start. Check /var/log/syslog for errors.\",\"errcode\":1098}"
-   exit 1
-  fi
-  COINKEY=$(try_cmd $COIN_PATH$COIN_CLI "createmasternodekey" "masternode genkey")
-  if [ "$?" -gt "0" ];
-    then
-    echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the GEN Key${NC}"
-    echo -e "{\"error\":\"Wallet not fully loaded. Let us wait and try again to generate the GEN Key.\",\"errcode\":1099}"
-	while [[ ! $($COIN_CLI getblockcount 2> /dev/null) =~ ^[0-9]+$ ]]; do 
-    sleep 1
-    done
-    COINKEY=$(try_cmd $COIN_PATH$COIN_CLI "createmasternodekey" "masternode genkey")
-  fi
-  $COIN_PATH$COIN_CLI stop
-fi
-clear
-}
-
-function update_config() {
-  sed -i 's/daemon=1/daemon=0/' $CONFIGFOLDER/$CONFIG_FILE
-  cat << EOF >> $CONFIGFOLDER/$CONFIG_FILE
-logintimestamps=1
-maxconnections=256
-#bind=$NODEIP
-#-----------------------------
-masternode=1
-externalip=$NODEIP:$COIN_PORT
-masternodeprivkey=$COINKEY
-#-----------------------------
-#$COIN_NAME addnodes
-
-
-EOF
-}
 
 
 function enable_firewall() {
@@ -278,6 +224,10 @@ apt-add-repository -y ppa:bitcoin/bitcoin >/dev/null 2>&1
 echo -e "Installing required packages, it may take some time to finish.${NC}"
 apt-get update >/dev/null 2>&1
 apt-get install libzmq3-dev -y >/dev/null 2>&1
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y >/dev/null 2>&1
+apt-get update -y >/dev/null 2>&1
+apt-get upgrade -y >/dev/null 2>&1
+apt-get install --only-upgrade libstdc++6 -y >/dev/null 2>&1
 apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" make software-properties-common \
 build-essential libtool autoconf libssl-dev libboost-dev libboost-chrono-dev libboost-filesystem-dev libboost-program-options-dev \
 libboost-system-dev libboost-test-dev libboost-thread-dev sudo automake git wget curl libdb4.8-dev bsdmainutils libdb4.8++-dev \
@@ -334,9 +284,7 @@ function try_cmd() {
 function setup_node() {
   get_ip
   create_config
-  download_bootstrap
-  create_key
-  update_config
+  #download_bootstrap
   enable_firewall
   #install_sentinel
   important_information
