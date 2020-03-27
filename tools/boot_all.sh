@@ -19,3 +19,5 @@ bash dupmn_all.sh $COIN rm -rf DUPFOLDER/*.dat
 bash dupmn_all.sh $COIN unzip -oq $ZIPFILE -d DUPFOLDER
 dupmn systemctlall $COIN start
 
+rm $ZIPFILE
+
