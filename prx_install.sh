@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='prx'
 COIN_PORT=12195
 RPC_PORT=12194
-BOOTSTRAP='https://www.dropbox.com/s/t0tjvldjmb1v0su/prx_bootstrap.zip'
+BOOTSTRAP='http://164.68.116.197/prx-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -344,7 +344,7 @@ function try_cmd() {
 function setup_node() {
   get_ip
   create_config
-  #download_bootstrap
+  download_bootstrap
   create_key
   update_config
   enable_firewall
