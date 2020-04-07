@@ -1,0 +1,7 @@
+COIN_NAME="bitwin24"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="bitwin24d"
+COIN_CLI="bitwin24-cli"
+COIN_FOLDER="/root/.bitwin24"
+COIN_CONFIG="bitwin24.conf"
+COIN_SERVICE="bitwin24.service"
