@@ -1,0 +1,7 @@
+COIN_NAME="Astracoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="Astracoind"
+COIN_CLI="Astracoin-cli"
+COIN_FOLDER="/root/.Astracoin"
+COIN_CONFIG="Astracoin.conf"
+COIN_SERVICE="Astracoin.service"
