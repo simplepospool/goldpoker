@@ -147,7 +147,6 @@ rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
 rpcport=$(find_port $RPC_PORT)
 rpcallowip=127.0.0.1
-rpcallowip=144.91.97.241
 nodebuglogfile=1
 #------------------
 listen=1
