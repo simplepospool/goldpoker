@@ -1,0 +1,7 @@
+COIN_NAME="cntxcoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="cntxcoind"
+COIN_CLI="cntxcoin-cli"
+COIN_FOLDER="/root/.cntxcoin"
+COIN_CONFIG="cntxcoin.conf"
+COIN_SERVICE="cntxcoin.service"
