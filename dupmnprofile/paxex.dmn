@@ -1,0 +1,7 @@
+COIN_NAME="paxex"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="paxexd"
+COIN_CLI="paxex-cli"
+COIN_FOLDER="/root/.paxex"
+COIN_CONFIG="paxex.conf"
+COIN_SERVICE="paxex.service"
