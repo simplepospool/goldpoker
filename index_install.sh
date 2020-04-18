@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='indexnode.conf'
+CONFIG_FILE='index.conf'
 CONFIGFOLDER='/root/.IndexChain'
 COIN_DAEMON='indexd'
 COIN_CLI='index-cli'
