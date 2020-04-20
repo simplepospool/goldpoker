@@ -1,0 +1,7 @@
+COIN_NAME="elunium"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="eluniumd"
+COIN_CLI="elunium-cli"
+COIN_FOLDER="/root/.elunium"
+COIN_CONFIG="elunium.conf"
+COIN_SERVICE="elunium.service"
