@@ -1,0 +1,7 @@
+COIN_NAME="onex"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="onexd"
+COIN_CLI="onex-cli"
+COIN_FOLDER="/root/.ONEX"
+COIN_CONFIG="ONEX.conf"
+COIN_SERVICE="onex.service"
