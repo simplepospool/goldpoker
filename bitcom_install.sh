@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.bitcom'
 COIN_DAEMON='bitcomd'
 COIN_CLI='bitcom-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/bitcomcoin/bitcom/releases/download/1.0.0/bitcom-1.0.0-x86_64-linux-gnu.tar.gz'
+COIN_TGZ='https://www.dropbox.com/s/f70gq3hq8vretr9/bitcom.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='bitcom'
 COIN_PORT=30000
@@ -349,7 +349,7 @@ clear
 
 #purgeOldInstallation
 checks
-prepare_system
+#prepare_system
 download_node
 setup_node
 
