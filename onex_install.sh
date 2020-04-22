@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='onex'
 COIN_PORT=30229
 RPC_PORT=30228
-BOOTSTRAP='https://www.dropbox.com/s/7pdum5gqy991v9g/onex_bootstrap.zip'
+BOOTSTRAP='http://164.68.116.197/onex-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
