@@ -6,12 +6,12 @@ CONFIGFOLDER='/root/.bitgreen'
 COIN_DAEMON='bitgreend'
 COIN_CLI='bitgreen-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://www.dropbox.com/s/kvyu14b5zolb4ff/bitgreen_v1408.tar.gz'
+COIN_TGZ='#'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='bitgreen'
 COIN_PORT=9333
 RPC_PORT=17100
-BOOTSTRAP='http://164.68.112.107/bitg-bootstrap.zip'
+BOOTSTRAP='#'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
  
 NODEIP=$(curl -s4 icanhazip.com)
