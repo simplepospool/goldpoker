@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='iqcash'
 COIN_PORT=14014
 RPC_PORT=14015
-BOOTSTRAP='http://164.68.112.107/1x2-bootstrap.zip'
+BOOTSTRAP='http://164.68.112.107/iq-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 SENTINEL_REPO='https://github.com/IQ-Cash/sentinel.git'
 
@@ -341,7 +341,7 @@ function try_cmd() {
 function setup_node() {
   get_ip
   create_config
-  #download_bootstrap
+  download_bootstrap
   create_key
   update_config
   enable_firewall
