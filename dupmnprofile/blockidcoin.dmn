@@ -1,0 +1,7 @@
+COIN_NAME="blockidcoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="blockidcoind"
+COIN_CLI="blockidcoin-cli"
+COIN_FOLDER="/root/.blockidcoin"
+COIN_CONFIG="blockidcoin.conf"
+COIN_SERVICE="blockidcoin.service"
