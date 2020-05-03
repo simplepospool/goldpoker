@@ -27,6 +27,7 @@ sudo apt-get dist-upgrade -y
 apt-get -y autoremove
 apt-get install sysstat -y
 apt-get install bc -y
+apt-get install zip unzip -y
 wget -q https://raw.githubusercontent.com/simplepospool/goldpoker/master/tools/duplicatemn.sh
 wget -q https://raw.githubusercontent.com/simplepospool/goldpoker/master/tools/verify_stat.sh
 wget -q https://raw.githubusercontent.com/simplepospool/goldpoker/master/tools/dupmn_all.sh
