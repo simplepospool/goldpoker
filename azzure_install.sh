@@ -9,8 +9,8 @@ COIN_PATH='/usr/local/bin/'
 COIN_TGZ='https://www.dropbox.com/s/b6j2mschebj1kiu/azzure.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='Azzure'
-COIN_PORT=27916
-RPC_PORT=27917
+COIN_PORT=22115
+RPC_PORT=22116
 BOOTSTRAP='http://167.86.98.179/azzr-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
