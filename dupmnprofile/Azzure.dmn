@@ -1,0 +1,7 @@
+COIN_NAME="Azzure"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="Azzured"
+COIN_CLI="Azzure-cli"
+COIN_FOLDER="/root/.Azzure"
+COIN_CONFIG="Azzure.conf"
+COIN_SERVICE="Azzure.service"
