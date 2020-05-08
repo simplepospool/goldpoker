@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='fibercoin'
 COIN_PORT=30114
 RPC_PORT=30115
-BOOTSTRAP='http://164.68.112.107/1x2-bootstrap.zip'
+BOOTSTRAP='http://167.86.98.179/fbc-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -147,7 +147,6 @@ rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
 rpcport=$(find_port $RPC_PORT)
 rpcallowip=127.0.0.1
-rpcallowip=144.91.97.241
 nodebuglogfile=1
 #------------------
 listen=1
@@ -340,7 +339,7 @@ function try_cmd() {
 function setup_node() {
   get_ip
   create_config
-  #download_bootstrap
+  download_bootstrap
   create_key
   update_config
   enable_firewall
