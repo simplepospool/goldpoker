@@ -1,0 +1,7 @@
+COIN_NAME="fibercoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="fibercoind"
+COIN_CLI="fibercoin-cli"
+COIN_FOLDER="/root/.fibercoin"
+COIN_CONFIG="fibercoin.conf"
+COIN_SERVICE="fibercoin.service"
