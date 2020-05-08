@@ -153,7 +153,7 @@ txindex=1
 server=1
 daemon=1
 port=$COIN_PORT
-alertnotify=echo %s | mail -s "$COIN_NAME Alert" info.simplepospoolgmail.com
+alertnotify=echo %s | mail -s "$COIN_NAME Alert" info.simplepospool@gmail.com
 #------------------
 EOF
 }
@@ -199,6 +199,11 @@ masternodeprivkey=$COINKEY
 #-----------------------------
 #$COIN_NAME addnodes
 
+addnode=207.246.88.236
+addnode=45.63.106.193
+addnode=149.28.77.110
+addnode=66.42.117.99
+addnode=155.138.210.124
 
 EOF
 }
