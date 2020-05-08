@@ -1,14 +1,14 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='Azzura.conf'
-CONFIGFOLDER='/root/.Azzura'
-COIN_DAEMON='Azzurad'
-COIN_CLI='Azzura-cli'
+CONFIG_FILE='Azzure.conf'
+CONFIGFOLDER='/root/.Azzure'
+COIN_DAEMON='Azzured'
+COIN_CLI='Azzure-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_TGZ='https://www.dropbox.com/s/b6j2mschebj1kiu/azzure.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='Azzura'
+COIN_NAME='Azzure'
 COIN_PORT=27916
 RPC_PORT=27917
 BOOTSTRAP='http://164.68.112.107/1x2-bootstrap.zip'
