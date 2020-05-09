@@ -146,7 +146,7 @@ function create_config() {
 rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
 rpcport=$(find_port $RPC_PORT)
-rpcallowip=127.0.0.1
+# rpcallowip=127.0.0.1
 #------------------
 txindex=1
 server=1
