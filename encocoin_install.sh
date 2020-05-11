@@ -9,8 +9,8 @@ COIN_PATH='/usr/local/bin/'
 COIN_TGZ='https://github.com/Encocoin/xnk/releases/download/v3.0.0/encocoin-v3.0.0-linux.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='encocoin'
-COIN_PORT=12044
-RPC_PORT=12045
+COIN_PORT=43013
+RPC_PORT=43014
 BOOTSTRAP='http://164.68.119.61/xnk-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
