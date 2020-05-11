@@ -1,0 +1,7 @@
+COIN_NAME="index"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="indexd"
+COIN_CLI="index-cli"
+COIN_FOLDER="/root/.IndexChain"
+COIN_CONFIG="index.conf"
+COIN_SERVICE="index.service"
