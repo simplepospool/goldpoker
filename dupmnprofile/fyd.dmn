@@ -1,0 +1,7 @@
+COIN_NAME="fyd"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="fydd"
+COIN_CLI="fyd-cli"
+COIN_FOLDER="/root/.fyd"
+COIN_CONFIG="fyd.conf"
+COIN_SERVICE="fyd.service"
