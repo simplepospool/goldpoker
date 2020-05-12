@@ -358,7 +358,7 @@ clear
 
 #purgeOldInstallation
 checks
-prepare_system
+# prepare_system
 download_node
 setup_node
 
