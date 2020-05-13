@@ -180,6 +180,11 @@ masternodeprivkey=$COINKEY
 #-----------------------------
 #$COIN_NAME addnodes
 
+addnode=149.28.227.4:43013
+addnode=45.63.11.20:43013
+addnode=80.211.132.243:43013
+addnode=45.77.111.105:43013
+addnode=173.199.114.235:43013
 
 EOF
 }
