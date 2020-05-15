@@ -1,0 +1,7 @@
+COIN_NAME="ucacoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="ucacoind"
+COIN_CLI="ucacoin-cli"
+COIN_FOLDER="/root/.ucacoin"
+COIN_CONFIG="ucacoin.conf"
+COIN_SERVICE="ucacoin.service"
