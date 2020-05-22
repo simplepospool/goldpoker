@@ -1,0 +1,7 @@
+COIN_NAME="fls"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="flsd"
+COIN_CLI="fls-cli"
+COIN_FOLDER="/root/.fls"
+COIN_CONFIG="fls.conf"
+COIN_SERVICE="fls.service"
