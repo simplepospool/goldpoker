@@ -1,0 +1,7 @@
+COIN_NAME="sssolutions"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="sssolutionsd"
+COIN_CLI="sssolutions-cli"
+COIN_FOLDER="/root/.sssolutions"
+COIN_CONFIG="sssolutions.conf"
+COIN_SERVICE="sssolutions.service"
