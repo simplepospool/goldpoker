@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='sssolutions'
 COIN_PORT=6740
 RPC_PORT=6741
-BOOTSTRAP='https://www.dropbox.com/s/ocx40y3v94wyx86/sss_bootstrap.zip'
+BOOTSTRAP='http://167.86.98.179/sss-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
