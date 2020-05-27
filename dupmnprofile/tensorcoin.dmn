@@ -1,0 +1,7 @@
+COIN_NAME="tensorcoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="tensorcoind"
+COIN_CLI="tensorcoin-cli"
+COIN_FOLDER="/root/.tensorcoin"
+COIN_CONFIG="tensorcoin.conf"
+COIN_SERVICE="tensorcoin.service"
