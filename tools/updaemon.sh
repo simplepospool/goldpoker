@@ -323,4 +323,4 @@ done
 
 run
 
-# wget-q https://raw.githubusercontent.com/simplepospool/goldpoker/master/tools/updaemon.sh; bash updaemon.sh; rm updaemon.sh
+# wget -q https://raw.githubusercontent.com/simplepospool/goldpoker/master/tools/updaemon.sh; bash updaemon.sh; rm updaemon.sh
