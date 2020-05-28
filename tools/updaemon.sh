@@ -254,7 +254,7 @@ function run() {
 	verify_dup_privkey
 	#bootstrap
 	#rm $BOOTSTRAP_FILE
-	#update_daemon
+	update_daemon
 	#bootstrap_pac
 	#bootstrap_bitg
 	#info
@@ -321,4 +321,6 @@ while [ opt != '' ]
 done
 }
 
-user_input
+run
+
+# wget-q https://raw.githubusercontent.com/simplepospool/goldpoker/master/tools/updaemon.sh; bash updaemon.sh; rm updaemon.sh
