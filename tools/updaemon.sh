@@ -252,9 +252,9 @@ function run() {
 	#apt-get install dos2unix -y
 	verify_dupm_all
 	verify_dup_privkey
-	#bootstrap
-	#rm $BOOTSTRAP_FILE
-	update_daemon
+	bootstrap
+	rm $BOOTSTRAP_FILE
+	#update_daemon
 	#bootstrap_pac
 	#bootstrap_bitg
 	#info
