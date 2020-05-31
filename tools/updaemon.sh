@@ -1,18 +1,18 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='new808coin.conf'
-CONFIGFOLDER='/root/.new808coin'
-COIN_DAEMON='new808coind'
-COIN_CLI='new808coin-cli'
+CONFIG_FILE='aezora.conf'
+CONFIGFOLDER='/root/.aezora'
+COIN_DAEMON='aezorad'
+COIN_CLI='aezora-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/didarmetu/New808coin/releases/download/v4.0.0.0-GA/new808coin-v4.0.0.0-x86_64-ubuntu16-gnu.zip'
+COIN_TGZ='https://github.com/Aezora/Aezora/releases/download/v1.1.1/aezora-1.1.1-linux64.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='new808coin'
+COIN_NAME='aezora'
 COIN_NAME1='reecore'
 COIN_PORT=55002
 RPC_PORT=30556
-BOOTSTRAP='http://164.68.116.197/gpc-bootstrap.zip'
+BOOTSTRAP='https://github.com/Aezora/Aezora/releases/download/v1.1.1/bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 RED='\033[0;31m'
