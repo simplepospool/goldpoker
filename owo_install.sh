@@ -1,14 +1,14 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='oneworld.conf'
-CONFIGFOLDER='/root/.oneworld'
-COIN_DAEMON='oneworldd'
-COIN_CLI='oneworld-cli'
+CONFIG_FILE='OneWorld.conf'
+CONFIGFOLDER='/root/.OneWorld'
+COIN_DAEMON='OneWorldd'
+COIN_CLI='OneWorld-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/OneWorldCoin/owo/releases/download/V2.0/daemon+cli.zip'
+COIN_TGZ='https://github.com/OneWorldCoin/OneWorld/releases/download/v3.0.0/OneWorld_v3.0_LINUX.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='oneworld'
+COIN_NAME='OneWorld'
 COIN_PORT=32112
 RPC_PORT=32113
 BOOTSTRAP='http://164.68.112.107/owo-bootstrap.zip'
@@ -342,7 +342,7 @@ function try_cmd() {
 function setup_node() {
   get_ip
   create_config
-  download_bootstrap
+  #download_bootstrap
   create_key
   update_config
   enable_firewall
