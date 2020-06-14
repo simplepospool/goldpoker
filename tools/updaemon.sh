@@ -1,18 +1,18 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='aezora.conf'
-CONFIGFOLDER='/root/.aezora'
-COIN_DAEMON='aezorad'
-COIN_CLI='aezora-cli'
+CONFIG_FILE='sap.conf'
+CONFIGFOLDER='/root/.sap'
+COIN_DAEMON='sapd'
+COIN_CLI='sap-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/Aezora/Aezora/releases/download/v1.1.1/aezora-1.1.1-linux64.zip'
+COIN_TGZ='https://github.com/sappcoin-com/SAPP/releases/download/1.3.2/SAPP-1.3.2-linux.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='aezora'
+COIN_NAME='sap'
 COIN_NAME1='reecore'
 COIN_PORT=55002
 RPC_PORT=30556
-BOOTSTRAP='https://github.com/Aezora/Aezora/releases/download/v1.1.1/bootstrap.zip'
+BOOTSTRAP='https://github.com/sappcoin-com/SAPP/releases/download/1.3.2/bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 RED='\033[0;31m'
@@ -252,9 +252,9 @@ function run() {
 	#apt-get install dos2unix -y
 	verify_dupm_all
 	verify_dup_privkey
-	bootstrap
-	rm $BOOTSTRAP_FILE
-	#update_daemon
+	#bootstrap
+	#rm $BOOTSTRAP_FILE
+	update_daemon
 	#bootstrap_pac
 	#bootstrap_bitg
 	#info
