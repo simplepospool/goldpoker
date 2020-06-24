@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.beacon'
 COIN_DAEMON='beacond'
 COIN_CLI='beacon-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://www.dropbox.com/s/sjvt95zcokotikh/beacon_v34.zip'
+COIN_TGZ='https://github.com/beaconcrypto/beacon/releases/download/6054d89/beacon-3.4-6054d89-legacylin64.tgz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='beacon'
 COIN_PORT=11115
@@ -197,6 +197,10 @@ masternodeprivkey=$COINKEY
 #-----------------------------
 #$COIN_NAME addnodes
 
+addnode=45.77.227.153
+addnode=199.247.30.232
+addnode=140.82.16.188
+addnode=95.179.168.214
 
 EOF
 }
