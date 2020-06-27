@@ -1,0 +1,7 @@
+COIN_NAME="tradetensor"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="tradetensord"
+COIN_CLI="tradetensor-cli"
+COIN_FOLDER="/root/.tradetensor"
+COIN_CONFIG="tradetensor.conf"
+COIN_SERVICE="tradetensor.service"
