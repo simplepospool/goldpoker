@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.StakeCubeCore'
 COIN_DAEMON='stakecubed'
 COIN_CLI='stakecube-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/stakecube/StakeCubeCoin/releases/download/v1.3.1.0/stakecube-daemon-U16-U18.zip'
+COIN_TGZ='https://github.com/stakecube/StakeCubeCoin/releases/download/v2.0.0.0/multitool-binaries.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='stakecube'
 COIN_PORT=40000
@@ -152,6 +152,7 @@ listen=1
 server=1
 daemon=1
 port=$COIN_PORT
+usehd=0
 #------------------
 EOF
 }
