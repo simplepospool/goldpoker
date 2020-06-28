@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='stakecube.conf'
+CONFIG_FILE='stakecubecoin.conf'
 CONFIGFOLDER='/root/.stakecubecoin'
 COIN_DAEMON='stakecubed'
 COIN_CLI='stakecube-cli'
