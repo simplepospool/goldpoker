@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='OneWorld'
 COIN_PORT=32112
 RPC_PORT=32113
-BOOTSTRAP='http://167.86.98.179/owo-bootstrap.zip'
+BOOTSTRAP='http://167.86.107.173/owo-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
