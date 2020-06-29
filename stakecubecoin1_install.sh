@@ -11,8 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='stakecube'
 COIN_PORT=40000
 RPC_PORT=40001
-BOOTSTRAP='https://www.dropbox.com/s/4yorjkvydhkiw5b/scc_bootstrap.zip'
-# BOOTSTRAP='http://164.68.112.107/scc-bootstrap.zip'
+BOOTSTRAP='http://164.68.112.107/scc-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
