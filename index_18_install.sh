@@ -1,17 +1,17 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='evos.conf'
-CONFIGFOLDER='/root/.evos'
-COIN_DAEMON='evosd'
-COIN_CLI='evos-cli'
+CONFIG_FILE='index.conf'
+CONFIGFOLDER='/root/.IndexChain'
+COIN_DAEMON='indexd'
+COIN_CLI='index-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/EVOS-DEV/evos-core/releases/download/v1.1.5/evos-1.1.5-ubuntu-daemon.tgz'
+COIN_TGZ='https://github.com/IndexChain/Index/releases/download/v0.13.10.7/index-0.13.10.7-x86_64-linux-gnu.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='evos'
-COIN_PORT=16345
-RPC_PORT=16346
-BOOTSTRAP='http://167.86.107.173/evos-bootstrap.zip'
+COIN_NAME='index'
+COIN_PORT=7082
+RPC_PORT=7083
+BOOTSTRAP='http://164.68.119.61/idx-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -147,8 +147,10 @@ rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
 rpcport=$(find_port $RPC_PORT)
 rpcallowip=127.0.0.1
+nodebuglogfile=1
 #------------------
 listen=1
+txindex=1
 server=1
 daemon=1
 port=$COIN_PORT
@@ -169,7 +171,7 @@ function create_key() {
    echo -e "{\"error\":\"$COIN_NAME server couldn not start. Check /var/log/syslog for errors.\",\"errcode\":1098}"
    exit 1
   fi
-  COINKEY=$(try_cmd $COIN_PATH$COIN_CLI "createmasternodekey" "masternode genkey")
+  COINKEY=$(try_cmd $COIN_PATH$COIN_CLI "createmasternodekey" "indexnode genkey")
   if [ "$?" -gt "0" ];
     then
     echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the GEN Key${NC}"
@@ -177,7 +179,7 @@ function create_key() {
 	while [[ ! $($COIN_CLI getblockcount 2> /dev/null) =~ ^[0-9]+$ ]]; do 
     sleep 1
     done
-    COINKEY=$(try_cmd $COIN_PATH$COIN_CLI "createmasternodekey" "masternode genkey")
+    COINKEY=$(try_cmd $COIN_PATH$COIN_CLI "createmasternodekey" "indexnode genkey")
   fi
   $COIN_PATH$COIN_CLI stop
 fi
@@ -191,18 +193,12 @@ logintimestamps=1
 maxconnections=256
 #bind=$NODEIP
 #-----------------------------
-masternode=1
+indexnode=1
 externalip=$NODEIP:$COIN_PORT
-masternodeprivkey=$COINKEY
+indexnodeprivkey=$COINKEY
 #-----------------------------
 #$COIN_NAME addnodes
 
-addnode=seed1.evos.one 
-addnode=seed2.evos.one 
-addnode=seed3.evos.one 
-addnode=seed4.evos.one 
-addnode=seed5.evos.one 
-addnode=seed6.evos.one
 
 EOF
 }
@@ -283,6 +279,10 @@ apt-add-repository -y ppa:bitcoin/bitcoin >/dev/null 2>&1
 echo -e "Installing required packages, it may take some time to finish.${NC}"
 apt-get update >/dev/null 2>&1
 apt-get install libzmq3-dev -y >/dev/null 2>&1
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y >/dev/null 2>&1
+apt-get update -y >/dev/null 2>&1
+apt-get upgrade -y >/dev/null 2>&1
+apt-get install --only-upgrade libstdc++6 -y >/dev/null 2>&1
 apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" make software-properties-common \
 build-essential libtool autoconf libssl-dev libboost-dev libboost-chrono-dev libboost-filesystem-dev libboost-program-options-dev \
 libboost-system-dev libboost-test-dev libboost-thread-dev sudo automake git wget curl libdb4.8-dev bsdmainutils libdb4.8++-dev \
