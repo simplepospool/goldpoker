@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.klimatas'
 COIN_DAEMON='ktsd'
 COIN_CLI='kts-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/klimatas/klimatas-core/releases/download/1.3.4/kts-1.3.4-ubuntu-16.04-server.zip'
+COIN_TGZ='https://github.com/klimatas/klimatas-core/releases/download/1.3.4.1/kts-1.3.4.1-ubuntu-16.04-server.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='kts'
 COIN_PORT=10300
@@ -197,6 +197,12 @@ masternodeprivkey=$COINKEY
 #-----------------------------
 #$COIN_NAME addnodes
 
+addnode=seed1.klimatas.com
+addnode=seed2.klimatas.com
+addnode=seed3.klimatas.com
+addnode=5.189.187.223
+addnode=145.239.64.148
+addnode=95.111.236.157
 
 EOF
 }
