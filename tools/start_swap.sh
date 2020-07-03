@@ -19,6 +19,7 @@ apt-get install dos2unix -y
 sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
 apt-get install fail2ban -y
 apt-get install sysstat -y
+apt-get install net-tools >/dev/null 2>&1
 apt-get install bc -y
 apt-get install lsof -y
 sudo apt-get update -y
