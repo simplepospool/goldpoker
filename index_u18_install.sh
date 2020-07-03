@@ -354,7 +354,7 @@ function setup_node() {
 clear
 
 #purgeOldInstallation
-checks
+# checks
 prepare_system
 download_node
 setup_node
