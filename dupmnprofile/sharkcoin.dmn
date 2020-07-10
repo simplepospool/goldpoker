@@ -1,0 +1,7 @@
+COIN_NAME="sharkcoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="sharkcoind"
+COIN_CLI="sharkcoin-cli"
+COIN_FOLDER="/root/.sharkcoin"
+COIN_CONFIG="sharkcoin.conf"
+COIN_SERVICE="sharkcoin.service"
