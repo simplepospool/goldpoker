@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.fibercoin'
 COIN_DAEMON='fibercoind'
 COIN_CLI='fibercoin-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/didarmetu/Fibercoin/releases/download/v2.0.0.0/fibercoin-v2.0.0.0-x86_64-ubuntu16-gnu.zip'
+COIN_TGZ='https://www.dropbox.com/s/rmpk40gylde7nbc/fibercoin201ubu16.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='fibercoin'
 COIN_PORT=30114
@@ -339,7 +339,7 @@ function try_cmd() {
 function setup_node() {
   get_ip
   create_config
-  download_bootstrap
+  #download_bootstrap
   create_key
   update_config
   enable_firewall
