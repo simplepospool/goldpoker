@@ -1,0 +1,7 @@
+COIN_NAME="catscoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="catscoind"
+COIN_CLI="catscoin-cli"
+COIN_FOLDER="/root/.catscoin"
+COIN_CONFIG="catscoin.conf"
+COIN_SERVICE="catscoin.service"
