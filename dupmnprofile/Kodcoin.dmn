@@ -1,0 +1,7 @@
+COIN_NAME="Kodcoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="Kodcoind"
+COIN_CLI="Kodcoin-cli"
+COIN_FOLDER="/root/.Kodcoin"
+COIN_CONFIG="Kodcoin.conf"
+COIN_SERVICE="Kodcoin.service"
