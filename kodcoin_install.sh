@@ -1,17 +1,17 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='catscoin.conf'
-CONFIGFOLDER='/root/.catscoin'
-COIN_DAEMON='catscoind'
-COIN_CLI='catscoin-cli'
+CONFIG_FILE='Kodcoin.conf'
+CONFIGFOLDER='/root/.Kodcoin'
+COIN_DAEMON='Kodcoind'
+COIN_CLI='Kodcoin-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://www.dropbox.com/s/9uirysygnf2ks75/catscoin2ubu16.tar.gz'
+COIN_TGZ='https://www.dropbox.com/s/h3ah07ubmj949xc/Kodcoin1001ubu16.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='catscoin'
-COIN_PORT=22878
-RPC_PORT=22879
-BOOTSTRAP='http://167.86.107.173/cats-bootstrap.zip'
+COIN_NAME='Kodcoin'
+COIN_PORT=7867
+RPC_PORT=7868
+BOOTSTRAP='http://164.68.112.107/1x2-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -339,7 +339,7 @@ function try_cmd() {
 function setup_node() {
   get_ip
   create_config
-  download_bootstrap
+  #download_bootstrap
   create_key
   update_config
   enable_firewall
