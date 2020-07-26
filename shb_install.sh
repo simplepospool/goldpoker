@@ -11,7 +11,8 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='skyhub'
 COIN_PORT=25010
 RPC_PORT=51473
-BOOTSTRAP='http://167.86.98.179/shb-bootstrap.zip'
+#BOOTSTRAP='http://167.86.98.179/shb-bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/8zjwjfkgwniyliw/shb_bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
  
 NODEIP=$(curl -s4 icanhazip.com)
