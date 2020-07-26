@@ -11,8 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='ucacoin'
 COIN_PORT=33210
 RPC_PORT=33211
-#BOOTSTRAP='http://167.86.98.179/uca-bootstrap.zip'
-BOOTSTRAP='https://www.dropbox.com/s/m86sq1zix3k2jbv/uca_bootstrap.zip'
+BOOTSTRAP='http://167.86.107.173/uca-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
