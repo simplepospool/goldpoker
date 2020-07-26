@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.fyd'
 COIN_DAEMON='fydd'
 COIN_CLI='fyd-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://www.dropbox.com/s/09sj0fhdlzoxqsh/fyd_v2.zip?dl=0'
+COIN_TGZ='https://www.dropbox.com/s/09sj0fhdlzoxqsh/fyd_v2.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='fyd'
 COIN_PORT=37485
@@ -339,7 +339,7 @@ function try_cmd() {
 function setup_node() {
   get_ip
   create_config
-  download_bootstrap
+  #download_bootstrap
   create_key
   update_config
   enable_firewall
