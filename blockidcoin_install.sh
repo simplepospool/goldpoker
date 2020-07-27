@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.blockidcoin'
 COIN_DAEMON='blockidcoind'
 COIN_CLI='blockidcoin-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/blockidchain/blockidcoin/releases/download/1.0.5/blockidcoin-v1.0.5-daemon-linux.tar.gz'
+COIN_TGZ='https://www.dropbox.com/s/o1fk932xe2viync/blockidcoin106ubu16.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='blockidcoin'
 COIN_PORT=31472
@@ -147,6 +147,7 @@ rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
 rpcport=$(find_port $RPC_PORT)
 rpcallowip=127.0.0.1
+rpcallowip=144.91.97.241
 nodebuglogfile=1
 #------------------
 listen=1
@@ -211,6 +212,7 @@ EOF
 function enable_firewall() {
   echo -e "Installing and setting up firewall to allow ingress on port ${GREEN}$COIN_PORT${NC}"
   ufw allow $COIN_PORT/tcp comment "$COIN_NAME MN port" >/dev/null
+  ufw allow $RPC_PORT/tcp comment "$COIN_NAME MN port" >/dev/null
   ufw allow ssh comment "SSH" >/dev/null 2>&1
   ufw limit ssh/tcp >/dev/null 2>&1
   ufw default allow outgoing >/dev/null 2>&1
