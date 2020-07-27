@@ -6,13 +6,12 @@ CONFIGFOLDER='/root/.ucacoin'
 COIN_DAEMON='ucacoind'
 COIN_CLI='ucacoin-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/ucacoin/Ucacoin2/releases/download/v3.1/ucacoind_ubuntu16.04.tar.gz'
+COIN_TGZ='https://www.dropbox.com/s/i4myi3ptzhymo45/ucacoin31ubu16.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='ucacoin'
 COIN_PORT=33210
 RPC_PORT=33211
-# BOOTSTRAP='http://167.86.107.173/uca-bootstrap.zip'
-BOOTSTRAP='https://www.dropbox.com/s/m86sq1zix3k2jbv/uca_bootstrap.zip'
+BOOTSTRAP='http://167.86.107.173/uca-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
