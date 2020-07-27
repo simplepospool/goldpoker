@@ -1,14 +1,14 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='kts.conf'
-CONFIGFOLDER='/root/.klimatas'
-COIN_DAEMON='ktsd'
-COIN_CLI='kts-cli'
+CONFIG_FILE='sap.conf'
+CONFIGFOLDER='/root/.sap'
+COIN_DAEMON='sapd'
+COIN_CLI='sap-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/klimatas/klimatas-core/releases/download/1.3.4.1/kts-1.3.4.1-ubuntu-16.04-server.zip'
+COIN_TGZ='https://www.dropbox.com/s/wb8026pz0u3jad4/sapv133ubu16.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='kts'
+COIN_NAME='sap'
 COIN_NAME1='reecore'
 COIN_PORT=55002
 RPC_PORT=30556
