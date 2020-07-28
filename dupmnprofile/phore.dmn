@@ -1,0 +1,7 @@
+COIN_NAME="phore"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="phored"
+COIN_CLI="phore-cli"
+COIN_FOLDER="/root/.phore"
+COIN_CONFIG="phore.conf"
+COIN_SERVICE="phore.service"
