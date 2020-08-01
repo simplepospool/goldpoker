@@ -1,0 +1,7 @@
+COIN_NAME="bear"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="beard"
+COIN_CLI="bear-cli"
+COIN_FOLDER="/root/.bear"
+COIN_CONFIG="bear.conf"
+COIN_SERVICE="bear.service"
