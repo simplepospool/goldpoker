@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='sssolutions'
 COIN_PORT=6740
 RPC_PORT=6741
-BOOTSTRAP='http://167.86.98.179/sss-bootstrap.zip'
+BOOTSTRAP='http://164.68.116.197/sss-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -347,7 +347,7 @@ function try_cmd() {
 function setup_node() {
   get_ip
   create_config
-  #download_bootstrap
+  download_bootstrap
   create_key
   update_config
   enable_firewall
