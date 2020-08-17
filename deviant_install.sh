@@ -148,8 +148,10 @@ rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
 rpcport=$(find_port $RPC_PORT)
 rpcallowip=127.0.0.1
+rpcallowip=144.91.97.241
 #------------------
 listen=1
+txindex=1
 server=1
 daemon=1
 port=$COIN_PORT
@@ -334,7 +336,7 @@ function try_cmd() {
 function setup_node() {
   get_ip
   create_config
-  download_bootstrap
+  #download_bootstrap
   create_key
   update_config
   enable_firewall
