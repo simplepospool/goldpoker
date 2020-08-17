@@ -1,0 +1,7 @@
+COIN_NAME="labx"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="labxd"
+COIN_CLI="labx-cli"
+COIN_FOLDER="/root/.labx"
+COIN_CONFIG="labx.conf"
+COIN_SERVICE="labx.service"
