@@ -1,0 +1,7 @@
+COIN_NAME="xavander"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="xavanderd"
+COIN_CLI="xavander-cli"
+COIN_FOLDER="/root/.xavander"
+COIN_CONFIG="xavander.conf"
+COIN_SERVICE="xavander.service"
