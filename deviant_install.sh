@@ -12,7 +12,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='deviant'
 COIN_PORT=22618
 RPC_PORT=22617
-BOOTSTRAP='https://www.dropbox.com/s/ykygdvjiyk14kxi/dev_bootstrap.zip'
+BOOTSTRAP='http://167.86.107.173/dev-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -148,7 +148,6 @@ rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
 rpcport=$(find_port $RPC_PORT)
 rpcallowip=127.0.0.1
-rpcallowip=144.91.97.241
 #------------------
 listen=1
 txindex=1
@@ -336,7 +335,7 @@ function try_cmd() {
 function setup_node() {
   get_ip
   create_config
-  #download_bootstrap
+  download_bootstrap
   create_key
   update_config
   enable_firewall
