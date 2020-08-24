@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.Azzure'
 COIN_DAEMON='Azzured'
 COIN_CLI='Azzure-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://www.dropbox.com/s/b6j2mschebj1kiu/azzure.tar.gz'
+COIN_TGZ='https://www.dropbox.com/s/0auyan21g4zm4l7/Azzure_v1new_ubu16.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='Azzure'
 COIN_PORT=22115
@@ -199,10 +199,16 @@ masternodeprivkey=$COINKEY
 #-----------------------------
 #$COIN_NAME addnodes
 
-addnode=155.138.210.124
-addnode=66.42.117.99
-addnode=149.28.77.110
-addnode=45.63.106.193
+addnode=157.230.107.144
+addnode=157.230.107.144:11115
+addnode=167.99.88.37
+addnode=167.99.88.37:11115
+addnode=206.189.73.71
+addnode=206.189.73.71:11115
+addnode=50.245.85.76
+addnode=50.245.85.76::11115
+addnode=50.245.85.74
+addnode=50.245.85.74:11115
 
 EOF
 }
