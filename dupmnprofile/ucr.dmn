@@ -1,0 +1,7 @@
+COIN_NAME="ucr"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="ucrd"
+COIN_CLI="ucr-cli"
+COIN_FOLDER="/root/.ucr"
+COIN_CONFIG="ucr.conf"
+COIN_SERVICE="ucr.service"
