@@ -2,7 +2,7 @@
 
 TMP_FOLDER=$(mktemp -d)
 CONFIG_FILE='byron.conf'
-CONFIGFOLDER='/root/.byron'
+CONFIGFOLDER='/root/.byron_2'
 COIN_DAEMON='byrond'
 COIN_CLI='byron-cli'
 COIN_PATH='/usr/local/bin/'
