@@ -3,8 +3,8 @@
 TMP_FOLDER=$(mktemp -d)
 CONFIG_FILE='fls.conf'
 CONFIGFOLDER='/root/.fls'
-COIN_DAEMON='flsd'
-COIN_CLI='fls-cli'
+COIN_DAEMON='flitsd'
+COIN_CLI='flits-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_TGZ='https://github.com/flitsnode/flits-core/releases/download/2.0.0/fls-2.0.0-x86_64-linux-gnu.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
