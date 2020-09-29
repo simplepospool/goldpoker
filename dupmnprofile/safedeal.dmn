@@ -1,0 +1,7 @@
+COIN_NAME="safedeal"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="safedeald"
+COIN_CLI="safedeal-cli"
+COIN_FOLDER="/root/.sfdcoin"
+COIN_CONFIG="safedeal.conf"
+COIN_SERVICE="safedeal.service"
