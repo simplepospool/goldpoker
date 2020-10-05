@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.peony'
 COIN_DAEMON='pnyd'
 COIN_CLI='pny-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/PeonyTeam/peony/releases/download/v3.0.3/pny-3.0.3-x86_64-linux-gnu.tar.gz'
+COIN_TGZ='https://www.dropbox.com/s/nrsbtpzbgpzbyi4/pny_v303_ubu16.tar.gz?dl=0'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='pny'
 COIN_PORT=16889
