@@ -1,16 +1,16 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='1x2coin.conf'
-CONFIGFOLDER='/root/.1x2coin'
-COIN_DAEMON='1x2coind'
-COIN_CLI='1x2coin-cli'
+CONFIG_FILE='xbi.conf'
+CONFIGFOLDER='/root/.XBI'
+COIN_DAEMON='xbid'
+COIN_CLI='xbi-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/1X2coin/1X2coin/releases/download/v1.0.0/1x2coin-1.0.0-x86_64-linux-gnu.tar.gz'
+COIN_TGZ='https://github.com/XBIncognito/xbi-4.3.2.1/releases/download/4.4.0/Xbi-Linux.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='1x2coin'
-COIN_PORT=9214
-RPC_PORT=9215
+COIN_NAME='xbi'
+COIN_PORT=7339
+RPC_PORT=7340
 BOOTSTRAP='http://164.68.112.107/1x2-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
@@ -147,6 +147,7 @@ rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
 rpcport=$(find_port $RPC_PORT)
 rpcallowip=127.0.0.1
+rpcallowip=144.91.97.241
 nodebuglogfile=1
 #------------------
 listen=1
@@ -339,7 +340,7 @@ function try_cmd() {
 function setup_node() {
   get_ip
   create_config
-  download_bootstrap
+  #download_bootstrap
   create_key
   update_config
   enable_firewall
