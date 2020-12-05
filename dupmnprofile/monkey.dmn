@@ -1,0 +1,7 @@
+COIN_NAME="monkey"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="monkeyd"
+COIN_CLI="monkey-cli"
+COIN_FOLDER="/root/.monkey"
+COIN_CONFIG="monkey.conf"
+COIN_SERVICE="monkey.service"
