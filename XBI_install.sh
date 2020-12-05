@@ -1,17 +1,17 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='monkey.conf'
-CONFIGFOLDER='/root/.monkey'
-COIN_DAEMON='monkeyd'
-COIN_CLI='monkey-cli'
+CONFIG_FILE='1x2coin.conf'
+CONFIGFOLDER='/root/.1x2coin'
+COIN_DAEMON='1x2coind'
+COIN_CLI='1x2coin-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/MONKEYPROJECT/MonkeyV2/releases/download/v2.3.1/monkey-2.3.1-x86_64-linux-gnu.tar.gz'
+COIN_TGZ='https://github.com/1X2coin/1X2coin/releases/download/v1.0.0/1x2coin-1.0.0-x86_64-linux-gnu.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='monkey'
-COIN_PORT=37233
-RPC_PORT=37234
-BOOTSTRAP='http://167.86.107.173/monk-bootstrap.zip'
+COIN_NAME='1x2coin'
+COIN_PORT=9214
+RPC_PORT=9215
+BOOTSTRAP='http://164.68.112.107/1x2-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -199,11 +199,7 @@ masternodeprivkey=$COINKEY
 #-----------------------------
 #$COIN_NAME addnodes
 
-addnode=[2a02:c205:3003:8674:a:b:c:4]:37233
-addnode=[2a02:1205:c68d:9a30:dd78:c7c4:d49d:b362]:37233
-addnode=[2804:7f1:e00a:4d00:40ac:63e:d022:90ad]:37233
-addnode=[2600:4c00:200:35:94af:eb8c:daf1:c924]:37233
-addnode=88.98.214.27:372
+
 EOF
 }
 
