@@ -1,0 +1,7 @@
+COIN_NAME="xbi"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="xbid"
+COIN_CLI="xbi-cli"
+COIN_FOLDER="/root/.XBI"
+COIN_CONFIG="xbi.conf"
+COIN_SERVICE="xbi.service"
