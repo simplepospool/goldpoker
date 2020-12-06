@@ -1,0 +1,7 @@
+COIN_NAME="timelockcoin"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="timelockcoind"
+COIN_CLI="timelockcoin-cli"
+COIN_FOLDER="/root/.timelockcoin"
+COIN_CONFIG="timelockcoin.conf"
+COIN_SERVICE="timelockcoin.service"
