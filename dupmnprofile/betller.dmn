@@ -1,0 +1,7 @@
+COIN_NAME="betller"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="betllerd"
+COIN_CLI="betller-cli"
+COIN_FOLDER="/root/.betller"
+COIN_CONFIG="betller.conf"
+COIN_SERVICE="betller.service"
