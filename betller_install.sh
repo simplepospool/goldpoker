@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='betller'
 COIN_PORT=8210
 RPC_PORT=8211
-BOOTSTRAP='http://164.68.112.107/1x2-bootstrap.zip'
+BOOTSTRAP='http://167.86.107.173/btllr-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
