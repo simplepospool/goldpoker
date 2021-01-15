@@ -1,17 +1,18 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='sap.conf'
-CONFIGFOLDER='/root/.sap'
-COIN_DAEMON='sapd'
-COIN_CLI='sap-cli'
+CONFIG_FILE='sapphire.conf'
+CONFIGFOLDER='/root/.sapphire'
+COIN_DAEMON='sapphired'
+COIN_CLI='sapphire-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://www.dropbox.com/s/060azr5wnd41twn/sap_v140_ubu16.tar.gz'
+COIN_TGZ='https://github.com/sappcoin-com/SAPP/releases/download/v1.4.1.0/SAPP-1.4.1.0-Linux.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='sap'
+COIN_NAME='sapphire'
 COIN_PORT=45328
 RPC_PORT=45329
-BOOTSTRAP='http://164.68.119.61/sapp-bootstrap.zip'
+#BOOTSTRAP='http://164.68.119.61/sap-bootstrap.zip'
+BOOTSTRAP='https://sappexplorer.com/bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
