@@ -1,7 +1,0 @@
-COIN_NAME="sapphire"
-COIN_PATH="/usr/local/bin/"
-COIN_DAEMON="sapphired"
-COIN_CLI="sapphire-cli"
-COIN_FOLDER="/root/.sapphire"
-COIN_CONFIG="sapphire.conf"
-COIN_SERVICE="sapphire.service"
