@@ -192,16 +192,13 @@ logintimestamps=1
 maxconnections=256
 #bind=$NODEIP
 #-----------------------------
-masternode=1
-externalip=$NODEIP:$COIN_PORT
-masternodeprivkey=$COINKEY
+#masternode=1
+#externalip=$NODEIP:$COIN_PORT
+#masternodeprivkey=$COINKEY
 #-----------------------------
 #$COIN_NAME addnodes
 
-addnode=209.250.244.53
-addnode=95.179.155.106
-addnode=78.141.208.245
-addnode=45.63.41.19
+addnode=173.249.41.61
 
 EOF
 }
@@ -338,7 +335,7 @@ function try_cmd() {
 function setup_node() {
   get_ip
   create_config
-  download_bootstrap
+  #download_bootstrap
   create_key
   update_config
   enable_firewall
