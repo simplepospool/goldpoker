@@ -6,13 +6,13 @@ CONFIGFOLDER='/root/.stipend-core'
 COIN_DAEMON='stipendd'
 COIN_CLI='stipend-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/Stipend-Developer/stipend-core/releases/download/v3.4.0.1/stipend-3.4.0.1-x86_64-linux-gnu.tar.gz'
+COIN_TGZ='https://www.dropbox.com/s/svf9j7lwrsno6uo/stipend_v341_ubu16.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='stipend'
 COIN_PORT=46978
 RPC_PORT=46979
-BOOTSTRAP='http://experiencepoints.io/files/stipend-bootstrap-1106006.zip'
-BOOTSTRAP_old='http://164.68.119.61/spd-bootstrap.zip'
+BOOTSTRAP_old='http://experiencepoints.io/files/stipend-bootstrap-1106006.zip'
+BOOTSTRAP='http://164.68.119.61/spd-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
