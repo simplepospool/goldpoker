@@ -6,12 +6,13 @@ CONFIGFOLDER='/root/.stipend-core'
 COIN_DAEMON='stipendd'
 COIN_CLI='stipend-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/Stipend-Developer/stipend-core/releases/download/spd-v1.0.0.0/stipend-ubuntu-16.04-node.zip'
+COIN_TGZ='https://github.com/Stipend-Developer/stipend-core/releases/download/v3.4.0.1/stipend-3.4.0.1-x86_64-linux-gnu.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='stipend'
 COIN_PORT=46978
 RPC_PORT=46979
-BOOTSTRAP='http://164.68.119.61/spd-bootstrap.zip'
+BOOTSTRAP='http://experiencepoints.io/files/stipend-bootstrap-1106006.zip'
+BOOTSTRAP_old='http://164.68.119.61/spd-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -176,10 +177,8 @@ externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
 
 #spd addnodes
-addnode=46.38.235.19:46978
-addnode=46.38.235.228:46978
-addnode=188.68.52.52:46978
-
+addnode=142.93.85.164
+addnode=142.93.93.30
 
 EOF
 }
