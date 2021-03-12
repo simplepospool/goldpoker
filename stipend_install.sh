@@ -2,7 +2,7 @@
 
 TMP_FOLDER=$(mktemp -d)
 CONFIG_FILE='stipend.conf'
-CONFIGFOLDER='/root/.stipend-core'
+CONFIGFOLDER='/root/.stipend'
 COIN_DAEMON='stipendd'
 COIN_CLI='stipend-cli'
 COIN_PATH='/usr/local/bin/'
@@ -11,8 +11,8 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='stipend'
 COIN_PORT=46978
 RPC_PORT=46979
-BOOTSTRAP_old='http://experiencepoints.io/files/stipend-bootstrap-1106006.zip'
-BOOTSTRAP='http://164.68.119.61/spd-bootstrap.zip'
+BOOTSTRAP='http://experiencepoints.io/files/stipend-bootstrap-1106006.zip'
+BOOTSTRAP_old='http://164.68.119.61/spd-bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
