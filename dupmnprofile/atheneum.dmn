@@ -1,0 +1,7 @@
+COIN_NAME="atheneum"
+COIN_PATH="/usr/local/bin/"
+COIN_DAEMON="atheneumd"
+COIN_CLI="atheneum-cli"
+COIN_FOLDER="/root/.Atheneum"
+COIN_CONFIG="atheneum.conf"
+COIN_SERVICE="atheneum.service"
