@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.blockidcoin'
 COIN_DAEMON='blockidcoind'
 COIN_CLI='blockidcoin-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://www.dropbox.com/s/kpsy265k6nk876u/blockidcoin_v108_ubu16.tar.gz'
+COIN_TGZ='https://github.com/blockidchain/bidv2/releases/download/2.0.0/blockidcoin-2.0.0-linux.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='blockidcoin'
 COIN_PORT=31472
@@ -200,10 +200,10 @@ masternodeprivkey=$COINKEY
 #-----------------------------
 #$COIN_NAME addnodes
 
-addnode=144.202.51.160
-addnode=144.202.57.40
-addnode=108.61.78.52
-addnode=45.63.1.118
+addnode=149.28.37.28
+addnode=140.82.62.126
+addnode=45.77.149.72
+addnode=104.156.249.165
 
 EOF
 }
