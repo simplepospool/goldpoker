@@ -11,7 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='GoldPoker'
 COIN_PORT=33303
 RPC_PORT=18822
-BOOTSTRAP='http://164.68.119.61/gpkr-bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/2lrr5akxg2n0bo1/gpkr_bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
  
 NODEIP=$(curl -s4 icanhazip.com)
