@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.unigrid'
 COIN_DAEMON='unigridd'
 COIN_CLI='unigrid-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/unigrid-project/UNIGRID/releases/download/2.0.0/unigrid-2.0.0-x86_64-linux-gnu.tar.gz'
+COIN_TGZ='https://github.com/unigrid-project/daemon/releases/download/2.0.1/unigrid-2.0.1-x86_64-linux-gnu.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='unigrid'
 COIN_PORT=51922
@@ -198,12 +198,12 @@ masternodeprivkey=$COINKEY
 #-----------------------------
 #$COIN_NAME addnodes
 
-addnode=dnsseed1.unigrid.org
-addnode=dnsseed2.unigrid.org
-addnode=dnsseed3.unigrid.org
-addnode=dnsseed4.unigrid.org
-addnode=dnsseed5.unigrid.org
-addnode=dnsseed6.unigrid.org
+#addnode=dnsseed1.unigrid.org
+#addnode=dnsseed2.unigrid.org
+#addnode=dnsseed3.unigrid.org
+#addnode=dnsseed4.unigrid.org
+#addnode=dnsseed5.unigrid.org
+#addnode=dnsseed6.unigrid.org
 
 EOF
 }
