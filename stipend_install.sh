@@ -12,7 +12,7 @@ COIN_NAME='stipend'
 COIN_PORT=46978
 RPC_PORT=46979
 #BOOTSTRAP='http://experiencepoints.io/files/stipend-bootstrap-1106006.zip'
-BOOTSTRAP='http://164.68.119.61/spd-bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/xbsheg19apidynq/stipend.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
