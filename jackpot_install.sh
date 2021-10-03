@@ -6,12 +6,12 @@ CONFIGFOLDER='/root/.jackpot'
 COIN_DAEMON='jackpotd'
 COIN_CLI='jackpot-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://www.dropbox.com/s/2piihm9b2t017s0/jackpot_v3edit_ubu16.tar.gz'
+COIN_TGZ='https://github.com/777-project/777/releases/download/v3.0.1.0/777-3.0.1.0-Linux.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='jackpot'
 COIN_PORT=17771
 RPC_PORT=17772
-BOOTSTRAP='http://164.68.119.61/777-bootstrap.zip'
+BOOTSTRAP='https://www.dropbox.com/s/jpoq2wo0euheno9/777_bootstrap.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
