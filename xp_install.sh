@@ -6,12 +6,12 @@ CONFIGFOLDER='/root/.eXperiencePoints'
 COIN_DAEMON='eXperiencePointsd'
 COIN_CLI='eXperiencePoints-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://www.dropbox.com/s/y6und2fbwdj3ctk/xp343.tar.gz'
+COIN_TGZ='https://www.dropbox.com/s/4sazde5vas75nyt/eXperiencePoints_v5202_ubu16.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='eXperiencePoints'
 COIN_PORT=19324
 RPC_PORT=19325
-BOOTSTRAP='http://164.68.119.61/xp-bootstrap.zip'
+BOOTSTRAP='https://www.experiencepoints.io/wp-content/uploads/2021/08/eXperiencePoints-bootstrap-975190.zip'
 BOOTSTRAP_FILE=$(echo $BOOTSTRAP | awk -F'/' '{print $NF}')
 
 NODEIP=$(curl -s4 icanhazip.com)
